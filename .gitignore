@@ -6,6 +6,7 @@
 
 # dependencies
 /node_modules
+/secret
 
 # IDEs and editors
 /.idea
