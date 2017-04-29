@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 // Home page
 // router.get('/home/:landing', (req, res) => {
-router.get('/home', (req, res) => {
+router.get('/home/:landing', (req, res) => {
   console.log('entered /home route');
   // pass callback function into api call to return data
   retrieveSheets (function (apiLandingData) {
@@ -34,8 +34,8 @@ var sheetsArray;
 function retrieveSheets(fnOne, urlRoute) {
 
   switch (urlRoute) {
-    case 'logo':
-      sheetsArray = ['logo!A2:C'];
+    case 'plants':
+      sheetsArray = ['Plants!A2:C'];
       break;
     // case 'cover-photo':
     //   sheetsArray = ['cover-photo!A2:C'];
