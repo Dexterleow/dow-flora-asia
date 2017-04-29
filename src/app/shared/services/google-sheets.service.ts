@@ -11,8 +11,8 @@ export class GoogleSheetsService {
   constructor(private http: Http) { }
 
   getImages(sheetName) {
-  const apiServerEndPoint = '/api' + sheetName;
-  return this.http.get(apiServerEndPoint)
-    .map(response => response.json());
+    const apiServerEndPoint = '/api' + sheetName;
+    return this.http.get(apiServerEndPoint)
+      .map(response => response.json());
   }
 }

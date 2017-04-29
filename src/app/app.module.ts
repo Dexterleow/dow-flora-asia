@@ -1,11 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
+
+import {GoogleSheetsService} from './shared/services/google-sheets.service'
 
 @NgModule({
   declarations: [
@@ -16,9 +20,11 @@ import { GalleryComponent } from './gallery/gallery.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    JsonpModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [GoogleSheetsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
