@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 
-import {GoogleSheetsService} from './shared/services/google-sheets.service'
+import {GoogleSheetsService} from './shared/services/google-sheets.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    GalleryComponent
+    GalleryComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
