@@ -6,8 +6,8 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-  {path: '', component: GalleryComponent},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
+  {path: 'gallery', component: GalleryComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

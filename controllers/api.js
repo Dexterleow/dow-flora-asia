@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 
 // Home page
 // router.get('/home/:landing', (req, res) => {
+// question - home landing means once landed on home page
 router.get('/home/:landing', (req, res) => {
   console.log('entered /home route');
   // pass callback function into api call to return data
@@ -25,6 +26,7 @@ var googleAuth = require('google-auth-library');
 var SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/.credentials/';
 var TOKEN_PATH = TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json';
+// SheetsArray to be used for below routing of URL
 var sheetsArray;
 
 // fnOne, fnTwo and fnThree are callbacks
@@ -34,27 +36,24 @@ var sheetsArray;
 function retrieveSheets(fnOne, urlRoute) {
 
   switch (urlRoute) {
-    case 'plants':
+    case 'lingga':
+      sheetsArray = ['Lingga!A2:C'];
+      break;
+    case 'gallery':
       sheetsArray = ['Plants!A2:C'];
       break;
-    // case 'cover-photo':
-    //   sheetsArray = ['cover-photo!A2:C'];
-    //   break;
-    // case 'portfolio':
-    //   sheetsArray = ['category!A2:D'];
-    //   break;
-    // case 'portfolioactualday':
-    //   sheetsArray = ['actual-day!A2:C'];
-    //   break;
-    // case 'portfoliolifestyle':
-    //   sheetsArray = ['lifestyle!A2:C'];
-    //   break;
-    // case 'portfoliooverseas':
-    //   sheetsArray = ['overseas!A2:C'];
-    //   break;
-    // case 'portfolioprewedding':
-    //   sheetsArray = ['pre-wedding!A2:C'];
-    //   break;
+    case 'seeds':
+      sheetsArray = ['Seeds!A2:C'];
+      break;
+    case 'growingMediaAndCharcoals':
+      sheetsArray = ['GrowingMediaAndCharcoals!A2:C'];
+      break;
+    case 'stones':
+      sheetsArray = ['StonesEtc!A2:C'];
+      break;
+    case 'completedAndFutureProjects':
+      sheetsArray = ['CompletedAndFutureProjects!A2:C'];
+      break;
   }
 
   fs.readFile('./secret/client_secret.json', function processClientSecrets(err, content) {
@@ -154,7 +153,7 @@ function listMajors(auth, fnThree) {
     auth: auth,
     spreadsheetId: '1vSK20rCOrGkkhRv5ZrqIQuJDeAbemeYn4K1HvXH-Ec0',
     ranges: sheetsArray, // if get multiple sheets need to use 'ranges'. if single sheet use 'range'
-    // what's this huh?
+    // question -- what's this huh?
     valueRenderOption: 'FORMATTED_VALUE'
 
   }, function(err, response) {
