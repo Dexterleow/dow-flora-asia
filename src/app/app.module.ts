@@ -7,22 +7,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { GalleryComponent } from './gallery/gallery.component';
 
 import {GoogleSheetsService} from './shared/services/google-sheets.service';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CoverPhotoComponent } from './cover-photo/cover-photo.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    GalleryComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CoverPhotoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    // question - JsonpModule
     JsonpModule,
     AppRoutingModule
   ],
