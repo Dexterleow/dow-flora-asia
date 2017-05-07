@@ -1,13 +1,31 @@
 
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+  <nav class="navbar navbar-toggleable-sm navbar-fixed-top navbar-light bg-faded">
     <div class="container">
-        <a class="navbar-brand">Angular Router</a>
-        <ul class="nav navbar-nav" routerLinkActive="active">
-            <!-- <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="courses">Courses</a></li> -->
-        </ul>
+      <div class="row">
+      <a class="navbar-brand navbar--logo">Dow Flora</a>
+      <ul class="nav navbar-nav" routerLinkActive="active">
+        <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="Lingga Island">Lingga Island</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="plants">Plants</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="projects">Projects</a></li>
+      </ul>
+
+      <form action="" class="search-form">
+        <div class="form-group has-feedback">
+          <label for="search" class="sr-only">Search</label>
+          <input type="text" class="form-control" name="search" id="search" placeholder="search">
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </form>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item"><a class="nav-link" routerLink="contact-us">Contact Us</a></li>
+      </ul>
+      </div>
     </div>
-</nav>
+  </nav>
+
 
 <router-outlet></router-outlet>

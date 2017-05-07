@@ -1,0 +1,7 @@
+.navbar--logo {
+  font-size: 36px;
+}
+
+a:not([href]):not([tabindex]){
+    color:#016097;
+}

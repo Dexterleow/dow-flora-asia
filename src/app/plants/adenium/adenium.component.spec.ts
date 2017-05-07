@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { TopHeaderLogoSearchContactusComponent } from './top-header--logo--search--contactus.component';
+import { AdeniumComponent } from './adenium.component';
 
-describe('TopHeaderLogoSearchContactusComponent', () => {
-  let component: TopHeaderLogoSearchContactusComponent;
-  let fixture: ComponentFixture<TopHeaderLogoSearchContactusComponent>;
+describe('AdeniumComponent', () => {
+  let component: AdeniumComponent;
+  let fixture: ComponentFixture<AdeniumComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopHeaderLogoSearchContactusComponent ]
+      declarations: [ AdeniumComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopHeaderLogoSearchContactusComponent);
+    fixture = TestBed.createComponent(AdeniumComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

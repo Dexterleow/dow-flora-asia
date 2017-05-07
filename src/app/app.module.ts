@@ -11,8 +11,11 @@ import { HomeComponent } from './home/home.component';
 import {GoogleSheetsService} from './shared/services/google-sheets.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
-import { TopHeaderLogoSearchContactusComponent } from './top-header--logo--search--contactus/top-header--logo--search--contactus.component';
-import { NavbarComponent } from './core/navbar.component'
+import { NavbarComponent } from './core/navbar.component';
+import { AboutComponent } from './about/about.component';
+import { PlantsComponent } from './plants/plants.component';
+import { PlantsCardsComponent } from './plants-cards/plants-cards.component';
+import { AdeniumComponent } from './plants/adenium/adenium.component'
 
 @NgModule({
   declarations: [
@@ -20,8 +23,12 @@ import { NavbarComponent } from './core/navbar.component'
     HomeComponent,
     PageNotFoundComponent,
     CoverPhotoComponent,
-    TopHeaderLogoSearchContactusComponent,
-    NavbarComponent
+    NavbarComponent,
+    AboutComponent,
+    PlantsComponent,
+    PlantsCardsComponent,
+    PlantsCardsComponent,
+    AdeniumComponent
   ],
   imports: [
     BrowserModule,
