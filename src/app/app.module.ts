@@ -10,14 +10,18 @@ import { HomeComponent } from './home/home.component';
 
 import {GoogleSheetsService} from './shared/services/google-sheets.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CoverPhotoComponent } from './cover-photo/cover-photo.component'
+import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
+import { TopHeaderLogoSearchContactusComponent } from './top-header--logo--search--contactus/top-header--logo--search--contactus.component';
+import { NavbarComponent } from './core/navbar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    CoverPhotoComponent
+    CoverPhotoComponent,
+    TopHeaderLogoSearchContactusComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
