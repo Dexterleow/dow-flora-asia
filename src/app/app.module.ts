@@ -15,7 +15,7 @@ import { NavbarComponent } from './core/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { PlantsComponent } from './plants/plants.component';
 import { PlantsCardsComponent } from './plants-cards/plants-cards.component';
-import { AdeniumComponent } from './plants/adenium/adenium.component'
+
 
 @NgModule({
   declarations: [
@@ -28,7 +28,6 @@ import { AdeniumComponent } from './plants/adenium/adenium.component'
     PlantsComponent,
     PlantsCardsComponent,
     PlantsCardsComponent,
-    AdeniumComponent
   ],
   imports: [
     BrowserModule,
