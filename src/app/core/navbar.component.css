@@ -5,3 +5,12 @@
 a:not([href]):not([tabindex]){
     color:#016097;
 }
+
+.nav-item {
+  line-height: 50px;
+}
+
+/*Added margin-top 1rem to offset the default value form group's margin-bottom*/
+.navbar__search-bar {
+  margin-top: 1rem;
+}
