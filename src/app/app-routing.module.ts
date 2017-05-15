@@ -8,7 +8,6 @@ import { PlantsCardsComponent } from './plants-cards/plants-cards.component'
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { AdeniumComponent } from './plants/adenium/adenium.component'
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent},
@@ -28,10 +27,10 @@ const appRoutes: Routes = [
       path: 'plants',
       component: PlantsComponent,
       children: [
-    {
-        path: 'adenium',
-        component: AdeniumComponent
-    }
+    // {
+    //     path: 'adenium',
+    //     component: AdeniumComponent
+    // }
     ]
   },
   {
