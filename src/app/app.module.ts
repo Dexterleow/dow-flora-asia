@@ -15,6 +15,9 @@ import { NavbarComponent } from './core/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { PlantsComponent } from './plants/plants.component';
 import { PlantsCardsComponent } from './plants-cards/plants-cards.component';
+import { LinggaIslandComponent } from './lingga-island/lingga-island.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { PlantsCardsComponent } from './plants-cards/plants-cards.component';
     PlantsComponent,
     PlantsCardsComponent,
     PlantsCardsComponent,
+    LinggaIslandComponent,
+    ProjectsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,
