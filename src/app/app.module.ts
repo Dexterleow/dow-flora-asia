@@ -18,6 +18,7 @@ import { PlantsCardsComponent } from './plants-cards/plants-cards.component';
 import { LinggaIslandComponent } from './lingga-island/lingga-island.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     LinggaIslandComponent,
     ProjectsComponent,
     ContactUsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
