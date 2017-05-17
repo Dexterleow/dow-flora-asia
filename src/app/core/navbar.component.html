@@ -1,30 +1,3 @@
-<!--<nav class="navbar navbar-toggleable-sm navbar-fixed-top navbar-light bg-faded">
-    <div class="container">
-      <div class="row">
-      <a class="navbar-brand navbar--logo">Dow Flora</a>
-      <ul class="nav navbar-nav" routerLinkActive="active">
-        <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="about">About</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="lingga-island">Lingga Island</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="plants">Plants</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="projects">Projects</a></li>
-      </ul>
-
-      <form action="" class="search-form">
-        <div class="form-group has-feedback navbar__search-bar">
-          <label for="search" class="sr-only">Search</label>
-          <input type="text" class="form-control" name="search" id="search" placeholder="search">
-          <span class="glyphicon glyphicon-search form-control-feedback"></span>
-        </div>
-      </form>
-
-
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item"><a class="nav-link" routerLink="contact-us">Contact Us</a></li>
-      </ul>
-      </div>
-    </div>
-  </nav>-->
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
@@ -33,17 +6,23 @@
       aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <a class="navbar-brand" href="#">Dow Flora</a>
+    <a class="navbar-brand" routerLink="home">Dow Flora</a>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="home">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" routerLink="about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" routerLink="lingga-island">Lingga Island</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="plants">Plants</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="projects">Projects</a>
         </li>
       </ul>
       <form class="form-inline mt-2 mt-md-0">

@@ -19,6 +19,7 @@ import { LinggaIslandComponent } from './lingga-island/lingga-island.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FooterComponent } from './footer/footer.component';
     ProjectsComponent,
     ContactUsComponent,
     FooterComponent,
+    SideMenuComponent,
   ],
   imports: [
     BrowserModule,
