@@ -14,3 +14,9 @@ a:not([href]):not([tabindex]){
 .navbar__search-bar {
   margin-top: 1rem;
 }
+
+/*temp solution to re*/
+.navbar__resizing {
+  margin: 0;
+  padding:0;
+}
