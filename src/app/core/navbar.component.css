@@ -46,4 +46,5 @@ a:not([href]):not([tabindex]) {
 
 .nav-link__adjustment:hover {
   border-bottom: 3px solid #2BDE73;
+  text-decoration: none;
 }

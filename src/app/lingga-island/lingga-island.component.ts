@@ -9,7 +9,7 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
 })
 export class LinggaIslandComponent implements OnInit {
 
-  linggaIslandPhotoUrl: string;
+  linggaIslandPhotoUrl_Mountain1: string;
   apilinggaIslandPhotoEndPoint: string;
   apilinggaIslandPhotoResult: Array<string>;
 
@@ -26,13 +26,13 @@ export class LinggaIslandComponent implements OnInit {
     this.googleSheetsService.getImages(sheetName)
     .subscribe(dataFromAPI => {
       this.apilinggaIslandPhotoResult = dataFromAPI.apiLandingResult[0];
-      this.linggaIslandPhotoUrl = this.apilinggaIslandPhotoResult[1][3];
+      this.linggaIslandPhotoUrl_Mountain1 = this.apilinggaIslandPhotoResult[0][2];
 
       // need to run loop here if decide to set an interval and change cover photo every few seconds
 
       // localStorage.setItem('sixtySecondsCategoryPhotos', JSON.stringify(this.apiCoverPhotoResult));
 
-      console.log(this.linggaIslandPhotoUrl);
+      console.log(this.linggaIslandPhotoUrl_Mountain1);
       console.log('lingga photo api call success');
       console.log(this.apilinggaIslandPhotoResult);
     });

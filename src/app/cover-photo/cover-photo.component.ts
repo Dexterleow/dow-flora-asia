@@ -8,6 +8,7 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
   styleUrls: ['./cover-photo.component.css']
 })
 export class CoverPhotoComponent implements OnInit {
+  
   coverPhotoUrl: string;
   apiCoverPhotoEndPoint: string;
   apiCoverPhotoResult: Array<string>;
