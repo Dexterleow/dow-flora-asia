@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 
+import { CarouselModule } from 'ngx-bootstrap';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +41,15 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
     ContactUsComponent,
     FooterComponent,
     SideMenuComponent,
+    CarouselComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     // question - JsonpModule
+    CarouselModule.forRoot(),
     JsonpModule,
     AppRoutingModule
   ],
