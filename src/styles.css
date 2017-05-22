@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-body { padding-top: 100px; }
+/*body { padding-top: 100px; }
 @media screen and (max-width: 768px) {
     body { padding-top: 80px; }
-}
+}*/
 
 html {
   position: relative;

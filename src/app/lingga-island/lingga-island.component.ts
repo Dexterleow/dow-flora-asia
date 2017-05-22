@@ -10,6 +10,10 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
 export class LinggaIslandComponent implements OnInit {
 
   linggaIslandPhotoUrl_Mountain1: string;
+  linggaIslandPhotoUrl_Beach3: string;
+  linggaIslandPhotoUrl_History1: string;
+  linggaIslandPhotoUrl_Jetty3: string;
+
   apilinggaIslandPhotoEndPoint: string;
   apilinggaIslandPhotoResult: Array<string>;
 
@@ -27,6 +31,9 @@ export class LinggaIslandComponent implements OnInit {
     .subscribe(dataFromAPI => {
       this.apilinggaIslandPhotoResult = dataFromAPI.apiLandingResult[0];
       this.linggaIslandPhotoUrl_Mountain1 = this.apilinggaIslandPhotoResult[0][2];
+      this.linggaIslandPhotoUrl_Beach3 = this.apilinggaIslandPhotoResult[4][2];
+      this.linggaIslandPhotoUrl_Jetty3 = this.apilinggaIslandPhotoResult[6][2];
+      this.linggaIslandPhotoUrl_History1 = this.apilinggaIslandPhotoResult[8][2];
 
       // need to run loop here if decide to set an interval and change cover photo every few seconds
 
