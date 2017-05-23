@@ -44,7 +44,7 @@ function retrieveSheets(fnOne, urlRoute) {
     case 'lingga':
     sheetsArray = ['Lingga!A2:C'];
     break;
-    case 'gallery':
+    case 'plants':
     sheetsArray = ['Plants!A2:C'];
     break;
     case 'seeds':
