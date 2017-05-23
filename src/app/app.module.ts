@@ -24,6 +24,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 
 import { CarouselModule } from 'ngx-bootstrap';
 import { CarouselComponent } from './carousel/carousel.component';
+import { AdeniumComponent } from './plants/adenium/adenium.component';
+import { AgaveComponent } from './plants/agave/agave.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { CarouselComponent } from './carousel/carousel.component';
     FooterComponent,
     SideMenuComponent,
     CarouselComponent,
+    AdeniumComponent,
+    AgaveComponent,
 
   ],
   imports: [

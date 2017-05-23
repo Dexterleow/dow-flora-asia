@@ -11,16 +11,20 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-
-// const appRoutes: Routes = [
-//   {path: '', component: HomeComponent},
-//   {path: '**', component: PageNotFoundComponent}
-// ];
+import { CarouselComponent } from './carousel/carousel.component';
+import { AdeniumComponent } from './plants/adenium/adenium.component';
+import { AgaveComponent } from './plants/agave/agave.component';
 
 const appRoutes: Routes = [
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      { path: '', redirectTo: 'carousel', pathMatch: 'full' },
+      { path: 'carousel', component: CarouselComponent },
+      { path: 'adenium', component: AdeniumComponent },
+      { path: 'agave', component: AgaveComponent }
+    ]
   },
   {
     path: 'about',
@@ -34,10 +38,9 @@ const appRoutes: Routes = [
     path: 'plants',
     component: PlantsComponent,
     children: [
-      // {
-      //     path: 'adenium',
-      //     component: AdeniumComponent
-      // }
+      { path: '', redirectTo: 'adenium', pathMatch: 'full' },
+      { path: 'adenium', component: AdeniumComponent },
+      { path: 'agave', component: AgaveComponent }
     ]
   },
   {
