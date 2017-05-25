@@ -15,32 +15,31 @@ export class AdeniumComponent implements OnInit {
   adeniumPhotoUrl_4: string;
   adeniumPhotoUrl_5: string;
 
-
-  apilinggaIslandPhotoEndPoint: string;
-  apilinggaIslandPhotoResult: Array<string>;
+  plantsPhotoEndPoint: string;
+  plantsPhotoResult: Array<string>;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.apilinggaIslandPhotoEndPoint = '/home/plants';
-    this.apilinggaIslandPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.apilinggaIslandPhotoEndPoint);
+    this.getImagesFromSheets(this.plantsPhotoEndPoint);
   }
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
       .subscribe(dataFromAPI => {
-        this.apilinggaIslandPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.adeniumPhotoUrl_1 = this.apilinggaIslandPhotoResult[0][2];
-        this.adeniumPhotoUrl_2 = this.apilinggaIslandPhotoResult[1][2];
-        this.adeniumPhotoUrl_3 = this.apilinggaIslandPhotoResult[2][2];
-        this.adeniumPhotoUrl_4 = this.apilinggaIslandPhotoResult[3][2];
-        this.adeniumPhotoUrl_5 = this.apilinggaIslandPhotoResult[4][2];
+        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.adeniumPhotoUrl_1 = this.plantsPhotoResult[0][2];
+        this.adeniumPhotoUrl_2 = this.plantsPhotoResult[1][2];
+        this.adeniumPhotoUrl_3 = this.plantsPhotoResult[2][2];
+        this.adeniumPhotoUrl_4 = this.plantsPhotoResult[3][2];
+        this.adeniumPhotoUrl_5 = this.plantsPhotoResult[4][2];
 
         console.log(this.adeniumPhotoUrl_1);
         console.log('adenium photo api call success');
-        console.log(this.apilinggaIslandPhotoResult);
+        console.log(this.plantsPhotoResult);
       });
   }
 
