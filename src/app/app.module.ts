@@ -25,6 +25,8 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AdeniumComponent } from './plants/adenium/adenium.component';
 import { AgaveComponent } from './plants/agave/agave.component';
+import { AglaonemasComponent } from './plants/aglaonemas/aglaonemas.component';
+import { AlocasiaComponent } from './plants/alocasia/alocasia.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { AgaveComponent } from './plants/agave/agave.component';
     CarouselComponent,
     AdeniumComponent,
     AgaveComponent,
+    AglaonemasComponent,
+    AlocasiaComponent,
   ],
   imports: [
     BrowserModule,

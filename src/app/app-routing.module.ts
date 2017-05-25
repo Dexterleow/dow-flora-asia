@@ -13,6 +13,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CarouselComponent } from './carousel/carousel.component';
 import { AdeniumComponent } from './plants/adenium/adenium.component';
 import { AgaveComponent } from './plants/agave/agave.component';
+import { AglaonemasComponent } from './plants/aglaonemas/aglaonemas.component';
+import { AlocasiaComponent } from './plants/alocasia/alocasia.component';
 
 const appRoutes: Routes = [
   {
@@ -22,7 +24,9 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'carousel', pathMatch: 'full' },
       { path: 'carousel', component: CarouselComponent },
       { path: 'adenium', component: AdeniumComponent },
-      { path: 'agave', component: AgaveComponent }
+      { path: 'agave', component: AgaveComponent },
+      { path: 'aglaonemas', component: AglaonemasComponent },
+      { path: 'alocasia', component: AlocasiaComponent },
     ]
   },
   {
@@ -39,7 +43,9 @@ const appRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'adenium', pathMatch: 'full' },
       { path: 'adenium', component: AdeniumComponent },
-      { path: 'agave', component: AgaveComponent }
+      { path: 'agave', component: AgaveComponent },
+      { path: 'aglaonemas', component: AglaonemasComponent },
+      { path: 'alocasia', component: AlocasiaComponent },
     ]
   },
   {
