@@ -27,6 +27,43 @@ import { AdeniumComponent } from './plants/adenium/adenium.component';
 import { AgaveComponent } from './plants/agave/agave.component';
 import { AglaonemasComponent } from './plants/aglaonemas/aglaonemas.component';
 import { AlocasiaComponent } from './plants/alocasia/alocasia.component';
+import { AnanasComponent } from './plants/ananas/ananas.component';
+import { AquaticPlantsComponent } from './plants/aquatic-plants/aquatic-plants.component';
+import { BamboosGrassesComponent } from './plants/bamboos-grasses/bamboos-grasses.component';
+import { BougainvilleasComponent } from './plants/bougainvilleas/bougainvilleas.component';
+import { BoweniaComponent } from './plants/bowenia/bowenia.component';
+import { CactusComponent } from './plants/cactus/cactus.component';
+import { CaladiumComponent } from './plants/caladium/caladium.component';
+import { CalatheasComponent } from './plants/calatheas/calatheas.component';
+import { ClimbersVinesComponent } from './plants/climbers-vines/climbers-vines.component';
+import { CordylineComponent } from './plants/cordyline/cordyline.component';
+import { CostusComponent } from './plants/costus/costus.component';
+import { CrotonComponent } from './plants/croton/croton.component';
+import { CrypthanthusComponent } from './plants/crypthanthus/crypthanthus.component';
+import { CycasComponent } from './plants/cycas/cycas.component';
+import { DracaeanaComponent } from './plants/dracaeana/dracaeana.component';
+import { EncephalartosComponent } from './plants/encephalartos/encephalartos.component';
+import { FlowersComponent } from './plants/flowers/flowers.component';
+import { FernsComponent } from './plants/ferns/ferns.component';
+import { GroundCoversComponent } from './plants/ground-covers/ground-covers.component';
+import { HangingPlantsComponent } from './plants/hanging-plants/hanging-plants.component';
+import { HeliconiaComponent } from './plants/heliconia/heliconia.component';
+import { HerbsComponent } from './plants/herbs/herbs.component';
+import { HibiscusComponent } from './plants/hibiscus/hibiscus.component';
+import { IndoorPlantsComponent } from './plants/indoor-plants/indoor-plants.component';
+import { PalmsComponent } from './plants/palms/palms.component';
+import { SaggoPalmComponent } from './plants/saggo-palm/saggo-palm.component';
+import { PandanusComponent } from './plants/pandanus/pandanus.component';
+import { PhilodendronsComponent } from './plants/philodendrons/philodendrons.component';
+
+import { PlumeriasComponent } from './plants/plumerias/plumerias.component';
+import { ShrubsComponent } from './plants/shrubs/shrubs.component';
+import { StreliziaComponent } from './plants/strelizia/strelizia.component';
+import { SucculentPlantsComponent } from './plants/succulent-plants/succulent-plants.component';
+import { TreesComponent } from './plants/trees/trees.component';
+import { TropicalFruitsComponent } from './plants/tropical-fruits/tropical-fruits.component';
+import { ZamiaCeratozamiaComponent } from './plants/zamia-ceratozamia/zamia-ceratozamia.component';
+import { OtherSpeciesComponent } from './plants/other-species/other-species.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +84,42 @@ import { AlocasiaComponent } from './plants/alocasia/alocasia.component';
     AgaveComponent,
     AglaonemasComponent,
     AlocasiaComponent,
+    AnanasComponent,
+    AquaticPlantsComponent,
+    BamboosGrassesComponent,
+    BougainvilleasComponent,
+    BoweniaComponent,
+    CactusComponent,
+    CaladiumComponent,
+    CalatheasComponent,
+    ClimbersVinesComponent,
+    CordylineComponent,
+    CostusComponent,
+    CrotonComponent,
+    CrypthanthusComponent,
+    CycasComponent,
+    DracaeanaComponent,
+    EncephalartosComponent,
+    FlowersComponent,
+    FernsComponent,
+    GroundCoversComponent,
+    HangingPlantsComponent,
+    HeliconiaComponent,
+    HerbsComponent,
+    HibiscusComponent,
+    IndoorPlantsComponent,
+    PalmsComponent,
+    SaggoPalmComponent,
+    PandanusComponent,
+    PhilodendronsComponent,
+    PlumeriasComponent,
+    ShrubsComponent,
+    StreliziaComponent,
+    SucculentPlantsComponent,
+    TreesComponent,
+    TropicalFruitsComponent,
+    ZamiaCeratozamiaComponent,
+    OtherSpeciesComponent,
   ],
   imports: [
     BrowserModule,
