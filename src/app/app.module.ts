@@ -76,6 +76,10 @@ import { StonesComponent } from './stones/stones.component';
 import { StoneTableComponent } from './stones/stone-table/stone-table.component';
 import { PebbleComponent } from './stones/pebble/pebble.component';
 
+import { CompletedFutureProjectsComponent } from './completed-future-projects/completed-future-projects.component';
+import { CompletedProjectsComponent } from './completed-future-projects/completed-projects/completed-projects.component';
+import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
+
 
 
 @NgModule({
@@ -142,6 +146,9 @@ import { PebbleComponent } from './stones/pebble/pebble.component';
     StonesComponent,
     StoneTableComponent,
     PebbleComponent,
+    CompletedFutureProjectsComponent,
+    CompletedProjectsComponent,
+    FutureProjectsComponent,
 
   ],
   imports: [

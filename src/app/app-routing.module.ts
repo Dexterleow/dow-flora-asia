@@ -63,6 +63,10 @@ import { StonesComponent } from './stones/stones.component';
 import { StoneTableComponent } from './stones/stone-table/stone-table.component';
 import { PebbleComponent } from './stones/pebble/pebble.component';
 
+import { CompletedFutureProjectsComponent } from './completed-future-projects/completed-future-projects.component';
+import { CompletedProjectsComponent } from './completed-future-projects/completed-projects/completed-projects.component';
+import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
+
 const appRoutes: Routes = [
   {
     path: 'home',
@@ -116,7 +120,9 @@ const appRoutes: Routes = [
       { path: 'treated-media', component: TreatedMediaComponent },
       { path: 'charcoals', component: CharcoalsComponent },
       { path: 'stone-table', component: StoneTableComponent },
-      { path: 'pebble', component: PebbleComponent }
+      { path: 'pebble', component: PebbleComponent },
+      { path: 'completed-projects', component: CompletedProjectsComponent },
+      { path: 'future-projects', component: FutureProjectsComponent }
     ]
   },
   {
@@ -144,6 +150,15 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'stone-table', pathMatch: 'full' },
       { path: 'stone-table', component: StoneTableComponent },
       { path: 'pebble', component: PebbleComponent }
+    ]
+  },
+  {
+    path: 'completed-future-projects',
+    component: CompletedFutureProjectsComponent,
+    children: [
+      { path: '', redirectTo: 'completed-projects', pathMatch: 'full' },
+      { path: 'completed-projects', component: CompletedProjectsComponent },
+      { path: 'future-projects', component: FutureProjectsComponent }
     ]
   },
   {
@@ -204,7 +219,9 @@ const appRoutes: Routes = [
       { path: 'treated-media', component: TreatedMediaComponent },
       { path: 'charcoals', component: CharcoalsComponent },
       { path: 'stone-table', component: StoneTableComponent },
-      { path: 'pebble', component: PebbleComponent }
+      { path: 'pebble', component: PebbleComponent },
+      { path: 'completed-projects', component: CompletedProjectsComponent },
+      { path: 'future-projects', component: FutureProjectsComponent }
     ]
   },
   {
