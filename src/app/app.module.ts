@@ -68,6 +68,13 @@ import { OtherSpeciesComponent } from './plants/other-species/other-species.comp
 import { SeedsCategoryComponent } from './seeds-category/seeds-category.component';
 import { SeedsComponent } from './seeds-category/seeds/seeds.component';
 import { SeedlingsComponent } from './seeds-category/seedlings/seedlings.component';
+import { MediaCharcoalsComponent } from './media-charcoals/media-charcoals.component';
+import { TreatedMediaComponent } from './media-charcoals/treated-media/treated-media.component';
+import { CharcoalsComponent } from './media-charcoals/charcoals/charcoals.component';
+
+import { StonesComponent } from './stones/stones.component';
+import { StoneTableComponent } from './stones/stone-table/stone-table.component';
+import { PebbleComponent } from './stones/pebble/pebble.component';
 
 
 
@@ -129,6 +136,12 @@ import { SeedlingsComponent } from './seeds-category/seedlings/seedlings.compone
     SeedsCategoryComponent,
     SeedsComponent,
     SeedlingsComponent,
+    MediaCharcoalsComponent,
+    TreatedMediaComponent,
+    CharcoalsComponent,
+    StonesComponent,
+    StoneTableComponent,
+    PebbleComponent,
 
   ],
   imports: [

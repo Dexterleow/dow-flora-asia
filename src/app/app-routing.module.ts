@@ -55,6 +55,14 @@ import { SeedsCategoryComponent } from './seeds-category/seeds-category.componen
 import { SeedsComponent } from './seeds-category/seeds/seeds.component';
 import { SeedlingsComponent } from './seeds-category/seedlings/seedlings.component';
 
+import { MediaCharcoalsComponent } from './media-charcoals/media-charcoals.component';
+import { TreatedMediaComponent } from './media-charcoals/treated-media/treated-media.component';
+import { CharcoalsComponent } from './media-charcoals/charcoals/charcoals.component';
+
+import { StonesComponent } from './stones/stones.component';
+import { StoneTableComponent } from './stones/stone-table/stone-table.component';
+import { PebbleComponent } from './stones/pebble/pebble.component';
+
 const appRoutes: Routes = [
   {
     path: 'home',
@@ -104,7 +112,11 @@ const appRoutes: Routes = [
       { path: 'other-species', component: OtherSpeciesComponent },
       { path: '', redirectTo: 'seeds', pathMatch: 'full' },
       { path: 'seeds', component: SeedsComponent },
-      { path: 'seedlings', component: SeedlingsComponent }
+      { path: 'seedlings', component: SeedlingsComponent },
+      { path: 'treated-media', component: TreatedMediaComponent },
+      { path: 'charcoals', component: CharcoalsComponent },
+      { path: 'stone-table', component: StoneTableComponent },
+      { path: 'pebble', component: PebbleComponent }
     ]
   },
   {
@@ -114,6 +126,24 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'seeds', pathMatch: 'full' },
       { path: 'seeds', component: SeedsComponent },
       { path: 'seedlings', component: SeedlingsComponent }
+    ]
+  },
+  {
+    path: 'media-charcoals',
+    component: MediaCharcoalsComponent,
+    children: [
+      { path: '', redirectTo: 'seeds', pathMatch: 'full' },
+      { path: 'treated-media', component: TreatedMediaComponent },
+      { path: 'charcoals', component: CharcoalsComponent }
+    ]
+  },
+  {
+    path: 'stones',
+    component: MediaCharcoalsComponent,
+    children: [
+      { path: '', redirectTo: 'stone-table', pathMatch: 'full' },
+      { path: 'stone-table', component: StoneTableComponent },
+      { path: 'pebble', component: PebbleComponent }
     ]
   },
   {
@@ -170,7 +200,11 @@ const appRoutes: Routes = [
       { path: 'zamia-ceratozamia', component: ZamiaCeratozamiaComponent },
       { path: 'other-species', component: OtherSpeciesComponent },
       { path: 'seeds', component: SeedsComponent },
-      { path: 'seedlings', component: SeedlingsComponent }
+      { path: 'seedlings', component: SeedlingsComponent },
+      { path: 'treated-media', component: TreatedMediaComponent },
+      { path: 'charcoals', component: CharcoalsComponent },
+      { path: 'stone-table', component: StoneTableComponent },
+      { path: 'pebble', component: PebbleComponent }
     ]
   },
   {
