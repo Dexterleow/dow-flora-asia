@@ -51,6 +51,10 @@ import { TropicalFruitsComponent } from './plants/tropical-fruits/tropical-fruit
 import { ZamiaCeratozamiaComponent } from './plants/zamia-ceratozamia/zamia-ceratozamia.component';
 import { OtherSpeciesComponent } from './plants/other-species/other-species.component';
 
+import { SeedsCategoryComponent } from './seeds-category/seeds-category.component';
+import { SeedsComponent } from './seeds-category/seeds/seeds.component';
+import { SeedlingsComponent } from './seeds-category/seedlings/seedlings.component';
+
 const appRoutes: Routes = [
   {
     path: 'home',
@@ -97,8 +101,19 @@ const appRoutes: Routes = [
       { path: 'trees', component: TreesComponent },
       { path: 'tropical-fruits', component: TropicalFruitsComponent },
       { path: 'zamia-ceratozamia', component: ZamiaCeratozamiaComponent },
-      { path: 'other-species', component: OtherSpeciesComponent }
-
+      { path: 'other-species', component: OtherSpeciesComponent },
+      { path: '', redirectTo: 'seeds', pathMatch: 'full' },
+      { path: 'seeds', component: SeedsComponent },
+      { path: 'seedlings', component: SeedlingsComponent }
+    ]
+  },
+  {
+    path: 'seeds-category',
+    component: SeedsCategoryComponent,
+    children: [
+      { path: '', redirectTo: 'seeds', pathMatch: 'full' },
+      { path: 'seeds', component: SeedsComponent },
+      { path: 'seedlings', component: SeedlingsComponent }
     ]
   },
   {
@@ -153,7 +168,9 @@ const appRoutes: Routes = [
       { path: 'trees', component: TreesComponent },
       { path: 'tropical-fruits', component: TropicalFruitsComponent },
       { path: 'zamia-ceratozamia', component: ZamiaCeratozamiaComponent },
-      { path: 'other-species', component: OtherSpeciesComponent }
+      { path: 'other-species', component: OtherSpeciesComponent },
+      { path: 'seeds', component: SeedsComponent },
+      { path: 'seedlings', component: SeedlingsComponent }
     ]
   },
   {

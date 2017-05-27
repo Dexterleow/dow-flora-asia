@@ -65,6 +65,12 @@ import { TropicalFruitsComponent } from './plants/tropical-fruits/tropical-fruit
 import { ZamiaCeratozamiaComponent } from './plants/zamia-ceratozamia/zamia-ceratozamia.component';
 import { OtherSpeciesComponent } from './plants/other-species/other-species.component';
 
+import { SeedsCategoryComponent } from './seeds-category/seeds-category.component';
+import { SeedsComponent } from './seeds-category/seeds/seeds.component';
+import { SeedlingsComponent } from './seeds-category/seedlings/seedlings.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -120,6 +126,10 @@ import { OtherSpeciesComponent } from './plants/other-species/other-species.comp
     TropicalFruitsComponent,
     ZamiaCeratozamiaComponent,
     OtherSpeciesComponent,
+    SeedsCategoryComponent,
+    SeedsComponent,
+    SeedlingsComponent,
+
   ],
   imports: [
     BrowserModule,
