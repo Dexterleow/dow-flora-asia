@@ -26,3 +26,8 @@ body {
 .plant__species-resize{
   width: 15%;
 }
+
+.plants__title--display {
+    border-bottom: 1px solid black;
+    margin-bottom:3rem;
+}
