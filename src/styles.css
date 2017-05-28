@@ -31,3 +31,7 @@ body {
     border-bottom: 1px solid black;
     margin-bottom:3rem;
 }
+
+.navbar__logo{
+  width:7.5%;
+}
