@@ -15,6 +15,9 @@ export class AglaonemasComponent implements OnInit {
   aglaonemasPhotoUrl_4: string;
   aglaonemasPhotoUrl_5: string;
   aglaonemasPhotoUrl_6: string;
+  aglaonemasPhotoUrl_7: string;
+  aglaonemasPhotoUrl_8: string;
+  aglaonemasPhotoUrl_9: string;
 
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
@@ -32,15 +35,15 @@ export class AglaonemasComponent implements OnInit {
     this.googleSheetsService.getImages(sheetName)
       .subscribe(dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[11][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[12][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[13][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[14][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[15][2];
+        this.aglaonemasPhotoUrl_1 = this.plantsPhotoResult[11][2];
+        this.aglaonemasPhotoUrl_2 = this.plantsPhotoResult[12][2];
+        this.aglaonemasPhotoUrl_3 = this.plantsPhotoResult[13][2];
+        this.aglaonemasPhotoUrl_4 = this.plantsPhotoResult[14][2];
+        this.aglaonemasPhotoUrl_5 = this.plantsPhotoResult[15][2];
         this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[16][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[17][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[18][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[19][2];
+        this.aglaonemasPhotoUrl_7 = this.plantsPhotoResult[17][2];
+        this.aglaonemasPhotoUrl_8 = this.plantsPhotoResult[18][2];
+        this.aglaonemasPhotoUrl_9 = this.plantsPhotoResult[19][2];
 
         console.log(this.aglaonemasPhotoUrl_1);
         console.log('aglaonemas photo api call success');
