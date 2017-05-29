@@ -138,14 +138,14 @@ const appRoutes: Routes = [
     path: 'media-charcoals',
     component: MediaCharcoalsComponent,
     children: [
-      { path: '', redirectTo: 'seeds', pathMatch: 'full' },
+      { path: '', redirectTo: 'treated-media', pathMatch: 'full' },
       { path: 'treated-media', component: TreatedMediaComponent },
       { path: 'charcoals', component: CharcoalsComponent }
     ]
   },
   {
     path: 'stones',
-    component: MediaCharcoalsComponent,
+    component: StoneTableComponent,
     children: [
       { path: '', redirectTo: 'stone-table', pathMatch: 'full' },
       { path: 'stone-table', component: StoneTableComponent },
