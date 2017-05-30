@@ -39,10 +39,9 @@ a:not([href]):not([tabindex]) {
 .nav-link__adjustment {
   font-size: 1.5rem;
   color: green;
-  border-bottom: 3px solid rgba(0,0,0,0);
-  margin-right:1rem;
+  border-bottom: 3px solid rgba(0, 0, 0, 0);
+  margin-right: 1rem;
 }
-
 
 .nav-link__adjustment:hover {
   border-bottom: 3px solid #2BDE73;
