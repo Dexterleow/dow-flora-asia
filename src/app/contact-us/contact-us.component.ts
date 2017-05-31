@@ -11,9 +11,6 @@ import { EmailService } from '../shared/services/email.service';
 export class ContactUsComponent implements OnInit {
 
   contactForm: FormGroup;
-  // name: string;
-  // email: string;
-  // message: string;
 
   constructor(
     private fb: FormBuilder,
@@ -23,9 +20,6 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.name = '';
-    // this.email = '';
-    // this.message = '';
   }
 
   createContactForm() {
@@ -37,18 +31,16 @@ export class ContactUsComponent implements OnInit {
   }
 
   submitEnquiry() {
-    console.log(this.contactForm);
-
-  // this.emailService.sendEmail(this.contactForm).subscribe(dataReturned => {
-
-      // if (dataReturned.status) {
-      //   this.contactForm.reset();
-      //   this.emailOutcomeMsg = 'Thanks for your interest in our services. We have successfully recieved your enquiry. We will get back to you as soon as possible.';
-      // } else {
-      //   this.submitButton = true;
-      //   this.emailOutcomeMsg = 'Seems like an error occurred. Please try again.';
-      // }
-      // this.dropdownSelected = 'Please Choose One';
+    let name = this.contactForm.value.name;
+    let email = this.contactForm.value.email;
+    let message = this.contactForm.value.email;
+    this.emailService.sendEmail(name, email, message).subscribe(dataReturned => {
+    // this.emailService.sendEmail(this.contactForm).subscribe(dataReturned => {
+      if (dataReturned.status) {
+        this.contactForm.reset();
+      } else {
+        // this.submitButton = true;
+      }
     });
   }
 
