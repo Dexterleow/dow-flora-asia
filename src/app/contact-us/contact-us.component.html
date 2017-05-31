@@ -1,3 +1,63 @@
-<p>
-  contact-us works!
-</p>
+<div class="container">
+  <form [formGroup]='contactForm' (ngSubmit)='submitEnquiry()'>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Have an enquiry? Get in touch with us!</h3>
+      </div>
+    </div>
+
+    <div class="row contact__row">
+      <div class="col-xs-12 contact__label">
+        Your Name
+      </div>
+      <input type="text" name="name" class="col-xs-12 contact__input" [class.contact__error]="nameError.hasError('*', ['dirty'])" formControlName="name">
+      <div ngxErrors="name" #nameError="ngxErrors">
+        <div class="contact__error--msg" ngxError="required" when="dirty">
+          Please fill in your name
+        </div>
+      </div>
+    </div>
+
+    <div class="row contact__row">
+      <div class="col-xs-12 contact__label">
+        Your Email
+      </div>
+      <input type="text" name="email" class="col-xs-12 contact__input" [class.contact__error]="emailError.hasError('*', ['dirty'])" formControlName="email">
+      <div ngxErrors="email" #emailError="ngxErrors">
+        <div class="contact__error--msg" ngxError="required" when="dirty">
+          Please fill in your email
+        </div>
+        <div class="contact__error--msg" ngxError="pattern" when="dirty">
+          Invalid email
+        </div>
+      </div>
+    </div>
+
+    <div class="row contact__row">
+      <div class="col-xs-12 contact__label">
+        Your Enquiry
+      </div>
+      <textarea name="message" class="col-xs-12 contact__textarea" [class.contact__error]="messageError.hasError('*', ['dirty'])" rows="6" formControlName="message"></textarea>
+      <div ngxErrors="message" #messageError="ngxErrors">
+        <div class="contact__error--msg" ngxError="required" when="dirty">
+          Please fill in your enquiry
+        </div>
+      </div>
+    </div>
+
+    <div class="row contact__submit">
+      <div class="col-xs-10 col-xs-offset-1 text-center">
+        <button type="submit" [disabled]="!contactForm.valid">Submit</button>
+        <!-- <div *ngIf='emailLoading' class="contact__loading">
+          Your enquiry is being processed!<br>
+          <div class="contact__ring"></div>
+        </div>
+        <div *ngIf='emailOutcome'>
+          {{emailOutcomeMsg}}
+        </div> -->
+      </div>
+    </div>
+
+  </form>
+</div>

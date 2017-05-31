@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,6 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 
 import {GoogleSheetsService} from './shared/services/google-sheets.service';
+import {EmailService} from './shared/services/email.service';
+
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
 import { NavbarComponent } from './core/navbar.component';
@@ -153,14 +157,16 @@ import { FutureProjectsComponent } from './completed-future-projects/future-proj
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpModule,
     // question - JsonpModule
     CarouselModule.forRoot(),
     JsonpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxErrorsModule
   ],
-  providers: [GoogleSheetsService],
+  providers: [GoogleSheetsService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
