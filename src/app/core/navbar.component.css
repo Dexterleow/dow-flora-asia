@@ -17,14 +17,6 @@ a:not([href]):not([tabindex]) {
   margin-top: 1rem;
 }
 
-
-/*temp solution to re*/
-
-.navbar__resizing {
-  margin: 0;
-  padding: 0;
-}
-
 .navbar-brand__adjustment {
   line-height: 50px;
   font-size: 3rem;
@@ -45,4 +37,20 @@ a:not([href]):not([tabindex]) {
 
 .nav-link__adjustment:hover {
   border-bottom: 3px solid #2BDE73;
+}
+
+@media(min-width:480px) {
+  .navbar__contact-us {
+    margin-right: 2rem;
+    position: fixed;
+    right: 0;
+  }
+}
+
+.navbar__logo{
+  width: 20%;
+}
+
+.navbar-header__adjustment{
+  margin-right: -5rem;
 }
