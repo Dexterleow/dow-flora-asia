@@ -11,6 +11,9 @@ import { EmailService } from '../shared/services/email.service';
 export class ContactUsComponent implements OnInit {
 
   contactForm: FormGroup;
+  showSubmitButton: boolean;
+  processingEnquiryStatus: boolean;
+  processingEnquiryMessage: string;
 
   constructor(
     private fb: FormBuilder,
@@ -20,6 +23,8 @@ export class ContactUsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSubmitButton = true;
+    this.processingEnquiryStatus = false;
   }
 
   createContactForm() {
@@ -31,15 +36,21 @@ export class ContactUsComponent implements OnInit {
   }
 
   submitEnquiry() {
+    this.showSubmitButton = false;
+    this.processingEnquiryStatus = true;
+    this.processingEnquiryMessage = 'We are processing your enquiry!';
+
     let name = this.contactForm.value.name;
     let email = this.contactForm.value.email;
     let message = this.contactForm.value.email;
+    
     this.emailService.sendEmail(name, email, message).subscribe(dataReturned => {
-    // this.emailService.sendEmail(this.contactForm).subscribe(dataReturned => {
       if (dataReturned.status) {
+        this.processingEnquiryMessage = 'We have succesfully received your enquiry and will get back to you within 3 working days!';
         this.contactForm.reset();
       } else {
-        // this.submitButton = true;
+        this.showSubmitButton = true;
+        this.processingEnquiryMessage = 'Seems like an error occurred. Please try sending your enquiry again.';
       }
     });
   }

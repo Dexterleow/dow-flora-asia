@@ -48,14 +48,11 @@
 
     <div class="row contact__submit">
       <div class="col-xs-10 col-xs-offset-1 text-center">
-        <button type="submit" [disabled]="!contactForm.valid">Submit</button>
-        <!-- <div *ngIf='emailLoading' class="contact__loading">
-          Your enquiry is being processed!<br>
-          <div class="contact__ring"></div>
+        <button *ngIf="showSubmitButton" type="submit" [disabled]="!contactForm.valid">Submit</button>
+        <div *ngIf='processingEnquiryStatus' class="contact__loading">
+          {{processingEnquiryMessage}}
+          <!-- <div class="contact__ring"></div> -->
         </div>
-        <div *ngIf='emailOutcome'>
-          {{emailOutcomeMsg}}
-        </div> -->
       </div>
     </div>
 

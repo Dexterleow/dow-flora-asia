@@ -18,7 +18,6 @@ export class EmailService {
 
     // let formValue = formData.value;
 
-    console.log('inside send email service');
     return this.http.post('/send-email', { name: name, email: email, message: message }, options)
     // return this.http.post('/send-email', { formValue }, options)
       .map(response => response.json());
