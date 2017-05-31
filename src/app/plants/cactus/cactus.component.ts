@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-cactus',
   templateUrl: './cactus.component.html',
-  styleUrls: ['./cactus.component.css']
+  styleUrls: ['./cactus.component.scss']
 })
 export class CactusComponent implements OnInit {
 

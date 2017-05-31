@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-calatheas',
   templateUrl: './calatheas.component.html',
-  styleUrls: ['./calatheas.component.css']
+  styleUrls: ['./calatheas.component.scss']
 })
 export class CalatheasComponent implements OnInit {
 

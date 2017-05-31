@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-indoor-plants',
   templateUrl: './indoor-plants.component.html',
-  styleUrls: ['./indoor-plants.component.css']
+  styleUrls: ['./indoor-plants.component.scss']
 })
 export class IndoorPlantsComponent implements OnInit {
 

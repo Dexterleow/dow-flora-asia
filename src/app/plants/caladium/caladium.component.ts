@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-caladium',
   templateUrl: './caladium.component.html',
-  styleUrls: ['./caladium.component.css']
+  styleUrls: ['./caladium.component.scss']
 })
 export class CaladiumComponent implements OnInit {
 

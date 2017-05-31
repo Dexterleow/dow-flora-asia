@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-alocasia',
   templateUrl: './alocasia.component.html',
-  styleUrls: ['./alocasia.component.css']
+  styleUrls: ['./alocasia.component.scss']
 })
 export class AlocasiaComponent implements OnInit {
 

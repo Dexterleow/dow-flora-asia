@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-zamia-ceratozamia',
   templateUrl: './zamia-ceratozamia.component.html',
-  styleUrls: ['./zamia-ceratozamia.component.css']
+  styleUrls: ['./zamia-ceratozamia.component.scss']
 })
 export class ZamiaCeratozamiaComponent implements OnInit {
 

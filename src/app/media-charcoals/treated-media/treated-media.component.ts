@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-treated-media',
   templateUrl: './treated-media.component.html',
-  styleUrls: ['./treated-media.component.css']
+  styleUrls: ['./treated-media.component.scss']
 })
 export class TreatedMediaComponent implements OnInit {
 

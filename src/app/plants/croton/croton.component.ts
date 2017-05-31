@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-croton',
   templateUrl: './croton.component.html',
-  styleUrls: ['./croton.component.css']
+  styleUrls: ['./croton.component.scss']
 })
 export class CrotonComponent implements OnInit {
 

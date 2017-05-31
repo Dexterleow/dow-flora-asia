@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-ananas',
   templateUrl: './ananas.component.html',
-  styleUrls: ['./ananas.component.css']
+  styleUrls: ['./ananas.component.scss']
 })
 export class AnanasComponent implements OnInit {
 

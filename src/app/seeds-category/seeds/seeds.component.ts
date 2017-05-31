@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-seeds',
   templateUrl: './seeds.component.html',
-  styleUrls: ['./seeds.component.css']
+  styleUrls: ['./seeds.component.scss']
 })
 export class SeedsComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-cycas',
   templateUrl: './cycas.component.html',
-  styleUrls: ['./cycas.component.css']
+  styleUrls: ['./cycas.component.scss']
 })
 export class CycasComponent implements OnInit {
 

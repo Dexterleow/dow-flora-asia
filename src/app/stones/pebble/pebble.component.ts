@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-pebble',
   templateUrl: './pebble.component.html',
-  styleUrls: ['./pebble.component.css']
+  styleUrls: ['./pebble.component.scss']
 })
 export class PebbleComponent implements OnInit {
 

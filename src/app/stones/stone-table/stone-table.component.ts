@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-stone-table',
   templateUrl: './stone-table.component.html',
-  styleUrls: ['./stone-table.component.css']
+  styleUrls: ['./stone-table.component.scss']
 })
 export class StoneTableComponent implements OnInit {
 

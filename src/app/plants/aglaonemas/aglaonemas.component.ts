@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-aglaonemas',
   templateUrl: './aglaonemas.component.html',
-  styleUrls: ['./aglaonemas.component.css']
+  styleUrls: ['./aglaonemas.component.scss']
 })
 export class AglaonemasComponent implements OnInit {
 

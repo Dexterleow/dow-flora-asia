@@ -6,7 +6,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-bamboos-grasses',
   templateUrl: './bamboos-grasses.component.html',
-  styleUrls: ['./bamboos-grasses.component.css']
+  styleUrls: ['./bamboos-grasses.component.scss']
 })
 export class BamboosGrassesComponent implements OnInit {
 

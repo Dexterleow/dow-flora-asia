@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-herbs',
   templateUrl: './herbs.component.html',
-  styleUrls: ['./herbs.component.css']
+  styleUrls: ['./herbs.component.scss']
 })
 export class HerbsComponent implements OnInit {
 

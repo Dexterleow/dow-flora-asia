@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-crypthanthus',
   templateUrl: './crypthanthus.component.html',
-  styleUrls: ['./crypthanthus.component.css']
+  styleUrls: ['./crypthanthus.component.scss']
 })
 export class CrypthanthusComponent implements OnInit {
 

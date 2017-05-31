@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-cordyline',
   templateUrl: './cordyline.component.html',
-  styleUrls: ['./cordyline.component.css']
+  styleUrls: ['./cordyline.component.scss']
 })
 export class CordylineComponent implements OnInit {
 

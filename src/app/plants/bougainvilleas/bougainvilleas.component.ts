@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-bougainvilleas',
   templateUrl: './bougainvilleas.component.html',
-  styleUrls: ['./bougainvilleas.component.css']
+  styleUrls: ['./bougainvilleas.component.scss']
 })
 export class BougainvilleasComponent implements OnInit {
 
