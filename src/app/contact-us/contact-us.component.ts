@@ -43,10 +43,10 @@ export class ContactUsComponent implements OnInit {
     let name = this.contactForm.value.name;
     let email = this.contactForm.value.email;
     let message = this.contactForm.value.email;
-    
+
     this.emailService.sendEmail(name, email, message).subscribe(dataReturned => {
       if (dataReturned.status) {
-        this.processingEnquiryMessage = 'We have succesfully received your enquiry and will get back to you within 3 working days!';
+        this.processingEnquiryMessage = 'We have succesfully received your enquiry and will get back to you as soon as possible';
         this.contactForm.reset();
       } else {
         this.showSubmitButton = true;
