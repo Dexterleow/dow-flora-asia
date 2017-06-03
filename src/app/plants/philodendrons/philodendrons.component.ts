@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-philodendrons',
   templateUrl: './philodendrons.component.html',
-  styleUrls: ['./philodendrons.component.css']
+  styleUrls: ['./philodendrons.component.scss']
 })
 export class PhilodendronsComponent implements OnInit {
 

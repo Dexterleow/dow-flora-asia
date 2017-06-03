@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
 @Component({
   selector: 'app-cover-photo',
   templateUrl: './cover-photo.component.html',
-  styleUrls: ['./cover-photo.component.css']
+  styleUrls: ['./cover-photo.component.scss']
 })
 export class CoverPhotoComponent implements OnInit {
   

@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-bowenia',
   templateUrl: './bowenia.component.html',
-  styleUrls: ['./bowenia.component.css']
+  styleUrls: ['./bowenia.component.scss']
 })
 export class BoweniaComponent implements OnInit {
 

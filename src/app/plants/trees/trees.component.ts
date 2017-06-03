@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-trees',
   templateUrl: './trees.component.html',
-  styleUrls: ['./trees.component.css']
+  styleUrls: ['./trees.component.scss']
 })
 export class TreesComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
 @Component({
   selector: 'app-lingga-island',
   templateUrl: './lingga-island.component.html',
-  styleUrls: ['./lingga-island.component.css']
+  styleUrls: ['./lingga-island.component.scss']
 })
 export class LinggaIslandComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-plumerias',
   templateUrl: './plumerias.component.html',
-  styleUrls: ['./plumerias.component.css']
+  styleUrls: ['./plumerias.component.scss']
 })
 export class PlumeriasComponent implements OnInit {
 

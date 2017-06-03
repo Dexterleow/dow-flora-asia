@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-strelizia',
   templateUrl: './strelizia.component.html',
-  styleUrls: ['./strelizia.component.css']
+  styleUrls: ['./strelizia.component.scss']
 })
 export class StreliziaComponent implements OnInit {
 

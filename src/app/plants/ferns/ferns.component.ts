@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-ferns',
   templateUrl: './ferns.component.html',
-  styleUrls: ['./ferns.component.css']
+  styleUrls: ['./ferns.component.scss']
 })
 export class FernsComponent implements OnInit {
 

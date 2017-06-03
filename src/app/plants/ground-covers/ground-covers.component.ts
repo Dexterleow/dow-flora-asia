@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-ground-covers',
   templateUrl: './ground-covers.component.html',
-  styleUrls: ['./ground-covers.component.css']
+  styleUrls: ['./ground-covers.component.scss']
 })
 export class GroundCoversComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-dracaeana',
   templateUrl: './dracaeana.component.html',
-  styleUrls: ['./dracaeana.component.css']
+  styleUrls: ['./dracaeana.component.scss']
 })
 export class DracaeanaComponent implements OnInit {
 

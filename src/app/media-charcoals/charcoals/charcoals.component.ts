@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-charcoals',
   templateUrl: './charcoals.component.html',
-  styleUrls: ['./charcoals.component.css']
+  styleUrls: ['./charcoals.component.scss']
 })
 export class CharcoalsComponent implements OnInit {
 

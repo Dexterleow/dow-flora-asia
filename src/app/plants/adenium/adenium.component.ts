@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-adenium',
   templateUrl: './adenium.component.html',
-  styleUrls: ['./adenium.component.css']
+  styleUrls: ['./adenium.component.scss']
 })
 export class AdeniumComponent implements OnInit {
 

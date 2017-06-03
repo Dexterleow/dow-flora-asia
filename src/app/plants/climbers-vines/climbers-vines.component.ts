@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-climbers-vines',
   templateUrl: './climbers-vines.component.html',
-  styleUrls: ['./climbers-vines.component.css']
+  styleUrls: ['./climbers-vines.component.scss']
 })
 export class ClimbersVinesComponent implements OnInit {
 

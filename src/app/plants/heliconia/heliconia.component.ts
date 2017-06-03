@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-heliconia',
   templateUrl: './heliconia.component.html',
-  styleUrls: ['./heliconia.component.css']
+  styleUrls: ['./heliconia.component.scss']
 })
 export class HeliconiaComponent implements OnInit {
 

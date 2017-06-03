@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-hibiscus',
   templateUrl: './hibiscus.component.html',
-  styleUrls: ['./hibiscus.component.css']
+  styleUrls: ['./hibiscus.component.scss']
 })
 export class HibiscusComponent implements OnInit {
 

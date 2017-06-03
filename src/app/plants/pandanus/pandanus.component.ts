@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-pandanus',
   templateUrl: './pandanus.component.html',
-  styleUrls: ['./pandanus.component.css']
+  styleUrls: ['./pandanus.component.scss']
 })
 export class PandanusComponent implements OnInit {
 

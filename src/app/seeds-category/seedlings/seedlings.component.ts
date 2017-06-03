@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-seedlings',
   templateUrl: './seedlings.component.html',
-  styleUrls: ['./seedlings.component.css']
+  styleUrls: ['./seedlings.component.scss']
 })
 export class SeedlingsComponent implements OnInit {
 

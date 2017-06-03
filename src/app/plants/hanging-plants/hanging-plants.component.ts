@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-hanging-plants',
   templateUrl: './hanging-plants.component.html',
-  styleUrls: ['./hanging-plants.component.css']
+  styleUrls: ['./hanging-plants.component.scss']
 })
 export class HangingPlantsComponent implements OnInit {
 

@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-costus',
   templateUrl: './costus.component.html',
-  styleUrls: ['./costus.component.css']
+  styleUrls: ['./costus.component.scss']
 })
 export class CostusComponent implements OnInit {
 

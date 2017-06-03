@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-agave',
   templateUrl: './agave.component.html',
-  styleUrls: ['./agave.component.css']
+  styleUrls: ['./agave.component.scss']
 })
 export class AgaveComponent implements OnInit {
 

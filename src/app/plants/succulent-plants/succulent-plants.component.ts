@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-succulent-plants',
   templateUrl: './succulent-plants.component.html',
-  styleUrls: ['./succulent-plants.component.css']
+  styleUrls: ['./succulent-plants.component.scss']
 })
 export class SucculentPlantsComponent implements OnInit {
 

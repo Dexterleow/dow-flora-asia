@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-encephalartos',
   templateUrl: './encephalartos.component.html',
-  styleUrls: ['./encephalartos.component.css']
+  styleUrls: ['./encephalartos.component.scss']
 })
 export class EncephalartosComponent implements OnInit {
 

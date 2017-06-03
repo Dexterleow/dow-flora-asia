@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-aquatic-plants',
   templateUrl: './aquatic-plants.component.html',
-  styleUrls: ['./aquatic-plants.component.css']
+  styleUrls: ['./aquatic-plants.component.scss']
 })
 export class AquaticPlantsComponent implements OnInit {
 

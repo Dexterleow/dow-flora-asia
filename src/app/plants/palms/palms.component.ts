@@ -5,7 +5,7 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 @Component({
   selector: 'app-palms',
   templateUrl: './palms.component.html',
-  styleUrls: ['./palms.component.css']
+  styleUrls: ['./palms.component.scss']
 })
 export class PalmsComponent implements OnInit {
 
