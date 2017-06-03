@@ -46,7 +46,7 @@ export class ContactUsComponent implements OnInit {
 
     this.emailService.sendEmail(name, email, message).subscribe(dataReturned => {
       if (dataReturned.status) {
-        this.processingEnquiryMessage = 'We have succesfully received your enquiry and will get back to you as soon as possible';
+        this.processingEnquiryMessage = 'We have succesfully received your enquiry and will get back to you as soon as possible.';
         this.contactForm.reset();
       } else {
         this.showSubmitButton = true;
