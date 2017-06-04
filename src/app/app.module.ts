@@ -83,6 +83,7 @@ import { PebbleComponent } from './stones/pebble/pebble.component';
 import { CompletedFutureProjectsComponent } from './completed-future-projects/completed-future-projects.component';
 import { CompletedProjectsComponent } from './completed-future-projects/completed-projects/completed-projects.component';
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
+import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
 
 
 
@@ -153,6 +154,7 @@ import { FutureProjectsComponent } from './completed-future-projects/future-proj
     CompletedFutureProjectsComponent,
     CompletedProjectsComponent,
     FutureProjectsComponent,
+    OperationCapabilityComponent,
 
   ],
   imports: [

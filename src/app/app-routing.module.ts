@@ -8,6 +8,8 @@ import { LinggaIslandComponent } from './lingga-island/lingga-island.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
+
 
 import { CarouselComponent } from './carousel/carousel.component';
 import { AdeniumComponent } from './plants/adenium/adenium.component';
@@ -164,6 +166,10 @@ const appRoutes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'operations',
+    component: OperationCapabilityComponent
   },
   {
     path: 'lingga-island',
