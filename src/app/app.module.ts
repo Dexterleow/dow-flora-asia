@@ -86,7 +86,6 @@ import { FutureProjectsComponent } from './completed-future-projects/future-proj
 import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -154,8 +153,7 @@ import { OperationCapabilityComponent } from './operation-capability/operation-c
     CompletedFutureProjectsComponent,
     CompletedProjectsComponent,
     FutureProjectsComponent,
-    OperationCapabilityComponent,
-
+    OperationCapabilityComponent
   ],
   imports: [
     BrowserModule,
