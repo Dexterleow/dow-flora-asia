@@ -1,61 +1,48 @@
 <div class="container contact__container">
 
-  <div class="col-xs-12 text-center">
-    <h1>Have an enquiry? Get in touch with us!</h1>
-  </div>
+  <div class="col-md-6 col-xs-12 contact__email-container">
+    <div class="col-xs-12 contact__row contact__email-header">
+      <h1>Send Us A Message</h1>
+    </div>
 
-  <div class="col-md-6 col-xs-12">
     <form [formGroup]='contactForm' (ngSubmit)='submitEnquiry()'>
-      <div class="row contact__row">
-        <div class="col-md-6 col-xs-12">
-          <div class="col-xs-12 contact__label">
-            Your Name
-          </div>
-          <input type="text" name="name" class="col-xs-12 contact__input" [class.contact__error]="nameError.hasError('*', ['dirty'])" formControlName="name">
-          <div ngxErrors="name" #nameError="ngxErrors">
-            <div class="contact__error--msg" ngxError="required" when="dirty">
-              Please fill in your name
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <div class="col-xs-12 contact__label">
-            Your Email
-          </div>
-          <input type="text" name="email" class="col-xs-12 contact__input" [class.contact__error]="emailError.hasError('*', ['dirty'])" formControlName="email">
-          <div ngxErrors="email" #emailError="ngxErrors">
-            <div class="contact__error--msg" ngxError="required" when="dirty">
-              Please fill in your email
-            </div>
-            <div class="contact__error--msg" ngxError="pattern" when="dirty">
-              Invalid email
-            </div>
+      <div class="col-xs-12 contact__row">
+        <input type="text" name="name" placeholder="Name" class="col-xs-12 contact__input" [class.contact__error]="nameError.hasError('*', ['dirty'])" formControlName="name">
+      </div>
+      <div class="col-xs-12 contact__row">
+        <div ngxErrors="name" #nameError="ngxErrors">
+          <div class="contact__error--msg col-xs-12" ngxError="required" when="dirty">
+            Please fill in your name
           </div>
         </div>
       </div>
-      <div class="row contact__row">
-        <div class="col-xs-12">
-          <div class="col-xs-12 contact__label">
-            Your Enquiry
+      <div class="col-xs-12 contact__row">
+        <input type="text" name="email" placeholder="Email" class="col-xs-12 contact__input" [class.contact__error]="emailError.hasError('*', ['dirty'])" formControlName="email">
+      </div>
+      <div class="col-xs-12 contact__row">
+        <div ngxErrors="email" #emailError="ngxErrors">
+          <div class="contact__error--msg" ngxError="required" when="dirty">
+            Please fill in your email
           </div>
-          <textarea name="message" class="col-xs-12 contact__textarea" [class.contact__error]="messageError.hasError('*', ['dirty'])" rows="6" formControlName="message"></textarea>
-          <div ngxErrors="message" #messageError="ngxErrors">
-            <div class="contact__error--msg" ngxError="required" when="dirty">
-              Please fill in your enquiry
-            </div>
+          <div class="contact__error--msg col-xs-12" ngxError="pattern" when="dirty">
+            Invalid email
           </div>
         </div>
       </div>
-      <div class="row contact__submit">
-      <!-- <div class="row"> -->
-        <div class="col-xs-12">
-          <div class="col-xs-10 col-xs-offset-1 text-center">
-            <button *ngIf="showSubmitButton" type="submit" class="btn btn-outline-success" [disabled]="!contactForm.valid">Submit</button>
-            <div *ngIf='processingEnquiryStatus' class="contact__loading">
-              {{processingEnquiryMessage}}
-              <!-- <div class="contact__ring"></div> -->
-            </div>
+      <div class="col-xs-12 contact__row">
+        <textarea name="message" placeholder="Enquiry" row="5" class="col-xs-12 contact__textarea" [class.contact__error]="messageError.hasError('*', ['dirty'])" rows="6" formControlName="message"></textarea>
+      </div>
+      <div class="col-xs-12 contact__row">
+        <div ngxErrors="message" #messageError="ngxErrors">
+          <div class="contact__error--msg col-xs-12" ngxError="required" when="dirty">
+            Please fill in your enquiry
           </div>
+        </div>
+      </div>
+      <div class="col-xs-12 contact__submit">
+        <button *ngIf="showSubmitButton" type="submit" class="btn btn-outline-success col-xs-12" [disabled]="!contactForm.valid">Submit Enquiry</button>
+        <div *ngIf='processingEnquiryStatus' class="contact__loading col-xs-12">
+          {{processingEnquiryMessage}}
         </div>
       </div>
     </form>
