@@ -1,11 +1,12 @@
 <div class="container contact__container">
 
-  <div class="col-md-6 col-xs-12 contact__email-container">
-    <div class="col-xs-12 contact__row contact__email-header">
-      <h1>Send Us A Message</h1>
-    </div>
+  <div class="col-md-6 col-xs-12 contact__wrapper">
+    <div class="col-xs-12 contact__email-container">
+      <div class="col-xs-12 contact__row contact__email-header">
+        <h3>Send Us A Message</h3>
+      </div>
 
-    <form [formGroup]='contactForm' (ngSubmit)='submitEnquiry()'>
+      <form [formGroup]='contactForm' (ngSubmit)='submitEnquiry()'>
       <div class="col-xs-12 contact__row">
         <input type="text" name="name" placeholder="Name" class="col-xs-12 contact__input" [class.contact__error]="nameError.hasError('*', ['dirty'])" formControlName="name">
       </div>
@@ -46,37 +47,43 @@
         </div>
       </div>
     </form>
+    </div>
   </div>
 
-  <div class="col-md-6 col-xs-12">
-    <div class="row contact__row">
-      <div class="col-xs-12 contact__details--wrapper">
-        <div class="col-xs-4">
-          Address
-          <span class="contact__details--colon">:</span>
-        </div>
-        <div class="col-xs-8">
-          172 Seletar West Farmway 6 Singapore
-        </div>
+  <div class="col-md-6 col-xs-12 contact__wrapper">
+    <div class="col-xs-12 contact__info-container">
+
+      <div class="col-xs-12 contact__row">
+        <sebm-google-map [latitude]="lat" [longitude]="lng">
+          <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+        </sebm-google-map>
       </div>
-      <div class="col-xs-12 contact__details--wrapper">
-        <div class="col-xs-4">
-          Contact
-          <span class="contact__details--colon">:</span>
-        </div>
-        <div class="col-xs-8">
-          0085-67584333; 0065-81536683; 0065-90715787; 0062-81317000855
-        </div>
+
+      <div class="col-xs-12 contact__row contact__info-header">
+      <div class="col-xs-12 contact__row contact__info-header">
+        <h3>Contact Information</h3>
       </div>
-      <div class="col-xs-12 contact__details--wrapper">
-        <div class="col-xs-4">
-          Email
-          <span class="contact__details--colon">:</span>
-        </div>
-        <div class="col-xs-8">
-          darren.dowflora@gmail.com, darren10102008@hotmail.com
-        </div>
+
+      <div class="col-xs-12 contact__row">
+        <u>Address</u><br>
+        172 Seletar West Farmway 6<br>
+        Singapore<br>
       </div>
+      <hr>
+      <div class="col-xs-12 contact__row">
+        <u>Contact</u><br>
+        0085-67584333; <br>
+        0065-81536683; <br>
+        <!-- 0065-90715787; <br>
+        0062-81317000855 -->
+      </div>
+      <hr>
+      <div class="col-xs-12 contact__row">
+        <u>Email</u><br>
+        darren.dowflora@gmail.com
+        <!-- darren10102008@hotmail.com -->
+      </div>
+      <div class="col-xs-12 contact__info-bottom"></div>
     </div>
   </div>
 </div>
