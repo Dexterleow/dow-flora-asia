@@ -17,6 +17,8 @@ export class ContactUsComponent implements OnInit {
 
   public lat: number;
   public lng: number;
+  public zoomFactor: number;
+  public scrollwheel: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -31,6 +33,8 @@ export class ContactUsComponent implements OnInit {
 
     this.lat = 1.397741;
     this.lng = 103.865757;
+    this.zoomFactor = 15;
+    this.scrollwheel = false;
   }
 
   createContactForm() {
