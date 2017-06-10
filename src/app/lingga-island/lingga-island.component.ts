@@ -17,6 +17,11 @@ export class LinggaIslandComponent implements OnInit {
   apilinggaIslandPhotoEndPoint: string;
   apilinggaIslandPhotoResult: Array<string>;
 
+  public lat: number;
+  public lng: number;
+  public zoomFactor: number;
+  public scrollwheel: boolean;
+
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
@@ -25,6 +30,11 @@ export class LinggaIslandComponent implements OnInit {
     this.apilinggaIslandPhotoResult = [];
 
     this.getImagesFromSheets(this.apilinggaIslandPhotoEndPoint);
+
+    this.lat = -0.178914;
+    this.lng = 104.617996;
+    this.zoomFactor = 7;
+    this.scrollwheel = false;
   }
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
@@ -46,4 +56,3 @@ export class LinggaIslandComponent implements OnInit {
   }
 
 }
-

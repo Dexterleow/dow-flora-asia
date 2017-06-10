@@ -3,27 +3,48 @@
   font-size: 1.5rem;
 }
 
+.contact__wrapper {
+  margin-top: 2rem;
+}
+
+.contact {
+  &__email-container,
+  &__info-container {
+    border: 1px solid #ccc;
+  }
+  &__email-header,
+  &__info-header {
+    letter-spacing: 3px;
+  }
+  &__info-bottom {
+    margin: 1rem 0;
+  }
+}
+
 .contact__row {
   margin-top: 2rem;
 }
 
-.contact__label {
-  padding: 0;
-  margin: 1rem 0;
+.contact__input {
+  height: 50px;
 }
 
 .contact__input,
 .contact__textarea {
-  padding: .25rem .5rem;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 1px;
+  padding: 1rem 1.5rem;
+  background-color: #f5f5f5;
+  border: none;
   &:focus, :active, :focus:active {
     outline: none;
     box-shadow: none;
-    border: 1px solid #5cb85c;
+    border: 1px solid #ccc;
   }
 }
+input::placeholder,
+textarea::placeholder {
+  letter-spacing: 3px;
+}
+
 
 .contact__error {
   border: 1px solid red;
@@ -38,17 +59,13 @@
 }
 
 .contact__submit {
-  margin-top: 1rem;
+  margin: 2rem 0;
   & button {
-    width: 150px;
+    padding: 1rem 1.5rem;
     font-size: 1.5rem;
   }
 }
 
-.contact__details--wrapper {
-  margin: 1rem 0;
-  & span {
-    position: absolute;
-    right: 0;
-  }
+.sebm-google-map-container {
+  height: 300px;
 }

@@ -15,6 +15,11 @@ export class ContactUsComponent implements OnInit {
   processingEnquiryStatus: boolean;
   processingEnquiryMessage: string;
 
+  public lat: number;
+  public lng: number;
+  public zoomFactor: number;
+  public scrollwheel: boolean;
+
   constructor(
     private fb: FormBuilder,
     private emailService: EmailService
@@ -25,6 +30,11 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     this.showSubmitButton = true;
     this.processingEnquiryStatus = false;
+
+    this.lat = 1.397741;
+    this.lng = 103.865757;
+    this.zoomFactor = 15;
+    this.scrollwheel = false;
   }
 
   createContactForm() {
@@ -54,5 +64,7 @@ export class ContactUsComponent implements OnInit {
       }
     });
   }
+
+
 
 }
