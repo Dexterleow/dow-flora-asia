@@ -56,14 +56,13 @@
 
 <!--New old navbar-->
 
-<nav class="navbar navbar-toggleable-md">
+<nav class="navbar navbar-toggleable-md navbar__adjustment">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-  <!--<a class="navbar-brand" href="#">Dow Flora</a>-->
-
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" routerLink="home">
+    <!--Temp fixed size for logo-->
     <img src="../assets/logo/dowflora.png" width="30" height="30" class="d-inline-block align-top" alt=""> 
     Dow Flora
   </a>
@@ -71,13 +70,13 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" routerLink="home">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
+        <a class="nav-link" routerLink="about">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Operation Capability</a>
+        <a class="nav-link" routerLink="operations">Operation Capability</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="lingga-island">Lingga Island</a>

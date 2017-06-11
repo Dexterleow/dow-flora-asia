@@ -1,3 +1,14 @@
+
+.navbar__adjustment {
+  // border-radius: 0;
+  border-bottom: 5px solid #dcdcdc;
+  margin-bottom: 0.75rem;
+}
+
+
+// Old styling below 11 June
+
+
 .navbar--logo {
   font-size: 36px;
 }
@@ -23,10 +34,7 @@ a:not([href]):not([tabindex]) {
   color: green;
 }
 
-.navbar__adjustment {
-  border-radius: 0;
-  border-bottom: 5px solid #dcdcdc;
-}
+
 
 .nav-link__adjustment {
   // font-size: 1.5rem;
