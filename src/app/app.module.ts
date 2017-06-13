@@ -4,7 +4,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-// import * as constant from '../../secret/api-keys';
 import { ApiKeys } from '../../secret/api-keys';
 
 import { AppComponent } from './app.component';

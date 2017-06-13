@@ -52,7 +52,7 @@ export class ContactUsComponent implements OnInit {
 
     let name = this.contactForm.value.name;
     let email = this.contactForm.value.email;
-    let message = this.contactForm.value.email;
+    let message = this.contactForm.value.message;
 
     this.emailService.sendEmail(name, email, message).subscribe(dataReturned => {
       if (dataReturned.status) {
