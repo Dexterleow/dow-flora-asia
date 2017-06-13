@@ -1,84 +1,88 @@
 <div class="container contact__container">
-  <div class="col-md-6 col-xs-12 contact__wrapper">
-    <div class="col-xs-12 contact__email-container">
-      <div class="col-xs-12 contact__row contact__email-header">
-        <h3>Send Us A Message</h3>
-      </div>
+  <div class="row">
+    <div class="col-lg-6 col-sm-12 contact__wrapper">
+      <div class="col contact__email-container">
+        <div class="col contact__row contact__email-header">
+          <h3>Send Us A Message</h3>
+        </div>
 
-      <form [formGroup]='contactForm' (ngSubmit)='submitEnquiry()'>
-        <div class="col-xs-12 contact__row">
-          <input type="text" name="name" placeholder="Name" class="col-xs-12 contact__input" [class.contact__error]="nameError.hasError('*', ['dirty'])" formControlName="name">
-        </div>
-        <div class="col-xs-12 contact__row">
-          <div ngxErrors="name" #nameError="ngxErrors">
-            <div class="contact__error--msg col-xs-12" ngxError="required" when="dirty">
-              Please fill in your name
+        <form [formGroup]='contactForm' (ngSubmit)='submitEnquiry()'>
+          <div class="col contact__row">
+            <input type="text" name="name" placeholder="Name" class="col contact__input" [class.contact__error]="nameError.hasError('*', ['dirty'])" formControlName="name">
+          </div>
+          <div class="col contact__row">
+            <div ngxErrors="name" #nameError="ngxErrors">
+              <div class="contact__error--msg col" ngxError="required" when="dirty">
+                Please fill in your name
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-xs-12 contact__row">
-          <input type="text" name="email" placeholder="Email" class="col-xs-12 contact__input" [class.contact__error]="emailError.hasError('*', ['dirty'])" formControlName="email">
-        </div>
-        <div class="col-xs-12 contact__row">
-          <div ngxErrors="email" #emailError="ngxErrors">
-            <div class="contact__error--msg" ngxError="required" when="dirty">
-              Please fill in your email
-            </div>
-            <div class="contact__error--msg col-xs-12" ngxError="pattern" when="dirty">
-              Invalid email
-            </div>
+          <div class="col contact__row">
+            <input type="text" name="email" placeholder="Email" class="col contact__input" [class.contact__error]="emailError.hasError('*', ['dirty'])" formControlName="email">
           </div>
-        </div>
-        <div class="col-xs-12 contact__row">
-          <textarea name="message" placeholder="Enquiry" rows="5" class="col-xs-12 contact__textarea" [class.contact__error]="messageError.hasError('*', ['dirty'])" rows="6" formControlName="message"></textarea>
-        </div>
-        <div class="col-xs-12 contact__row">
-          <div ngxErrors="message" #messageError="ngxErrors">
-            <div class="contact__error--msg col-xs-12" ngxError="required" when="dirty">
-              Please fill in your enquiry
+          <div class="col contact__row">
+            <div ngxErrors="email" #emailError="ngxErrors">
+              <div class="contact__error--msg" ngxError="required" when="dirty">
+                Please fill in your email
+              </div>
+              <div class="contact__error--msg col" ngxError="pattern" when="dirty">
+                Invalid email
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-xs-12 contact__submit">
-          <button *ngIf="showSubmitButton" type="submit" class="btn btn-outline-success col-xs-12" [disabled]="!contactForm.valid">Submit Enquiry</button>
-          <div *ngIf='processingEnquiryStatus' class="contact__loading col-xs-12">
-            {{processingEnquiryMessage}}
+          <div class="col contact__row">
+            <textarea name="message" placeholder="Enquiry" rows="5" class="col contact__textarea" [class.contact__error]="messageError.hasError('*', ['dirty'])" rows="6" formControlName="message"></textarea>
           </div>
+          <div class="col contact__row">
+            <div ngxErrors="message" #messageError="ngxErrors">
+              <div class="contact__error--msg col" ngxError="required" when="dirty">
+                Please fill in your enquiry
+              </div>
+            </div>
+          </div>
+          <div class="col contact__submit">
+            <button *ngIf="showSubmitButton" type="submit" class="btn btn-outline-success col" [disabled]="!contactForm.valid">Submit Enquiry</button>
+            <div *ngIf='processingEnquiryStatus' class="contact__loading col">
+              {{processingEnquiryMessage}}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-12 contact__wrapper">
+      <div class="col contact__info-container">
+        <div class="col contact__row">
+          <sebm-google-map [latitude]="lat" [longitude]="lng" [scrollwheel]="scrollwheel" [zoom]="zoomFactor">
+            <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+          </sebm-google-map>
         </div>
-      </form>
+        <!-- <div class="col-xs-12 contact__row contact__info-header"> -->
+        <div class="col contact__row contact__info-header">
+          <h3>Contact Information</h3>
+        </div>
+        <div class="col contact__row">
+          <u>Address</u><br>
+          172 Seletar West Farmway 6<br>
+          Singapore<br>
+        </div>
+        <!-- <hr> -->
+        <div class="col contact__row">
+          <u>Contact</u><br>
+          0085-67584333; <br>
+          0065-81536683; <br>
+          <!-- 0065-90715787; <br>
+          0062-81317000855 -->
+        </div>
+        <!-- <hr> -->
+        <div class="col contact__row">
+          <u>Email</u><br>
+          darren.dowflora@gmail.com
+          <!-- darren10102008@hotmail.com -->
+        </div>
+        <div class="col contact__info-bottom"></div>
+      </div>
     </div>
   </div>
-  <div class="col-md-6 col-xs-12 contact__wrapper">
-    <div class="col-xs-12 contact__info-container">
-      <div class="col-xs-12 contact__row">
-        <sebm-google-map [latitude]="lat" [longitude]="lng" [scrollwheel]="scrollwheel" [zoom]="zoomFactor">
-          <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-        </sebm-google-map>
-      </div>
-      <!-- <div class="col-xs-12 contact__row contact__info-header"> -->
-      <div class="col-xs-12 contact__row contact__info-header">
-        <h3>Contact Information</h3>
-      </div>
-      <div class="col-xs-12 contact__row">
-        <u>Address</u><br>
-        172 Seletar West Farmway 6<br>
-        Singapore<br>
-      </div>
-      <!-- <hr> -->
-      <div class="col-xs-12 contact__row">
-        <u>Contact</u><br>
-        0085-67584333; <br>
-        0065-81536683; <br>
-        <!-- 0065-90715787; <br>
-        0062-81317000855 -->
-      </div>
-      <!-- <hr> -->
-      <div class="col-xs-12 contact__row">
-        <u>Email</u><br>
-        darren.dowflora@gmail.com
-        <!-- darren10102008@hotmail.com -->
-      </div>
-      <div class="col-xs-12 contact__info-bottom"></div>
-    </div>
-  </div>
+  <!-- <div class="row"> -->
+  <!-- </div> -->
 </div>
