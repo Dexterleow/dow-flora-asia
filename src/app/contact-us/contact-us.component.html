@@ -5,7 +5,6 @@
         <div class="col contact__row contact__email-header">
           <h3>Send Us A Message</h3>
         </div>
-
         <form [formGroup]='contactForm' (ngSubmit)='submitEnquiry()'>
           <div class="col contact__row">
             <input type="text" name="name" placeholder="Name" class="col contact__input" [class.contact__error]="nameError.hasError('*', ['dirty'])" formControlName="name">
@@ -22,7 +21,7 @@
           </div>
           <div class="col contact__row">
             <div ngxErrors="email" #emailError="ngxErrors">
-              <div class="contact__error--msg" ngxError="required" when="dirty">
+              <div class="contact__error--msg col" ngxError="required" when="dirty">
                 Please fill in your email
               </div>
               <div class="contact__error--msg col" ngxError="pattern" when="dirty">
@@ -56,7 +55,6 @@
             <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
           </sebm-google-map>
         </div>
-        <!-- <div class="col-xs-12 contact__row contact__info-header"> -->
         <div class="col contact__row contact__info-header">
           <h3>Contact Information</h3>
         </div>
@@ -65,7 +63,6 @@
           172 Seletar West Farmway 6<br>
           Singapore<br>
         </div>
-        <!-- <hr> -->
         <div class="col contact__row">
           <u>Contact</u><br>
           0085-67584333; <br>
@@ -73,7 +70,6 @@
           <!-- 0065-90715787; <br>
           0062-81317000855 -->
         </div>
-        <!-- <hr> -->
         <div class="col contact__row">
           <u>Email</u><br>
           darren.dowflora@gmail.com
@@ -83,6 +79,4 @@
       </div>
     </div>
   </div>
-  <!-- <div class="row"> -->
-  <!-- </div> -->
 </div>
