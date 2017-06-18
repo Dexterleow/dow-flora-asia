@@ -7,11 +7,32 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Bowenia</h1>
 
-    <img [src]="boweniaPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="boweniaPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="boweniaPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="boweniaPhotoUrl_4" class="plant__species-resize" alt="picture">
-    <img [src]="boweniaPhotoUrl_5" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <div *ngFor="let bowenia of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{bowenia[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{bowenia[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div *ngFor="let bowenia of landscapePlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{bowenia[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{bowenia[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

@@ -7,20 +7,32 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Bougainvilleas</h1>
 
-    <img [src]="bougainvilleasPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_4" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_5" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_6" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_7" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_8" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_9" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_10" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_11" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_12" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_13" class="plant__species-resize" alt="picture">
-    <img [src]="bougainvilleasPhotoUrl_14" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <div *ngFor="let bougainvilleas of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{bougainvilleas[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{bougainvilleas[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div *ngFor="let bougainvilleas of landscapePlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{bougainvilleas[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{bougainvilleas[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

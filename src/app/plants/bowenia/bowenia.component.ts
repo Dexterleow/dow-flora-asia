@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,38 +8,65 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class BoweniaComponent implements OnInit {
 
-  boweniaPhotoUrl_1: string;
-  boweniaPhotoUrl_2: string;
-  boweniaPhotoUrl_3: string;
-  boweniaPhotoUrl_4: string;
-  boweniaPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitBoweniaArrayLength: number;
+  landscapeBoweniaArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+  private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants__bowenia-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__bowenia-landscape';
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__bowenia-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bowenia-portrait'));
+    }
+
+    if (localStorage.getItem('plants__bowenia-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bowenia-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.boweniaPhotoUrl_1 = this.plantsPhotoResult[55][2];
-        this.boweniaPhotoUrl_2 = this.plantsPhotoResult[56][2];
-        this.boweniaPhotoUrl_3 = this.plantsPhotoResult[57][2];
-        this.boweniaPhotoUrl_4 = this.plantsPhotoResult[58][2];
-        this.boweniaPhotoUrl_5 = this.plantsPhotoResult[59][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitBoweniaArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__bowenia-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
+        console.log(this.portraitPlantsPhotoResult);
+      });
+  }
 
-        console.log(this.boweniaPhotoUrl_1);
-        console.log('bowenia photo api call success');
-        console.log(this.plantsPhotoResult);
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeBoweniaArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__bowenia-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
       });
   }
 

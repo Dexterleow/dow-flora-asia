@@ -101,6 +101,18 @@ function retrieveSheets(fnOne, urlRoute) {
     case 'plants__bamboos-landscape':
       sheetsArray = ['Plants__Bamboos-landscape!A2:D'];
       break;
+    case 'plants__bougainvilleas-portrait':
+      sheetsArray = ['Plants__Bougainvilleas-portrait!A2:D'];
+      break;
+    case 'plants__bougainvilleas-landscape':
+      sheetsArray = ['Plants__Bougainvilleas-landscape!A2:D'];
+      break;
+    case 'plants__bowenia-portrait':
+      sheetsArray = ['Plants__Bowenia-portrait!A2:D'];
+      break;
+    case 'plants__bowenia-landscape':
+      sheetsArray = ['Plants__Bowenia-landscape!A2:D'];
+      break;
   }
 
   fs.readFile('./secret/client_secret.json', function processClientSecrets(err, content) {

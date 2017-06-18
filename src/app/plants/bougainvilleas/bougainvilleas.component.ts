@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,57 +8,67 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class BougainvilleasComponent implements OnInit {
 
-  bougainvilleasPhotoUrl_1: string;
-  bougainvilleasPhotoUrl_2: string;
-  bougainvilleasPhotoUrl_3: string;
-  bougainvilleasPhotoUrl_4: string;
-  bougainvilleasPhotoUrl_5: string;
-  bougainvilleasPhotoUrl_6: string;
-  bougainvilleasPhotoUrl_7: string;
-  bougainvilleasPhotoUrl_8: string;
-  bougainvilleasPhotoUrl_9: string;
-  bougainvilleasPhotoUrl_10: string;
-  bougainvilleasPhotoUrl_11: string;
-  bougainvilleasPhotoUrl_12: string;
-  bougainvilleasPhotoUrl_13: string;
-  bougainvilleasPhotoUrl_14: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitBougainvilleasArrayLength: number;
+  landscapeBougainvilleasArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+  private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants__bougainvilleas-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__bougainvilleas-landscape';
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__bougainvilleas-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bougainvilleas-portrait'));
+    }
+
+    if (localStorage.getItem('plants__bougainvilleas-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bougainvilleas-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.bougainvilleasPhotoUrl_1 = this.plantsPhotoResult[41][2];
-        this.bougainvilleasPhotoUrl_2 = this.plantsPhotoResult[42][2];
-        this.bougainvilleasPhotoUrl_3 = this.plantsPhotoResult[43][2];
-        this.bougainvilleasPhotoUrl_4 = this.plantsPhotoResult[44][2];
-        this.bougainvilleasPhotoUrl_5 = this.plantsPhotoResult[45][2];
-        this.bougainvilleasPhotoUrl_6 = this.plantsPhotoResult[46][2];
-        this.bougainvilleasPhotoUrl_7 = this.plantsPhotoResult[47][2];
-        this.bougainvilleasPhotoUrl_8 = this.plantsPhotoResult[48][2];
-        this.bougainvilleasPhotoUrl_9 = this.plantsPhotoResult[49][2];
-        this.bougainvilleasPhotoUrl_10 = this.plantsPhotoResult[50][2];
-        this.bougainvilleasPhotoUrl_11 = this.plantsPhotoResult[51][2];
-        this.bougainvilleasPhotoUrl_12 = this.plantsPhotoResult[52][2];
-        this.bougainvilleasPhotoUrl_13 = this.plantsPhotoResult[53][2];
-        this.bougainvilleasPhotoUrl_14 = this.plantsPhotoResult[54][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitBougainvilleasArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__bougainvilleas-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
-
-        console.log(this.bougainvilleasPhotoUrl_1);
-        console.log('bougainvilleas photo api call success');
-        console.log(this.plantsPhotoResult);
+        console.log(this.portraitPlantsPhotoResult);
       });
   }
+
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeBougainvilleasArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__bougainvilleas-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
+      });
+  }
+
 
 }
