@@ -8,37 +8,68 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AlocasiaComponent implements OnInit {
 
-  alocasiaPhotoUrl_1: string;
-  alocasiaPhotoUrl_2: string;
-  alocasiaPhotoUrl_3: string;
-  alocasiaPhotoUrl_4: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitAlocasiaArrayLength: number;
+  landscapeAlocasiaArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+  private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants__alocasia-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__alocasia-landscape';
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__alocasia-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__alocasia-portrait'));
+    }
+
+    if (localStorage.getItem('plants__alocasia-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__alocasia-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.alocasiaPhotoUrl_1 = this.plantsPhotoResult[20][2];
-        this.alocasiaPhotoUrl_2 = this.plantsPhotoResult[21][2];
-        this.alocasiaPhotoUrl_3 = this.plantsPhotoResult[22][2];
-        this.alocasiaPhotoUrl_4 = this.plantsPhotoResult[23][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitAlocasiaArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__alocasia-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
-        console.log(this.alocasiaPhotoUrl_1);
-        console.log('alocasia photo api call success');
-        console.log(this.plantsPhotoResult);
+        console.log(this.portraitPlantsPhotoResult);
       });
   }
+
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeAlocasiaArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__alocasia-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
+      });
+  }
+
 
 
 }

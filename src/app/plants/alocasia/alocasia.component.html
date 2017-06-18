@@ -7,10 +7,32 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Alocasia</h1>
 
-    <img [src]="alocasiaPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="alocasiaPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="alocasiaPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="alocasiaPhotoUrl_4" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <div *ngFor="let alocasia of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{alocasia[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{alocasia[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div *ngFor="let alocasia of landscapePlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{alocasia[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{alocasia[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
