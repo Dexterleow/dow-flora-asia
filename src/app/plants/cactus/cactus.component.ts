@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,36 +8,67 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class CactusComponent implements OnInit {
 
-  cactusPhotoUrl_1: string;
-  cactusPhotoUrl_2: string;
-  cactusPhotoUrl_3: string;
-  cactusPhotoUrl_4: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitCactusArrayLength: number;
+  landscapeCactusArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+  private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants__cactus-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__cactus-landscape';
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__cactus-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__cactus-portrait'));
+    }
+
+    if (localStorage.getItem('plants__cactus-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__cactus-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.cactusPhotoUrl_1 = this.plantsPhotoResult[60][2];
-        this.cactusPhotoUrl_2 = this.plantsPhotoResult[61][2];
-        this.cactusPhotoUrl_3 = this.plantsPhotoResult[62][2];
-        this.cactusPhotoUrl_4 = this.plantsPhotoResult[63][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitCactusArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__cactus-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
-        console.log(this.cactusPhotoUrl_1);
-        console.log('cactus photo api call success');
-        console.log(this.plantsPhotoResult);
+        console.log(this.portraitPlantsPhotoResult);
       });
   }
+
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeCactusArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__cactus-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
+      });
+  }
+
 
 }
