@@ -9,38 +9,66 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AquaticPlantsComponent implements OnInit {
 
-  aquatic_plantsPhotoUrl_1: string;
-  aquatic_plantsPhotoUrl_2: string;
-  aquatic_plantsPhotoUrl_3: string;
-  aquatic_plantsPhotoUrl_4: string;
-  aquatic_plantsPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitAquaticArrayLength: number;
+  landscapeAquaticArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+    private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.plantsPhotoEndPoint = '/home/plants__aquatic-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__aquatic-landscape';
+
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__aquatic-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__aquatic-portrait'));
+    }
+
+    if (localStorage.getItem('plants__aquatic-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__aquatic-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.aquatic_plantsPhotoUrl_1 = this.plantsPhotoResult[29][2];
-        this.aquatic_plantsPhotoUrl_2 = this.plantsPhotoResult[30][2];
-        this.aquatic_plantsPhotoUrl_3 = this.plantsPhotoResult[31][2];
-        this.aquatic_plantsPhotoUrl_4 = this.plantsPhotoResult[32][2];
-        this.aquatic_plantsPhotoUrl_5 = this.plantsPhotoResult[33][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitAquaticArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__aquatic-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
+        console.log(this.portraitPlantsPhotoResult);
+      });
+  }
 
-        console.log(this.aquatic_plantsPhotoUrl_1);
-        console.log('aquatic_plants photo api call success');
-        console.log(this.plantsPhotoResult);
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeAquaticArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__aquatic-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
       });
   }
 

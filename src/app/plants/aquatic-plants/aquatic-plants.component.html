@@ -7,10 +7,32 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Aquatic Plants</h1>
 
-    <img [src]="aquatic_plantsPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="aquatic_plantsPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="aquatic_plantsPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="aquatic_plantsPhotoUrl_4" class="plant__species-resize" alt="picture">
-    <img [src]="aquatic_plantsPhotoUrl_5" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <div *ngFor="let aquatic of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{aquatic[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{aquatic[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div *ngFor="let aquatic of landscapePlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
+        <div class="card-deck">
+          <div class="card">
+            <img class="card-img-top img-responsive plant__species-resize" src="{{aquatic[2]}}">
+            <div class="card-block">
+              <h4 class="card-title">{{aquatic[3]}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
