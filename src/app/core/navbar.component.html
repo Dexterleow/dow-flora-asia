@@ -55,15 +55,46 @@
 
 
 <!--New old navbar-->
+<div class="navbar__adjustment">
+  <div class="navbar__logo" routerLink="home">
+    <div><img src="../assets/logo/dowflora.png" width="30" height="30" alt=""></div>
+    <div class="navbar__name">Dow Flora</div>
+  </div>
 
-<nav class="navbar navbar-toggleable-md navbar__adjustment">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+  <div class="navbar__links">
+    <div routerLink="home">Home</div>
+    <!-- <div routerLink="about" (mouseover)="showAboutUsLinks()"> -->
+    <div routerLink="about">About Us</div>
+    <div routerLink="plants">Plants</div>
+      <!-- <div *ngIf="isAboutUsLinksShown" class="navbar__links-about-us"> -->
+      <!-- <div *ngIf="isAboutUsLinksShown" class="navbar__links-about-us-dropdown">
+        <div routerLink="operations">Operation Capability</div><br>
+        <div routerLink="lingga-island">Lingga Island</div><br>
+        <div routerLink="plants">Plants</div><br>
+        <div routerLink="projects">Projects</div>
+      </div> -->
+    <!-- </div> -->
+    <div routerLink="contact-us">Contact Us</div>
+  </div>
+
+  <div class="navbar__search">
+    <form [formGroup]='searchForm'>
+      <i *ngIf="!isInputShown" class="fa fa-search navbar__search-icon" aria-hidden="true" (click)="toggleInput()"></i>
+      <input class="navbar__search-input navbar__search-input-hide" type="text" [ngClass]="{'navbar__search-input-show': isInputShown}" formControlName="search">
+      <i *ngIf="isInputShown" class="fa fa-search navbar__search-submit" aria-hidden="true" (click)="submitSearchForm()"></i>
+    </form>
+  </div>
+
+</div>
+
+<!-- <nav class="navbar navbar-toggleable-md navbar__adjustment">
+  <button class="navbar-toggler navbar-toggler-right navbar__button" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
     aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <i class="fa fa-bars" aria-hidden="true"></i>
       </button>
   <a class="navbar-brand nav-link__adjustment" routerLink="home">
-    <!--Temp fixed size for logo-->
-    <img src="../assets/logo/dowflora.png" width="30" height="30" class="d-inline-block align-top" alt=""> 
+    Temp fixed size for logo
+    <img src="../assets/logo/dowflora.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Dow Flora
   </a>
 
@@ -98,4 +129,4 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->

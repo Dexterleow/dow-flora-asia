@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { AgmCoreModule } from 'angular2-google-maps/core';
+// import { AgmCoreModule } from 'angular2-google-maps/core';
+import { AgmCoreModule } from '@agm/core';
 import { ApiKeys } from '../../secret/api-keys';
 
 import { AppComponent } from './app.component';
@@ -85,7 +86,7 @@ import { CompletedFutureProjectsComponent } from './completed-future-projects/co
 import { CompletedProjectsComponent } from './completed-future-projects/completed-projects/completed-projects.component';
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
-
+import { AboutUsDetailsComponent } from './about-us-details/about-us-details.component';
 
 @NgModule({
   declarations: [
@@ -154,7 +155,8 @@ import { OperationCapabilityComponent } from './operation-capability/operation-c
     CompletedFutureProjectsComponent,
     CompletedProjectsComponent,
     FutureProjectsComponent,
-    OperationCapabilityComponent
+    OperationCapabilityComponent,
+    AboutUsDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -169,6 +171,7 @@ import { OperationCapabilityComponent } from './operation-capability/operation-c
     AgmCoreModule.forRoot({
       apiKey: ApiKeys.key
     })
+
   ],
   providers: [GoogleSheetsService, EmailService],
   bootstrap: [AppComponent]

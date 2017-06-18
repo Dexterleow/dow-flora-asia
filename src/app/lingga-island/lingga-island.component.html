@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row lingga-island__row">
     <div class="col-xs-12">
-      <sebm-google-map [latitude]="lat" [longitude]="lng" [scrollwheel]="scrollwheel" [zoom]="zoomFactor">
+      <!-- <sebm-google-map #map [latitude]="lat" [longitude]="lng" [zoom]="zoomFactor" [scrollwheel]="scrollwheel">
         <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-      </sebm-google-map>
+      </sebm-google-map> -->
+      <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
     </div>
   </div>
 

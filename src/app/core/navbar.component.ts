@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public searchForm: FormGroup;
+  public isInputShown: boolean;
+  public toSubmit: boolean;
+  public isAboutUsLinksShown: boolean;
+
+  constructor(
+    private formBuilder: FormBuilder,
+  ) {
+    this.createSearchForm();
+  }
 
   ngOnInit() {
+    this.isInputShown = false;
+    this.toSubmit = false;
+    this.isAboutUsLinksShown = false;
+  }
+
+  private createSearchForm() {
+    this.searchForm = this.formBuilder.group({
+      search: ['', Validators.required ]
+    });
+  }
+
+  public toggleInput() {
+    this.isInputShown = !this.isInputShown;
+  }
+
+  public submitSearchForm() {
+    console.log('submitting search form');
+  }
+
+  public showAboutUsLinks() {
+    this.isAboutUsLinksShown = !this.isAboutUsLinksShown;
   }
 
 }
