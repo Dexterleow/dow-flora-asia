@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,38 +8,65 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AnanasComponent implements OnInit {
 
-  ananasPhotoUrl_1: string;
-  ananasPhotoUrl_2: string;
-  ananasPhotoUrl_3: string;
-  ananasPhotoUrl_4: string;
-  ananasPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitAnanasArrayLength: number;
+  landscapeAnanasArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+  private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants__ananas-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__ananas-landscape';
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__ananas-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__ananas-portrait'));
+    }
+
+    if (localStorage.getItem('plants__ananas-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__ananas-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.ananasPhotoUrl_1 = this.plantsPhotoResult[24][2];
-        this.ananasPhotoUrl_2 = this.plantsPhotoResult[25][2];
-        this.ananasPhotoUrl_3 = this.plantsPhotoResult[26][2];
-        this.ananasPhotoUrl_4 = this.plantsPhotoResult[27][2];
-        this.ananasPhotoUrl_5 = this.plantsPhotoResult[28][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitAnanasArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__ananas-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
+        console.log(this.portraitPlantsPhotoResult);
+      });
+  }
 
-        console.log(this.ananasPhotoUrl_1);
-        console.log('ananas photo api call success');
-        console.log(this.plantsPhotoResult);
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeAnanasArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__ananas-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
       });
   }
 
