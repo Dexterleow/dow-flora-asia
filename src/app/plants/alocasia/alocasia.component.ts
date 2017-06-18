@@ -35,7 +35,6 @@ export class AlocasiaComponent implements OnInit {
         this.alocasiaPhotoUrl_3 = this.plantsPhotoResult[22][2];
         this.alocasiaPhotoUrl_4 = this.plantsPhotoResult[23][2];
 
-
         console.log(this.alocasiaPhotoUrl_1);
         console.log('alocasia photo api call success');
         console.log(this.plantsPhotoResult);

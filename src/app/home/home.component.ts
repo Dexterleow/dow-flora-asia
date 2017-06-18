@@ -29,10 +29,6 @@ export class HomeComponent implements OnInit {
       this.apiCoverPhotoResult = dataFromAPI.apiLandingResult[0];
       this.coverPhotoUrl = this.apiCoverPhotoResult[0][3];
 
-      // need to run loop here if decide to set an interval and change cover photo every few seconds
-
-      // localStorage.setItem('sixtySecondsCategoryPhotos', JSON.stringify(this.apiCoverPhotoResult));
-
       console.log(this.coverPhotoUrl);
       console.log('cover photo api call success');
       console.log(this.apiCoverPhotoResult);

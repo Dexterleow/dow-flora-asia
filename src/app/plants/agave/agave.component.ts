@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,39 +8,65 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AgaveComponent implements OnInit {
 
-  agavePhotoUrl_1: string;
-  agavePhotoUrl_2: string;
-  agavePhotoUrl_3: string;
-  agavePhotoUrl_4: string;
-  agavePhotoUrl_5: string;
-  agavePhotoUrl_6: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitAgaveArrayLength: number;
+  landscapeAgaveArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+  private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants__agave-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__agave-landscape';
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__agave-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__agave-portrait'));
+    }
+
+    if (localStorage.getItem('plants__agave-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__agave-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.agavePhotoUrl_1 = this.plantsPhotoResult[5][2];
-        this.agavePhotoUrl_2 = this.plantsPhotoResult[6][2];
-        this.agavePhotoUrl_3 = this.plantsPhotoResult[7][2];
-        this.agavePhotoUrl_4 = this.plantsPhotoResult[8][2];
-        this.agavePhotoUrl_5 = this.plantsPhotoResult[9][2];
-        this.agavePhotoUrl_6 = this.plantsPhotoResult[10][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitAgaveArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__agave-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
-        console.log(this.agavePhotoUrl_1);
-        console.log('agave photo api call success');
-        console.log(this.plantsPhotoResult);
+        console.log(this.portraitPlantsPhotoResult);
+      });
+  }
+
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeAgaveArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__agave-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
       });
   }
 

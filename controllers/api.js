@@ -15,8 +15,10 @@ router.get('/home/:landing', (req, res) => {
   // pass callback function into api call to return data
   // function parameter api landing data - fnOne
   // function parameter req.params.landing - urlRoute
-  retrieveSheets (function (apiLandingData) {
-    res.json({ 'apiLandingResult': apiLandingData });
+  retrieveSheets(function (apiLandingData) {
+    res.json({
+      'apiLandingResult': apiLandingData
+    });
   }, req.params.landing);
 });
 
@@ -40,26 +42,35 @@ function retrieveSheets(fnOne, urlRoute) {
 
   switch (urlRoute) {
     case 'cover-photo':
-    sheetsArray = ['CoverPhoto!A2:D'];
-    break;
+      sheetsArray = ['CoverPhoto!A2:D'];
+      break;
     case 'lingga':
-    sheetsArray = ['Lingga!A2:C'];
-    break;
+      sheetsArray = ['Lingga!A2:C'];
+      break;
     case 'plants':
-    sheetsArray = ['Plants!A2:C'];
-    break;
+      sheetsArray = ['Plants!A2:C'];
+      break;
     case 'seeds':
-    sheetsArray = ['Seeds!A2:C'];
-    break;
+      sheetsArray = ['Seeds!A2:C'];
+      break;
     case 'growingMediaAndCharcoals':
-    sheetsArray = ['GrowingMediaAndCharcoals!A2:C'];
-    break;
+      sheetsArray = ['GrowingMediaAndCharcoals!A2:C'];
+      break;
     case 'stones':
-    sheetsArray = ['StonesEtc!A2:C'];
-    break;
+      sheetsArray = ['StonesEtc!A2:C'];
+      break;
     case 'completedAndFutureProjects':
-    sheetsArray = ['CompletedAndFutureProjects!A2:C'];
-    break;
+      sheetsArray = ['CompletedAndFutureProjects!A2:C'];
+      break;
+    case 'plants__adenium':
+      sheetsArray = ['Plants__Adenium!A2:D'];
+      break;
+    case 'plants__agave-portrait':
+      sheetsArray = ['Plants__Agave-portrait!A2:D'];
+      break;
+    case 'plants__agave-landscape':
+      sheetsArray = ['Plants__Agave-landscape!A2:D'];
+      break;
   }
 
   fs.readFile('./secret/client_secret.json', function processClientSecrets(err, content) {
@@ -74,12 +85,12 @@ function retrieveSheets(fnOne, urlRoute) {
 }
 
 /**
-* Create an OAuth2 client with the given credentials, and then execute the
-* given callback function.
-*
-* @param {Object} credentials The authorization client credentials.
-* @param {function} callback The callback to call with the authorized client.
-*/
+ * Create an OAuth2 client with the given credentials, and then execute the
+ * given callback function.
+ *
+ * @param {Object} credentials The authorization client credentials.
+ * @param {function} callback The callback to call with the authorized client.
+ */
 function authorize(credentials, callback, fnOne) {
   var clientSecret = credentials.installed.client_secret;
   var clientId = credentials.installed.client_id;
@@ -88,7 +99,7 @@ function authorize(credentials, callback, fnOne) {
   var oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
 
   // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, function(err, token) {
+  fs.readFile(TOKEN_PATH, function (err, token) {
     if (err) {
       getNewToken(oauth2Client, callback);
     } else {
@@ -99,13 +110,13 @@ function authorize(credentials, callback, fnOne) {
 }
 
 /**
-* Get and store new token after prompting for user authorization, and then
-* execute the given callback with the authorized OAuth2 client.
-*
-* @param {google.auth.OAuth2} oauth2Client The OAuth2 client to get token for.
-* @param {getEventsCallback} callback The callback to call with the authorized
-*     client.
-*/
+ * Get and store new token after prompting for user authorization, and then
+ * execute the given callback with the authorized OAuth2 client.
+ *
+ * @param {google.auth.OAuth2} oauth2Client The OAuth2 client to get token for.
+ * @param {getEventsCallback} callback The callback to call with the authorized
+ *     client.
+ */
 function getNewToken(oauth2Client, callback) {
   var authUrl = oauth2Client.generateAuthUrl({
     access_type: 'offline',
@@ -116,9 +127,9 @@ function getNewToken(oauth2Client, callback) {
     input: process.stdin,
     output: process.stdout
   });
-  rl.question('Enter the code from that page here: ', function(code) {
+  rl.question('Enter the code from that page here: ', function (code) {
     rl.close();
-    oauth2Client.getToken(code, function(err, token) {
+    oauth2Client.getToken(code, function (err, token) {
       if (err) {
         console.log('Error while trying to retrieve access token', err);
         return;
@@ -131,10 +142,10 @@ function getNewToken(oauth2Client, callback) {
 }
 
 /**
-* Store token to disk be used in later program executions.
-*
-* @param {Object} token The token to store to disk.
-*/
+ * Store token to disk be used in later program executions.
+ *
+ * @param {Object} token The token to store to disk.
+ */
 function storeToken(token) {
   try {
     fs.mkdirSync(TOKEN_DIR);
@@ -148,10 +159,10 @@ function storeToken(token) {
 }
 
 /**
-* Print the names and majors of students in a sample spreadsheet:
-* https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
-*https://docs.google.com/spreadsheets/d/1vSK20rCOrGkkhRv5ZrqIQuJDeAbemeYn4K1HvXH-Ec0/edit#gid=0
-*/
+ * Print the names and majors of students in a sample spreadsheet:
+ * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+ *https://docs.google.com/spreadsheets/d/1vSK20rCOrGkkhRv5ZrqIQuJDeAbemeYn4K1HvXH-Ec0/edit#gid=0
+ */
 function listMajors(auth, fnOne) {
   var sheets = google.sheets('v4');
   // sheets.spreadsheets.values.get({ // this gets single sheet
@@ -162,7 +173,7 @@ function listMajors(auth, fnOne) {
     // question -- Google sheets APIL Value render option?
     valueRenderOption: 'FORMATTED_VALUE'
 
-  }, function(err, response) {
+  }, function (err, response) {
     console.log('see here for response', response);
     console.log('batch get success');
 

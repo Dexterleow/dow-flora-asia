@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,35 +8,32 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AdeniumComponent implements OnInit {
 
-  adeniumPhotoUrl_1: string;
-  adeniumPhotoUrl_2: string;
-  adeniumPhotoUrl_3: string;
-  adeniumPhotoUrl_4: string;
-  adeniumPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  adeniumArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__adenium';
     this.plantsPhotoResult = [];
-
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__adenium') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__adenium'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
       .subscribe(dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.adeniumPhotoUrl_1 = this.plantsPhotoResult[0][2];
-        this.adeniumPhotoUrl_2 = this.plantsPhotoResult[1][2];
-        this.adeniumPhotoUrl_3 = this.plantsPhotoResult[2][2];
-        this.adeniumPhotoUrl_4 = this.plantsPhotoResult[3][2];
-        this.adeniumPhotoUrl_5 = this.plantsPhotoResult[4][2];
+        this.adeniumArrayLength = this.plantsPhotoResult.length;
+        localStorage.setItem('plants__adenium', JSON.stringify(this.plantsPhotoResult));
 
-        console.log(this.adeniumPhotoUrl_1);
         console.log('adenium photo api call success');
         console.log(this.plantsPhotoResult);
       });
