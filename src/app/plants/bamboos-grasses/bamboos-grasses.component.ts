@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 
@@ -10,43 +9,67 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class BamboosGrassesComponent implements OnInit {
 
-  bamboos_grassesPhotoUrl_1: string;
-  bamboos_grassesPhotoUrl_2: string;
-  bamboos_grassesPhotoUrl_3: string;
-  bamboos_grassesPhotoUrl_4: string;
-  bamboos_grassesPhotoUrl_5: string;
-  bamboos_grassesPhotoUrl_6: string;
-  bamboos_grassesPhotoUrl_7: string;
-
   plantsPhotoEndPoint: string;
-  plantsPhotoResult: Array<string>;
+  plantsPhotoEndPoint2: string;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
+  portraitPlantsPhotoResult: Array<string>;
+  landscapePlantsPhotoResult: Array<string>;
+
+  portraitBamboosArrayLength: number;
+  landscapeBamboosArrayLength: number;
+
+  constructor(private googleSheetsService: GoogleSheetsService,
+  private googleSheetsService2: GoogleSheetsService
+  ) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
-    this.plantsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/plants__bamboos-portrait';
+    this.plantsPhotoEndPoint2 = '/home/plants__bamboos-landscape';
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    this.portraitPlantsPhotoResult = [];
+    this.landscapePlantsPhotoResult = [];
+
+    if (localStorage.getItem('plants__bamboos-portrait') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bamboos-portrait'));
+    }
+
+    if (localStorage.getItem('plants__bamboos-landscape') === null) {
+      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bamboos-landscape'));
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.bamboos_grassesPhotoUrl_1 = this.plantsPhotoResult[34][2];
-        this.bamboos_grassesPhotoUrl_2 = this.plantsPhotoResult[35][2];
-        this.bamboos_grassesPhotoUrl_3 = this.plantsPhotoResult[36][2];
-        this.bamboos_grassesPhotoUrl_4 = this.plantsPhotoResult[37][2];
-        this.bamboos_grassesPhotoUrl_5 = this.plantsPhotoResult[38][2];
-        this.bamboos_grassesPhotoUrl_6 = this.plantsPhotoResult[39][2];
-        this.bamboos_grassesPhotoUrl_7 = this.plantsPhotoResult[40][2];
+      .subscribe(
+      dataFromAPI => {
+        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.portraitBamboosArrayLength = this.portraitPlantsPhotoResult.length;
+        localStorage.setItem('plants__bamboos-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
-
-        console.log(this.bamboos_grassesPhotoUrl_1);
-        console.log('bamboos_grasses photo api call success');
-        console.log(this.plantsPhotoResult);
+        console.log(this.portraitPlantsPhotoResult);
       });
   }
+
+  getImagesFromSheets2(sheetName) {
+    this.googleSheetsService2.getImages(sheetName)
+      .subscribe(
+      dataFromAPI2 => {
+        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+        this.landscapeBamboosArrayLength = this.landscapePlantsPhotoResult.length;
+        localStorage.setItem('plants__bamboos-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+
+        console.log(this.landscapePlantsPhotoResult);
+      });
+  }
+
 
 }
