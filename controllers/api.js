@@ -66,7 +66,7 @@ function retrieveSheets(fnOne, urlRoute) {
       sheetsArray = ['Plants__Adenium!A2:D'];
       break;
     case 'plants__agave-portrait':
-      sheetsArray = ['Plants__Agave-portrait!A2:D'];
+      sheetsArray = ['Plants__Agave-portrait!A2:E'];
       break;
     case 'plants__agave-landscape':
       sheetsArray = ['Plants__Agave-landscape!A2:D'];

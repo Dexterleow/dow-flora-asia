@@ -9,25 +9,25 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 export class AgaveComponent implements OnInit {
 
   plantsPhotoEndPoint: string;
-  plantsPhotoEndPoint2: string;
+  // plantsPhotoEndPoint2: string;
 
   portraitPlantsPhotoResult: Array<string>;
-  landscapePlantsPhotoResult: Array<string>;
+  // landscapePlantsPhotoResult: Array<string>;
 
   portraitAgaveArrayLength: number;
-  landscapeAgaveArrayLength: number;
+  // landscapeAgaveArrayLength: number;
 
-  constructor(private googleSheetsService: GoogleSheetsService,
-              private googleSheetsService2: GoogleSheetsService
+  constructor(private googleSheetsService: GoogleSheetsService
+              // private googleSheetsService2: GoogleSheetsService
   ) {
   }
 
   ngOnInit() {
     this.plantsPhotoEndPoint = '/home/plants__agave-portrait';
-    this.plantsPhotoEndPoint2 = '/home/plants__agave-landscape';
+    // this.plantsPhotoEndPoint2 = '/home/plants__agave-landscape';
 
     this.portraitPlantsPhotoResult = [];
-    this.landscapePlantsPhotoResult = [];
+    // this.landscapePlantsPhotoResult = [];
 
     if (localStorage.getItem('plants__agave-portrait') === null) {
       this.getImagesFromSheets(this.plantsPhotoEndPoint);
@@ -37,13 +37,13 @@ export class AgaveComponent implements OnInit {
       this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__agave-portrait'));
     }
 
-    if (localStorage.getItem('plants__agave-landscape') === null) {
-      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
-    } else {
-      // stored value in local storage is a string
-      // covert back to array to read data
-      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__agave-landscape'));
-    }
+    // if (localStorage.getItem('plants__agave-landscape') === null) {
+    //   this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
+    // } else {
+    //   // stored value in local storage is a string
+    //   // covert back to array to read data
+    //   this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__agave-landscape'));
+    // }
   }
 
   getImagesFromSheets(sheetName) {
@@ -59,16 +59,16 @@ export class AgaveComponent implements OnInit {
       });
   }
 
-  getImagesFromSheets2(sheetName) {
-    this.googleSheetsService2.getImages(sheetName)
-      .subscribe(
-      dataFromAPI2 => {
-        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
-        this.landscapeAgaveArrayLength = this.landscapePlantsPhotoResult.length;
-        console.log(this.landscapePlantsPhotoResult);
-        localStorage.setItem('plants__agave-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
+  // getImagesFromSheets2(sheetName) {
+  //   this.googleSheetsService2.getImages(sheetName)
+  //     .subscribe(
+  //     dataFromAPI2 => {
+  //       this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
+  //       this.landscapeAgaveArrayLength = this.landscapePlantsPhotoResult.length;
+  //       console.log(this.landscapePlantsPhotoResult);
+  //       localStorage.setItem('plants__agave-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
 
-        console.log(this.landscapePlantsPhotoResult);
-      });
-  }
+  //       console.log(this.landscapePlantsPhotoResult);
+  //     });
+  // }
 }

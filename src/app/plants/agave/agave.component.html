@@ -8,32 +8,37 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Agave</h1>
 
+
     <div class="row">
-      <div *ngFor="let agave of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
-        <div class="card-deck">
-          <div class="card">
-            <img class="card-img-top img-responsive plant__species-resize" src="{{agave[2]}}">
-            <div class="card-block">
-              <h4 class="card-title">{{agave[3]}}</h4>
+      <div *ngFor="let agave of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment plant__portrait">
+        <div *ngIf="agave[4] == 'portrait'">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{agave[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{agave[3]}}</h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
     <div class="row">
-      <div *ngFor="let agave of landscapePlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
-        <div class="card-deck">
-          <div class="card">
-            <img class="card-img-top img-responsive plant__species-resize" src="{{agave[2]}}">
-            <div class="card-block">
-              <h4 class="card-title">{{agave[3]}}</h4>
+      <div *ngFor="let agave of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment plant__landscape">
+        <div *ngIf="agave[4] == 'landscape'">
+          <div class="card-deck test-width">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{agave[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{agave[3]}}</h4>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
 
   </div>
 </div>
