@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GoogleSheetsService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {}
 
   getImages(sheetName) {
     const apiServerEndPoint = '/api' + sheetName;
@@ -16,3 +16,4 @@ export class GoogleSheetsService {
       .map(response => response.json());
   }
 }
+

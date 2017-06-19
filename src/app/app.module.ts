@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { Http, HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { ApiKeys } from '../../secret/api-keys';
@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 
-import {GoogleSheetsService} from './shared/services/google-sheets.service';
-import {EmailService} from './shared/services/email.service';
+import { GoogleSheetsService } from './shared/services/google-sheets.service';
+import { EmailService } from './shared/services/email.service';
 
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
@@ -86,6 +86,9 @@ import { CompletedProjectsComponent } from './completed-future-projects/complete
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
 
+export function httpFactory(http: Http) {
+  return new GoogleSheetsService(http);
+}
 
 @NgModule({
   declarations: [
@@ -170,7 +173,15 @@ import { OperationCapabilityComponent } from './operation-capability/operation-c
       apiKey: ApiKeys.key
     })
   ],
-  providers: [GoogleSheetsService, EmailService],
+  // providers: [GoogleSheetsService, 
+  // EmailService],
+  providers: [EmailService,
+    {
+      provide: GoogleSheetsService,
+      useFactory: httpFactory,
+      deps: [Http]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

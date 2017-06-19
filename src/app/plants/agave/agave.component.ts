@@ -18,7 +18,7 @@ export class AgaveComponent implements OnInit {
   landscapeAgaveArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService,
-  private googleSheetsService2: GoogleSheetsService
+              private googleSheetsService2: GoogleSheetsService
   ) {
   }
 
@@ -52,6 +52,7 @@ export class AgaveComponent implements OnInit {
       dataFromAPI => {
         this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
         this.portraitAgaveArrayLength = this.portraitPlantsPhotoResult.length;
+        console.log(this.portraitPlantsPhotoResult);
         localStorage.setItem('plants__agave-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
 
         console.log(this.portraitPlantsPhotoResult);
@@ -64,10 +65,10 @@ export class AgaveComponent implements OnInit {
       dataFromAPI2 => {
         this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
         this.landscapeAgaveArrayLength = this.landscapePlantsPhotoResult.length;
+        console.log(this.landscapePlantsPhotoResult);
         localStorage.setItem('plants__agave-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
 
         console.log(this.landscapePlantsPhotoResult);
       });
   }
-
 }
