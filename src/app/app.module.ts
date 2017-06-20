@@ -86,10 +86,6 @@ import { CompletedProjectsComponent } from './completed-future-projects/complete
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
 
-export function httpFactory(http: Http) {
-  return new GoogleSheetsService(http);
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -173,15 +169,7 @@ export function httpFactory(http: Http) {
       apiKey: ApiKeys.key
     })
   ],
-  // providers: [GoogleSheetsService, 
-  // EmailService],
-  providers: [EmailService,
-    {
-      provide: GoogleSheetsService,
-      useFactory: httpFactory,
-      deps: [Http]
-    }
-  ],
+  providers: [GoogleSheetsService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -65,59 +65,32 @@ function retrieveSheets(fnOne, urlRoute) {
     case 'plants__adenium':
       sheetsArray = ['Plants__Adenium!A2:D'];
       break;
-    case 'plants__agave-portrait':
-      sheetsArray = ['Plants__Agave-portrait!A2:E'];
-      break;
-    case 'plants__agave-landscape':
-      sheetsArray = ['Plants__Agave-landscape!A2:D'];
+    case 'plants__agave':
+      sheetsArray = ['Plants__Agave!A2:E'];
       break;
     case 'plants__aglaonemas-portrait':
       sheetsArray = ['Plants__Aglaonemas-portrait!A2:D'];
       break;
-    case 'plants__aglaonemas-landscape':
-      sheetsArray = ['Plants__Aglaonemas-landscape!A2:D'];
-      break;
     case 'plants__alocasia-portrait':
       sheetsArray = ['Plants__Alocasia-portrait!A2:D'];
-      break;
-    case 'plants__alocasia-landscape':
-      sheetsArray = ['Plants__Alocasia-landscape!A2:D'];
       break;
     case 'plants__ananas-portrait':
       sheetsArray = ['Plants__Ananas-portrait!A2:D'];
       break;
-    case 'plants__ananas-landscape':
-      sheetsArray = ['Plants__Ananas-landscape!A2:D'];
-      break;
     case 'plants__aquatic-portrait':
       sheetsArray = ['Plants__Aquatic-plants-portrait!A2:D'];
-      break;
-    case 'plants__aquatic-landscape':
-      sheetsArray = ['Plants__Aquatic-plants-landscape!A2:D'];
       break;
     case 'plants__bamboos-portrait':
       sheetsArray = ['Plants__Bamboos-portrait!A2:D'];
       break;
-    case 'plants__bamboos-landscape':
-      sheetsArray = ['Plants__Bamboos-landscape!A2:D'];
-      break;
     case 'plants__bougainvilleas-portrait':
       sheetsArray = ['Plants__Bougainvilleas-portrait!A2:D'];
-      break;
-    case 'plants__bougainvilleas-landscape':
-      sheetsArray = ['Plants__Bougainvilleas-landscape!A2:D'];
       break;
     case 'plants__bowenia-portrait':
       sheetsArray = ['Plants__Bowenia-portrait!A2:D'];
       break;
-    case 'plants__bowenia-landscape':
-      sheetsArray = ['Plants__Bowenia-landscape!A2:D'];
-      break;
     case 'plants__cactus-portrait':
       sheetsArray = ['Plants__Cactus-portrait!A2:D'];
-      break;
-    case 'plants__cactus-landscape':
-      sheetsArray = ['Plants__Cactus-landscape!A2:D'];
       break;
   }
 
