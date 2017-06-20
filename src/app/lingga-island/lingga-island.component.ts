@@ -1,18 +1,19 @@
 // import { Component, OnInit } from '@angular/core';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewChecked } from '@angular/core';
 
 import { GoogleSheetsService } from '../shared/services/google-sheets.service';
-import {MapsAPILoader, SebmGoogleMap} from 'angular2-google-maps/core';
+// import {MapsAPILoader, SebmGoogleMap} from 'angular2-google-maps/core';
+import { AgmMap } from '@agm/core';
 
 @Component({
   selector: 'app-lingga-island',
   templateUrl: './lingga-island.component.html',
   styleUrls: ['./lingga-island.component.scss']
 })
-export class LinggaIslandComponent implements OnInit, AfterViewInit {
+export class LinggaIslandComponent implements OnInit, AfterViewChecked {
 // export class LinggaIslandComponent implements OnInit {
-  // @ViewChild(SebmGoogleMap) map: SebmGoogleMap;
-  @ViewChild(SebmGoogleMap) public map: SebmGoogleMap;
+  @ViewChild(AgmMap) map: AgmMap;
+  // @ViewChild('map') map: SebmGoogleMap;
 
   linggaIslandPhotoUrl_Mountain1: string;
   linggaIslandPhotoUrl_Beach3: string;
@@ -64,7 +65,7 @@ export class LinggaIslandComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public ngAfterViewInit() {
+  public ngAfterViewChecked() {
     this.map.triggerResize();
     console.log('hello');
   }
