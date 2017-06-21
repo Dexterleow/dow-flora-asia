@@ -9,44 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class FlowersComponent implements OnInit {
 
-  flowersPhotoUrl_1: string;
-  flowersPhotoUrl_2: string;
-  flowersPhotoUrl_3: string;
-  flowersPhotoUrl_4: string;
-  flowersPhotoUrl_5: string;
-  flowersPhotoUrl_6: string;
-  flowersPhotoUrl_7: string;
-
-  plantsPhotoEndPoint: string;
+   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  flowersArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__flowers';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__flowers') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__flowers'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.flowersPhotoUrl_1 = this.plantsPhotoResult[117][2];
-        this.flowersPhotoUrl_2 = this.plantsPhotoResult[118][2];
-        this.flowersPhotoUrl_3 = this.plantsPhotoResult[119][2];
-        this.flowersPhotoUrl_4 = this.plantsPhotoResult[120][2];
-        this.flowersPhotoUrl_5 = this.plantsPhotoResult[121][2];
-        this.flowersPhotoUrl_6 = this.plantsPhotoResult[122][2];
-        this.flowersPhotoUrl_7 = this.plantsPhotoResult[123][2];
-
-
-        console.log(this.flowersPhotoUrl_1);
-        console.log('flowers photo api call success');
+        this.flowersArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__flowers', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-
 }

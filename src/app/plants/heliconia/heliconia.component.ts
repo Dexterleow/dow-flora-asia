@@ -9,39 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class HeliconiaComponent implements OnInit {
 
-  heliconiaPhotoUrl_1: string;
-  heliconiaPhotoUrl_2: string;
-  heliconiaPhotoUrl_3: string;
-  heliconiaPhotoUrl_4: string;
-  heliconiaPhotoUrl_5: string;
-
-
-  plantsPhotoEndPoint: string;
+   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  heliconiaArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__heliconia';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__heliconia') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__heliconia'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.heliconiaPhotoUrl_1 = this.plantsPhotoResult[139][2];
-        this.heliconiaPhotoUrl_2 = this.plantsPhotoResult[140][2];
-        this.heliconiaPhotoUrl_3 = this.plantsPhotoResult[141][2];
-        this.heliconiaPhotoUrl_4 = this.plantsPhotoResult[142][2];
-        this.heliconiaPhotoUrl_5 = this.plantsPhotoResult[143][2];
-
-        console.log(this.heliconiaPhotoUrl_1);
-        console.log('heliconia photo api call success');
+        this.heliconiaArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__heliconia', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

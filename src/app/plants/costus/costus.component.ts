@@ -9,39 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class CostusComponent implements OnInit {
 
-  costusPhotoUrl_1: string;
-  costusPhotoUrl_2: string;
-  costusPhotoUrl_3: string;
-  costusPhotoUrl_4: string;
-  costusPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  costusArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__costus';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__costus') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__costus'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.costusPhotoUrl_1 = this.plantsPhotoResult[89][2];
-        this.costusPhotoUrl_2 = this.plantsPhotoResult[90][2];
-        this.costusPhotoUrl_3 = this.plantsPhotoResult[91][2];
-        this.costusPhotoUrl_4 = this.plantsPhotoResult[92][2];
-        this.costusPhotoUrl_5 = this.plantsPhotoResult[93][2];
-
-
-        console.log(this.costusPhotoUrl_1);
-        console.log('costus photo api call success');
+        this.costusArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__costus', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

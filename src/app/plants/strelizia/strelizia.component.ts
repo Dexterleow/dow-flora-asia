@@ -9,30 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class StreliziaComponent implements OnInit {
 
-  streliziaPhotoUrl_1: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  streliziaArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__strelizia';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__strelizia') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__strelizia'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.streliziaPhotoUrl_1 = this.plantsPhotoResult[195][2];
-
-        console.log(this.streliziaPhotoUrl_1);
-        console.log('strelizia photo api call success');
+        this.streliziaArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__strelizia', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

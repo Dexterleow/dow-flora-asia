@@ -9,39 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class GroundCoversComponent implements OnInit {
 
-  ground_coversPhotoUrl_1: string;
-  ground_coversPhotoUrl_2: string;
-  ground_coversPhotoUrl_3: string;
-  ground_coversPhotoUrl_4: string;
-  ground_coversPhotoUrl_5: string;
-
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  groundCoversArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__groundCovers';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__groundCovers') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__groundCovers'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.ground_coversPhotoUrl_1 = this.plantsPhotoResult[129][2];
-        this.ground_coversPhotoUrl_2 = this.plantsPhotoResult[130][2];
-        this.ground_coversPhotoUrl_3 = this.plantsPhotoResult[131][2];
-        this.ground_coversPhotoUrl_4 = this.plantsPhotoResult[132][2];
-        this.ground_coversPhotoUrl_5 = this.plantsPhotoResult[133][2];
-
-        console.log(this.ground_coversPhotoUrl_1);
-        console.log('ground_covers photo api call success');
+        this.groundCoversArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__groundCovers', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

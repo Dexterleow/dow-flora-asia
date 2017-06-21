@@ -9,40 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class CrotonComponent implements OnInit {
 
-  crotonPhotoUrl_1: string;
-  crotonPhotoUrl_2: string;
-  crotonPhotoUrl_3: string;
-  crotonPhotoUrl_4: string;
-  crotonPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  crotonArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__croton';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__croton') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__croton'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.crotonPhotoUrl_1 = this.plantsPhotoResult[94][2];
-        this.crotonPhotoUrl_2 = this.plantsPhotoResult[95][2];
-        this.crotonPhotoUrl_3 = this.plantsPhotoResult[96][2];
-        this.crotonPhotoUrl_4 = this.plantsPhotoResult[97][2];
-        this.crotonPhotoUrl_5 = this.plantsPhotoResult[98][2];
-
-
-        console.log(this.crotonPhotoUrl_1);
-        console.log('croton photo api call success');
+        this.crotonArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__croton', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-
 }

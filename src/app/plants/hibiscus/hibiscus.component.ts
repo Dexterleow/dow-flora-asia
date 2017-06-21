@@ -9,38 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class HibiscusComponent implements OnInit {
 
-  hibiscusPhotoUrl_1: string;
-  hibiscusPhotoUrl_2: string;
-  hibiscusPhotoUrl_3: string;
-  hibiscusPhotoUrl_4: string;
-  hibiscusPhotoUrl_5: string;
-
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  hibiscusArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__hibiscus';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__hibiscus') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__hibiscus'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.hibiscusPhotoUrl_1 = this.plantsPhotoResult[149][2];
-        this.hibiscusPhotoUrl_2 = this.plantsPhotoResult[150][2];
-        this.hibiscusPhotoUrl_3 = this.plantsPhotoResult[151][2];
-        this.hibiscusPhotoUrl_4 = this.plantsPhotoResult[152][2];
-        this.hibiscusPhotoUrl_5 = this.plantsPhotoResult[153][2];
-
-        console.log(this.hibiscusPhotoUrl_1);
-        console.log('hibiscus photo api call success');
+        this.hibiscusArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__hibiscus', JSON.stringify(this.plantsPhotoResult));
       });
   }
 }

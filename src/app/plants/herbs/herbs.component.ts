@@ -9,39 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class HerbsComponent implements OnInit {
 
-  herbsPhotoUrl_1: string;
-  herbsPhotoUrl_2: string;
-  herbsPhotoUrl_3: string;
-  herbsPhotoUrl_4: string;
-  herbsPhotoUrl_5: string;
-
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  herbsArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__herbs';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__herbs') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__herbs'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.herbsPhotoUrl_1 = this.plantsPhotoResult[144][2];
-        this.herbsPhotoUrl_2 = this.plantsPhotoResult[145][2];
-        this.herbsPhotoUrl_3 = this.plantsPhotoResult[146][2];
-        this.herbsPhotoUrl_4 = this.plantsPhotoResult[147][2];
-        this.herbsPhotoUrl_5 = this.plantsPhotoResult[148][2];
-
-        console.log(this.herbsPhotoUrl_1);
-        console.log('herbs photo api call success');
+        this.herbsArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__herbs', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

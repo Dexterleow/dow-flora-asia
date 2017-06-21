@@ -7,11 +7,35 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Indoor Plants</h1>
 
-    <img [src]="indoor_plantsPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="indoor_plantsPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="indoor_plantsPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="indoor_plantsPhotoUrl_4" class="plant__species-resize" alt="picture">
-    <img [src]="indoor_plantsPhotoUrl_5" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <ng-container *ngFor="let indoorPlants of plantsPhotoResult; let i = index">
+        <div *ngIf="indoorPlants[4] == 'portrait'" class="col-4 plant__card-adjustment plant__portrait">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{indoorPlants[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{indoorPlants[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row">
+      <ng-container *ngFor="let indoorPlants of plantsPhotoResult; let i = index">
+        <div *ngIf="indoorPlants[4] == 'landscape'" class="col-4 plant__card-adjustment plant__landscape">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{indoorPlants[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{indoorPlants[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
 
   </div>
 </div>
