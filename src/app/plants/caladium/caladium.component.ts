@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,39 +8,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class CaladiumComponent implements OnInit {
 
-  caladiumPhotoUrl_1: string;
-  caladiumPhotoUrl_2: string;
-  caladiumPhotoUrl_3: string;
-  caladiumPhotoUrl_4: string;
-  caladiumPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  caladiumArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__caladium';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__caladium') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__caladium'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.caladiumPhotoUrl_1 = this.plantsPhotoResult[64][2];
-        this.caladiumPhotoUrl_2 = this.plantsPhotoResult[65][2];
-        this.caladiumPhotoUrl_3 = this.plantsPhotoResult[66][2];
-        this.caladiumPhotoUrl_4 = this.plantsPhotoResult[67][2];
-        this.caladiumPhotoUrl_5 = this.plantsPhotoResult[68][2];
-
-        console.log(this.caladiumPhotoUrl_1);
-        console.log('caladium photo api call success');
+        this.caladiumArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__caladium', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-
 }

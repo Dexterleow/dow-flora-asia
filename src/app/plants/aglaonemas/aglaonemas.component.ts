@@ -9,39 +9,24 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 export class AglaonemasComponent implements OnInit {
 
   plantsPhotoEndPoint: string;
-  plantsPhotoEndPoint2: string;
+  plantsPhotoResult: Array<string>;
+  aglaonemasArrayLength: number;
 
-  portraitPlantsPhotoResult: Array<string>;
-  landscapePlantsPhotoResult: Array<string>;
-
-  portraitAglaonemasArrayLength: number;
-  landscapeAglaonemasArrayLength: number;
-
-  constructor(private googleSheetsService: GoogleSheetsService,
-              private googleSheetsService2: GoogleSheetsService) {
+  constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
-ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants__aglaonemas-portrait';
-    this.plantsPhotoEndPoint2 = '/home/plants__aglaonemas-landscape';
+  ngOnInit() {
+    this.plantsPhotoEndPoint = '/home/plants__aglaonemas';
 
-    this.portraitPlantsPhotoResult = [];
-    this.landscapePlantsPhotoResult = [];
+    this.plantsPhotoResult = [];
 
-    if (localStorage.getItem('plants__aglaonemas-portrait') === null) {
+    if (localStorage.getItem('plants__aglaonemas') === null) {
       this.getImagesFromSheets(this.plantsPhotoEndPoint);
     } else {
       // stored value in local storage is a string
       // covert back to array to read data
-      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__aglaonemas-portrait'));
-    }
-
-    if (localStorage.getItem('plants__aglaonemas-landscape') === null) {
-      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
-    } else {
-      // stored value in local storage is a string
-      // covert back to array to read data
-      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__aglaonemas-landscape'));
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__aglaonemas'));
+      console.log(this.plantsPhotoResult);
     }
   }
 
@@ -49,24 +34,10 @@ ngOnInit() {
     this.googleSheetsService.getImages(sheetName)
       .subscribe(
       dataFromAPI => {
-        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.portraitAglaonemasArrayLength = this.portraitPlantsPhotoResult.length;
-        localStorage.setItem('plants__aglaonemas-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
-
-        console.log(this.portraitPlantsPhotoResult);
+        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.aglaonemasArrayLength = this.plantsPhotoResult.length;
+        console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__aglaonemas', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-  getImagesFromSheets2(sheetName) {
-    this.googleSheetsService2.getImages(sheetName)
-      .subscribe(
-      dataFromAPI2 => {
-        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
-        this.landscapeAglaonemasArrayLength = this.landscapePlantsPhotoResult.length;
-        localStorage.setItem('plants__aglaonemas-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
-
-        console.log(this.landscapePlantsPhotoResult);
-      });
-  }
-
 }

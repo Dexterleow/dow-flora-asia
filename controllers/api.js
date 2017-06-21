@@ -42,7 +42,7 @@ function retrieveSheets(fnOne, urlRoute) {
 
   switch (urlRoute) {
     case 'cover-photo':
-      sheetsArray = ['CoverPhoto!A2:D'];
+      sheetsArray = ['CoverPhoto!A2:E'];
       break;
     case 'lingga':
       sheetsArray = ['Lingga!A2:C'];
@@ -63,34 +63,34 @@ function retrieveSheets(fnOne, urlRoute) {
       sheetsArray = ['CompletedAndFutureProjects!A2:C'];
       break;
     case 'plants__adenium':
-      sheetsArray = ['Plants__Adenium!A2:D'];
+      sheetsArray = ['Plants__Adenium!A2:E'];
       break;
     case 'plants__agave':
       sheetsArray = ['Plants__Agave!A2:E'];
       break;
     case 'plants__aglaonemas-portrait':
-      sheetsArray = ['Plants__Aglaonemas-portrait!A2:D'];
+      sheetsArray = ['Plants__Aglaonemas-portrait!A2:E'];
       break;
     case 'plants__alocasia-portrait':
-      sheetsArray = ['Plants__Alocasia-portrait!A2:D'];
+      sheetsArray = ['Plants__Alocasia-portrait!A2:E'];
       break;
     case 'plants__ananas-portrait':
-      sheetsArray = ['Plants__Ananas-portrait!A2:D'];
+      sheetsArray = ['Plants__Ananas-portrait!A2:E'];
       break;
-    case 'plants__aquatic-portrait':
-      sheetsArray = ['Plants__Aquatic-plants-portrait!A2:D'];
+    case 'plants__aquaticPlants':
+      sheetsArray = ['Plants__Aquatic-plants-portrait!A2:E'];
       break;
-    case 'plants__bamboos-portrait':
-      sheetsArray = ['Plants__Bamboos-portrait!A2:D'];
+    case 'plants__bamboosGrasses':
+      sheetsArray = ['Plants__Bamboos-portrait!A2:E'];
       break;
     case 'plants__bougainvilleas-portrait':
-      sheetsArray = ['Plants__Bougainvilleas-portrait!A2:D'];
+      sheetsArray = ['Plants__Bougainvilleas-portrait!A2:E'];
       break;
     case 'plants__bowenia-portrait':
-      sheetsArray = ['Plants__Bowenia-portrait!A2:D'];
+      sheetsArray = ['Plants__Bowenia-portrait!A2:E'];
       break;
     case 'plants__cactus-portrait':
-      sheetsArray = ['Plants__Cactus-portrait!A2:D'];
+      sheetsArray = ['Plants__Cactus-portrait!A2:E'];
       break;
   }
 

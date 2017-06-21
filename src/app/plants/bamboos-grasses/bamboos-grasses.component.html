@@ -8,30 +8,33 @@
     <h1 class="plants__title--display">Bamboos Grasses</h1>
 
     <div class="row">
-      <div *ngFor="let bamboos of portraitPlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
-        <div class="card-deck">
-          <div class="card">
-            <img class="card-img-top img-responsive plant__species-resize" src="{{bamboos[2]}}">
-            <div class="card-block">
-              <h4 class="card-title">{{bamboos[3]}}</h4>
+      <ng-container *ngFor="let bamboosGrasses of plantsPhotoResult; let i = index">
+        <div *ngIf="bamboosGrasses[4] == 'portrait'" class="col-4 plant__card-adjustment plant__portrait">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{bamboosGrasses[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{bamboosGrasses[3]}}</h4>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
 
-
     <div class="row">
-      <div *ngFor="let bamboos of landscapePlantsPhotoResult; let i = index" class="col-4 plant__card-adjustment">
-        <div class="card-deck">
-          <div class="card">
-            <img class="card-img-top img-responsive plant__species-resize" src="{{bamboos[2]}}">
-            <div class="card-block">
-              <h4 class="card-title">{{bamboos[3]}}</h4>
+      <ng-container *ngFor="let bamboosGrasses of plantsPhotoResult; let i = index">
+        <div *ngIf="bamboosGrasses[4] == 'landscape'" class="col-4 plant__card-adjustment plant__landscape">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{bamboosGrasses[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{bamboosGrasses[3]}}</h4>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
 
   </div>

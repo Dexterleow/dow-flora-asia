@@ -9,43 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class CalatheasComponent implements OnInit {
 
-  calatheasPhotoUrl_1: string;
-  calatheasPhotoUrl_2: string;
-  calatheasPhotoUrl_3: string;
-  calatheasPhotoUrl_4: string;
-  calatheasPhotoUrl_5: string;
-  calatheasPhotoUrl_6: string;
-  calatheasPhotoUrl_7: string;
-  calatheasPhotoUrl_8: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  calatheasArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__calatheas';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__calatheas') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__calatheas'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.calatheasPhotoUrl_1 = this.plantsPhotoResult[69][2];
-        this.calatheasPhotoUrl_2 = this.plantsPhotoResult[70][2];
-        this.calatheasPhotoUrl_3 = this.plantsPhotoResult[71][2];
-        this.calatheasPhotoUrl_4 = this.plantsPhotoResult[72][2];
-        this.calatheasPhotoUrl_5 = this.plantsPhotoResult[73][2];
-        this.calatheasPhotoUrl_6 = this.plantsPhotoResult[74][2];
-        this.calatheasPhotoUrl_7 = this.plantsPhotoResult[75][2];
-        this.calatheasPhotoUrl_8 = this.plantsPhotoResult[76][2];
-
-        console.log(this.calatheasPhotoUrl_1);
-        console.log('calatheas photo api call success');
+        this.calatheasArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__calatheas', JSON.stringify(this.plantsPhotoResult));
       });
   }
 }

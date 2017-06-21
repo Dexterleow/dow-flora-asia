@@ -9,40 +9,24 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 export class BougainvilleasComponent implements OnInit {
 
   plantsPhotoEndPoint: string;
-  plantsPhotoEndPoint2: string;
+  plantsPhotoResult: Array<string>;
+  bougainvilleasArrayLength: number;
 
-  portraitPlantsPhotoResult: Array<string>;
-  landscapePlantsPhotoResult: Array<string>;
-
-  portraitBougainvilleasArrayLength: number;
-  landscapeBougainvilleasArrayLength: number;
-
-  constructor(private googleSheetsService: GoogleSheetsService,
-  private googleSheetsService2: GoogleSheetsService
-  ) {
+  constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants__bougainvilleas-portrait';
-    this.plantsPhotoEndPoint2 = '/home/plants__bougainvilleas-landscape';
+    this.plantsPhotoEndPoint = '/home/plants__bougainvilleas';
 
-    this.portraitPlantsPhotoResult = [];
-    this.landscapePlantsPhotoResult = [];
+    this.plantsPhotoResult = [];
 
-    if (localStorage.getItem('plants__bougainvilleas-portrait') === null) {
+    if (localStorage.getItem('plants__bougainvilleas') === null) {
       this.getImagesFromSheets(this.plantsPhotoEndPoint);
     } else {
       // stored value in local storage is a string
       // covert back to array to read data
-      this.portraitPlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bougainvilleas-portrait'));
-    }
-
-    if (localStorage.getItem('plants__bougainvilleas-landscape') === null) {
-      this.getImagesFromSheets2(this.plantsPhotoEndPoint2);
-    } else {
-      // stored value in local storage is a string
-      // covert back to array to read data
-      this.landscapePlantsPhotoResult = JSON.parse(localStorage.getItem('plants__bougainvilleas-landscape'));
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__bougainvilleas'));
+      console.log(this.plantsPhotoResult);
     }
   }
 
@@ -50,25 +34,11 @@ export class BougainvilleasComponent implements OnInit {
     this.googleSheetsService.getImages(sheetName)
       .subscribe(
       dataFromAPI => {
-        this.portraitPlantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.portraitBougainvilleasArrayLength = this.portraitPlantsPhotoResult.length;
-        localStorage.setItem('plants__bougainvilleas-portrait', JSON.stringify(this.portraitPlantsPhotoResult));
-
-        console.log(this.portraitPlantsPhotoResult);
+        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.bougainvilleasArrayLength = this.plantsPhotoResult.length;
+        console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__bougainvilleas', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-  getImagesFromSheets2(sheetName) {
-    this.googleSheetsService2.getImages(sheetName)
-      .subscribe(
-      dataFromAPI2 => {
-        this.landscapePlantsPhotoResult = dataFromAPI2.apiLandingResult[0];
-        this.landscapeBougainvilleasArrayLength = this.landscapePlantsPhotoResult.length;
-        localStorage.setItem('plants__bougainvilleas-landscape', JSON.stringify(this.landscapePlantsPhotoResult));
-
-        console.log(this.landscapePlantsPhotoResult);
-      });
-  }
-
-
 }
+
