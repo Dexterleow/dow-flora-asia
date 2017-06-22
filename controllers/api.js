@@ -68,29 +68,119 @@ function retrieveSheets(fnOne, urlRoute) {
     case 'plants__agave':
       sheetsArray = ['Plants__Agave!A2:E'];
       break;
-    case 'plants__aglaonemas-portrait':
-      sheetsArray = ['Plants__Aglaonemas-portrait!A2:E'];
+    case 'plants__aglaonemas':
+      sheetsArray = ['Plants__Aglaonemas!A2:E'];
       break;
-    case 'plants__alocasia-portrait':
-      sheetsArray = ['Plants__Alocasia-portrait!A2:E'];
+    case 'plants__alocasia':
+      sheetsArray = ['Plants__Alocasia!A2:E'];
       break;
-    case 'plants__ananas-portrait':
-      sheetsArray = ['Plants__Ananas-portrait!A2:E'];
+    case 'plants__ananas':
+      sheetsArray = ['Plants__Ananas!A2:E'];
       break;
     case 'plants__aquaticPlants':
-      sheetsArray = ['Plants__Aquatic-plants-portrait!A2:E'];
+      sheetsArray = ['Plants__Aquatic-plants!A2:E'];
       break;
     case 'plants__bamboosGrasses':
-      sheetsArray = ['Plants__Bamboos-portrait!A2:E'];
+      sheetsArray = ['Plants__Bamboos!A2:E'];
       break;
-    case 'plants__bougainvilleas-portrait':
-      sheetsArray = ['Plants__Bougainvilleas-portrait!A2:E'];
+    case 'plants__bougainvilleas':
+      sheetsArray = ['Plants__Bougainvilleas!A2:E'];
       break;
-    case 'plants__bowenia-portrait':
-      sheetsArray = ['Plants__Bowenia-portrait!A2:E'];
+    case 'plants__bowenia':
+      sheetsArray = ['Plants__Bowenia!A2:E'];
       break;
-    case 'plants__cactus-portrait':
-      sheetsArray = ['Plants__Cactus-portrait!A2:E'];
+    case 'plants__cactus':
+      sheetsArray = ['Plants__Cactus!A2:E'];
+      break;
+    case 'plants__caladium':
+      sheetsArray = ['Plants__Caladium!A2:E'];
+      break;
+    case 'plants__calatheas':
+      sheetsArray = ['Plants__Calatheas!A2:E'];
+      break;
+    case 'plants__climbersVines':
+      sheetsArray = ['Plants__Climbers-vine!A2:E'];
+      break;
+    case 'plants__cordyLine':
+      sheetsArray = ['Plants__Cordyline!A2:E'];
+      break;
+    case 'plants__costus':
+      sheetsArray = ['Plants__Costus!A2:E'];
+      break;
+    case 'plants__croton':
+      sheetsArray = ['Plants__Croton!A2:E'];
+      break;
+    case 'plants__crypthanthus':
+      sheetsArray = ['Plants__Crypthanthus!A2:E'];
+      break;
+    case 'plants__cycas':
+      sheetsArray = ['Plants__Cycas!A2:E'];
+      break;
+    case 'plants__dracaeana':
+      sheetsArray = ['Plants__Dracaeana!A2:E'];
+      break;
+    case 'plants__encephalartos':
+      sheetsArray = ['Plants__Encephalartos!A2:E'];
+      break;
+    case 'plants__ferns':
+      sheetsArray = ['Plants__Ferns!A2:E'];
+      break;
+    case 'plants__flowers':
+      sheetsArray = ['Plants__Flowers!A2:E'];
+      break;
+    case 'plants__groundCovers':
+      sheetsArray = ['Plants__Ground-covers!A2:E'];
+      break;
+    case 'plants__hangingPlants':
+      sheetsArray = ['Plants__Hanging-plants!A2:E'];
+      break;
+    case 'plants__heliconia':
+      sheetsArray = ['Plants__Heliconia!A2:E'];
+      break;
+    case 'plants__herbs':
+      sheetsArray = ['Plants__Herbs!A2:E'];
+      break;
+    case 'plants__hibiscus':
+      sheetsArray = ['Plants__Hibiscus!A2:E'];
+      break;
+    case 'plants__indoorPlants':
+      sheetsArray = ['Plants__Indoor-plants!A2:E'];
+      break;
+    case 'plants__otherSpecies':
+      sheetsArray = ['Plants__Other-species!A2:E'];
+      break;
+    case 'plants__palms':
+      sheetsArray = ['Plants__Palms!A2:E'];
+      break;
+    case 'plants__pandanus':
+      sheetsArray = ['Plants__Pandanus!A2:E'];
+      break;
+    case 'plants__philodendrons':
+      sheetsArray = ['Plants__Philodendrons!A2:E'];
+      break;
+    case 'plants__plumerias':
+      sheetsArray = ['Plants__Plumerias!A2:E'];
+      break;
+    case 'plants__saggoPalm':
+      sheetsArray = ['Plants__Saggo-palms!A2:E'];
+      break;
+    case 'plants__shrubs':
+      sheetsArray = ['Plants__Shrubs!A2:E'];
+      break;
+    case 'plants__strelizia':
+      sheetsArray = ['Plants__Strelizia!A2:E'];
+      break;
+    case 'plants__succulentPlants':
+      sheetsArray = ['Plants__Succulent-Plants!A2:E'];
+      break;
+    case 'plants__trees':
+      sheetsArray = ['Plants__Trees!A2:E'];
+      break;
+    case 'plants__tropicalFruits':
+      sheetsArray = ['Plants__Tropical-Fruits!A2:E'];
+      break;
+    case 'plants__zamiaCeratozamia':
+      sheetsArray = ['Plants__Zamia-Ceratozamia!A2:E'];
       break;
   }
 
