@@ -1,43 +1,23 @@
-<div class="container">
-  <!-- <div *ngIf="isAboutUsLinksShown" class="navbar__links-about-us-dropdown"> -->
-    <div routerLink="operations">Operation Capability</div>
-    <div routerLink="lingga-island">Lingga Island</div>
-    <!-- <div routerLink="../plants">Plants</div> -->
-    <div routerLink="projects">Projects</div>
-  <!-- </div> -->
-</div>
+<div class="container about__container">
+  <div class="row">
 
-<div class="container">
-<!--
-  <p>
-  The plant collections listed and grouped in this catalogue were more based on their usages in garden and landscaping. And,
-  we are not strictly based on their botanical grouping.
-  </p>
+    <div class="col-12 col-lg-3 about__links-container">
+      <div class="row justify-content-center">
+        <div class="col-auto col-lg-12 about__links" routerLink="operations">
+          Operation Capability
+        </div>
+        <div class="col-auto col-lg-12 about__links" routerLink="lingga-island">
+          Lingga Island
+        </div>
+        <div class="col-auto col-lg-12 about__links" routerLink="projects">
+          Projects
+        </div>
+      </div>
+    </div>
 
-  <p>
-  Live plants used in garden and landscaping, because of their adaptabilities,
-  it is common to see that same plant can have different usages, therefore, certain repetition of plants listed may occur
-  under different headings, such as Bougainvillea, it can be used as a shrubs as well as a climber.
-  </p>
+    <div class="col-12 col-lg-9">
+      <router-outlet></router-outlet>
+    </div>
 
-  <p>
-  Dow Flora/Tropic Flora had been the plant introduction, import, export and landscaping activities for more than 50 years, covering countries like
-  Malaysia, Indonesia, Philippines, Thailand, China, South America, Middle East and Europe etc. We too had explored many
-  remote mountains in Tropic and Sub-tropic zones of different elevations, looking for rare exotic plants. We are building
-  a big botanic garden aiming at world collection and for future plant re-production, export and a center for plant sourcing,
-  admire and relaxation.
-  </p>
-
-  <p>
-  Because of work load and the complexity of plant collections from many areas and elevations the
-  plants obtained can be new or unknown to us. On principle, we try to precise and right, however, should there be any mistake
-  we would appreciate you can inform us.
-  <p>
-
-  <p>
-  With very best regards, Dow Flora Singapore Pte. Ltd Tropic Flora
-  </p> -->
-
-  <router-outlet></router-outlet>
-
+  </div>
 </div>

@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 
 import {GoogleSheetsService} from './shared/services/google-sheets.service';
 import {EmailService} from './shared/services/email.service';
+import { GoogleMapsAPIWrapper } from '@agm/core';
 
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
@@ -171,7 +172,6 @@ import { AboutUsDetailsComponent } from './about-us-details/about-us-details.com
     AgmCoreModule.forRoot({
       apiKey: ApiKeys.key
     })
-
   ],
   providers: [GoogleSheetsService, EmailService],
   bootstrap: [AppComponent]
