@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { Http, HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 // import { AgmCoreModule } from 'angular2-google-maps/core';
 import { AgmCoreModule } from '@agm/core';
@@ -11,9 +11,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 
-import {GoogleSheetsService} from './shared/services/google-sheets.service';
-import {EmailService} from './shared/services/email.service';
-import { GoogleMapsAPIWrapper } from '@agm/core';
+import { GoogleSheetsService } from './shared/services/google-sheets.service';
+import { EmailService } from './shared/services/email.service';
 
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 

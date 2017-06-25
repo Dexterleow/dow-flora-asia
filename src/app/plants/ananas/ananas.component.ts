@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,40 +8,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AnanasComponent implements OnInit {
 
-  ananasPhotoUrl_1: string;
-  ananasPhotoUrl_2: string;
-  ananasPhotoUrl_3: string;
-  ananasPhotoUrl_4: string;
-  ananasPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  ananasArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__ananas';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__ananas') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__ananas'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.ananasPhotoUrl_1 = this.plantsPhotoResult[24][2];
-        this.ananasPhotoUrl_2 = this.plantsPhotoResult[25][2];
-        this.ananasPhotoUrl_3 = this.plantsPhotoResult[26][2];
-        this.ananasPhotoUrl_4 = this.plantsPhotoResult[27][2];
-        this.ananasPhotoUrl_5 = this.plantsPhotoResult[28][2];
-
-
-        console.log(this.ananasPhotoUrl_1);
-        console.log('ananas photo api call success');
+        this.ananasArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__ananas', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-
 }

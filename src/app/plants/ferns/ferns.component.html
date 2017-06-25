@@ -7,11 +7,35 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Ferns</h1>
 
-    <img [src]="fernsPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="fernsPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="fernsPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="fernsPhotoUrl_4" class="plant__species-resize" alt="picture">
-    <img [src]="fernsPhotoUrl_5" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <ng-container *ngFor="let ferns of plantsPhotoResult; let i = index">
+        <div *ngIf="ferns[4] == 'portrait'" class="col-4 plant__card-adjustment plant__portrait">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{ferns[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{ferns[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row">
+      <ng-container *ngFor="let ferns of plantsPhotoResult; let i = index">
+        <div *ngIf="ferns[4] == 'landscape'" class="col-4 plant__card-adjustment plant__landscape">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{ferns[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{ferns[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
 
   </div>
 </div>

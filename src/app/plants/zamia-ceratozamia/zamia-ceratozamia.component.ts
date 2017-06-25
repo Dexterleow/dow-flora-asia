@@ -9,39 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class ZamiaCeratozamiaComponent implements OnInit {
 
-  zamia_ceratozamiaPhotoUrl_1: string;
-  zamia_ceratozamiaPhotoUrl_2: string;
-  zamia_ceratozamiaPhotoUrl_3: string;
-  zamia_ceratozamiaPhotoUrl_4: string;
-  zamia_ceratozamiaPhotoUrl_5: string;
-
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  zamiaCeratozamiaArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__zamiaCeratozamia';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__zamiaCeratozamia') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__zamiaCeratozamia'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.zamia_ceratozamiaPhotoUrl_1 = this.plantsPhotoResult[217][2];
-        this.zamia_ceratozamiaPhotoUrl_2 = this.plantsPhotoResult[218][2];
-        this.zamia_ceratozamiaPhotoUrl_3 = this.plantsPhotoResult[219][2];
-        this.zamia_ceratozamiaPhotoUrl_4 = this.plantsPhotoResult[220][2];
-        this.zamia_ceratozamiaPhotoUrl_5 = this.plantsPhotoResult[221][2];
-
-        console.log(this.zamia_ceratozamiaPhotoUrl_1);
-        console.log('zamia_ceratozamia photo api call success');
+        this.zamiaCeratozamiaArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__zamiaCeratozamia', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

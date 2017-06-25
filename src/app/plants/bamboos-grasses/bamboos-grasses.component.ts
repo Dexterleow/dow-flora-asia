@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 
@@ -10,43 +9,37 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class BamboosGrassesComponent implements OnInit {
 
-  bamboos_grassesPhotoUrl_1: string;
-  bamboos_grassesPhotoUrl_2: string;
-  bamboos_grassesPhotoUrl_3: string;
-  bamboos_grassesPhotoUrl_4: string;
-  bamboos_grassesPhotoUrl_5: string;
-  bamboos_grassesPhotoUrl_6: string;
-  bamboos_grassesPhotoUrl_7: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  bamboosGrassesArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__bamboosGrasses';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__bamboosGrasses') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__bamboosGrasses'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.bamboos_grassesPhotoUrl_1 = this.plantsPhotoResult[34][2];
-        this.bamboos_grassesPhotoUrl_2 = this.plantsPhotoResult[35][2];
-        this.bamboos_grassesPhotoUrl_3 = this.plantsPhotoResult[36][2];
-        this.bamboos_grassesPhotoUrl_4 = this.plantsPhotoResult[37][2];
-        this.bamboos_grassesPhotoUrl_5 = this.plantsPhotoResult[38][2];
-        this.bamboos_grassesPhotoUrl_6 = this.plantsPhotoResult[39][2];
-        this.bamboos_grassesPhotoUrl_7 = this.plantsPhotoResult[40][2];
-
-
-        console.log(this.bamboos_grassesPhotoUrl_1);
-        console.log('bamboos_grasses photo api call success');
+        this.bamboosGrassesArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__bamboosGrasses', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }
+

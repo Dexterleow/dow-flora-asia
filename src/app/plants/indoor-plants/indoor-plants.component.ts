@@ -9,39 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class IndoorPlantsComponent implements OnInit {
 
-  indoor_plantsPhotoUrl_1: string;
-  indoor_plantsPhotoUrl_2: string;
-  indoor_plantsPhotoUrl_3: string;
-  indoor_plantsPhotoUrl_4: string;
-  indoor_plantsPhotoUrl_5: string;
-
-
-  plantsPhotoEndPoint: string;
+   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  indoorPlantsArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__indoorPlants';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__indoorPlants') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__indoorPlants'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.indoor_plantsPhotoUrl_1 = this.plantsPhotoResult[154][2];
-        this.indoor_plantsPhotoUrl_2 = this.plantsPhotoResult[155][2];
-        this.indoor_plantsPhotoUrl_3 = this.plantsPhotoResult[156][2];
-        this.indoor_plantsPhotoUrl_4 = this.plantsPhotoResult[157][2];
-        this.indoor_plantsPhotoUrl_5 = this.plantsPhotoResult[158][2];
-
-        console.log(this.indoor_plantsPhotoUrl_1);
-        console.log('indoor_plants photo api call success');
+        this.indoorPlantsArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__indoorPlants', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

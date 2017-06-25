@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,40 +8,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AgaveComponent implements OnInit {
 
-  agavePhotoUrl_1: string;
-  agavePhotoUrl_2: string;
-  agavePhotoUrl_3: string;
-  agavePhotoUrl_4: string;
-  agavePhotoUrl_5: string;
-  agavePhotoUrl_6: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  agaveArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__agave';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__agave') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__agave'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.agavePhotoUrl_1 = this.plantsPhotoResult[5][2];
-        this.agavePhotoUrl_2 = this.plantsPhotoResult[6][2];
-        this.agavePhotoUrl_3 = this.plantsPhotoResult[7][2];
-        this.agavePhotoUrl_4 = this.plantsPhotoResult[8][2];
-        this.agavePhotoUrl_5 = this.plantsPhotoResult[9][2];
-        this.agavePhotoUrl_6 = this.plantsPhotoResult[10][2];
-
-        console.log(this.agavePhotoUrl_1);
-        console.log('agave photo api call success');
+        this.agaveArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__agave', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

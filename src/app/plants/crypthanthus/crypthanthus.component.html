@@ -7,10 +7,34 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Crypthanthus</h1>
 
-    <img [src]="crypthanthusPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="crypthanthusPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="crypthanthusPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="crypthanthusPhotoUrl_4" class="plant__species-resize" alt="picture">
+       <div class="row">
+      <ng-container *ngFor="let crypthanthus of plantsPhotoResult; let i = index">
+        <div *ngIf="crypthanthus[4] == 'portrait'" class="col-4 plant__card-adjustment plant__portrait">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{crypthanthus[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{crypthanthus[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
 
+    <div class="row">
+      <ng-container *ngFor="let crypthanthus of plantsPhotoResult; let i = index">
+        <div *ngIf="crypthanthus[4] == 'landscape'" class="col-4 plant__card-adjustment plant__landscape">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{crypthanthus[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{crypthanthus[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>

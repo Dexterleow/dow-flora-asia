@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,39 +8,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class BoweniaComponent implements OnInit {
 
-  boweniaPhotoUrl_1: string;
-  boweniaPhotoUrl_2: string;
-  boweniaPhotoUrl_3: string;
-  boweniaPhotoUrl_4: string;
-  boweniaPhotoUrl_5: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  boweniaArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__bowenia';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__bowenia') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__bowenia'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.boweniaPhotoUrl_1 = this.plantsPhotoResult[55][2];
-        this.boweniaPhotoUrl_2 = this.plantsPhotoResult[56][2];
-        this.boweniaPhotoUrl_3 = this.plantsPhotoResult[57][2];
-        this.boweniaPhotoUrl_4 = this.plantsPhotoResult[58][2];
-        this.boweniaPhotoUrl_5 = this.plantsPhotoResult[59][2];
-
-
-        console.log(this.boweniaPhotoUrl_1);
-        console.log('bowenia photo api call success');
+        this.boweniaArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__bowenia', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

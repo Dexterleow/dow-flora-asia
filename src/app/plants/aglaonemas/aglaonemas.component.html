@@ -4,17 +4,40 @@
     <li class="breadcrumb-item"><a routerLink="/plants">Plants</a></li>
     <li class="breadcrumb-item active">Aglanoemas</li>
   </ol>
+
   <div class="jumbotron">
     <h1 class="plants__title--display">Aglanoemas</h1>
 
-    <img [src]="aglaonemasPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_4" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_5" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_6" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_7" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_8" class="plant__species-resize" alt="picture">
-    <img [src]="aglaonemasPhotoUrl_9" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <ng-container *ngFor="let aglaonemas of plantsPhotoResult; let i = index">
+        <div *ngIf="aglaonemas[4] == 'portrait'" class="col-4 plant__card-adjustment plant__portrait">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{aglaonemas[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{aglaonemas[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row">
+      <ng-container *ngFor="let aglaonemas of plantsPhotoResult; let i = index">
+        <div *ngIf="aglaonemas[4] == 'landscape'" class="col-4 plant__card-adjustment plant__landscape">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{aglaonemas[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{aglaonemas[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+
   </div>
 </div>

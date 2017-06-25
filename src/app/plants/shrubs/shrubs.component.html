@@ -7,18 +7,34 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Shrubs</h1>
 
-    <img [src]="shrubsPhotoUrl_1" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_2" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_3" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_4" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_5" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_6" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_7" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_8" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_9" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_10" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_11" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_12" class="plant__species-resize" alt="picture">
-    <img [src]="shrubsPhotoUrl_13" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <ng-container *ngFor="let shrubs of plantsPhotoResult; let i = index">
+        <div *ngIf="shrubs[4] == 'portrait'" class="col-4 plant__card-adjustment plant__portrait">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{shrubs[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{shrubs[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="row">
+      <ng-container *ngFor="let shrubs of plantsPhotoResult; let i = index">
+        <div *ngIf="shrubs[4] == 'landscape'" class="col-4 plant__card-adjustment plant__landscape">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{shrubs[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{shrubs[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>

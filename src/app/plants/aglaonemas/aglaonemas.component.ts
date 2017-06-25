@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,46 +8,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AglaonemasComponent implements OnInit {
 
-  aglaonemasPhotoUrl_1: string;
-  aglaonemasPhotoUrl_2: string;
-  aglaonemasPhotoUrl_3: string;
-  aglaonemasPhotoUrl_4: string;
-  aglaonemasPhotoUrl_5: string;
-  aglaonemasPhotoUrl_6: string;
-  aglaonemasPhotoUrl_7: string;
-  aglaonemasPhotoUrl_8: string;
-  aglaonemasPhotoUrl_9: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  aglaonemasArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__aglaonemas';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__aglaonemas') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__aglaonemas'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.aglaonemasPhotoUrl_1 = this.plantsPhotoResult[11][2];
-        this.aglaonemasPhotoUrl_2 = this.plantsPhotoResult[12][2];
-        this.aglaonemasPhotoUrl_3 = this.plantsPhotoResult[13][2];
-        this.aglaonemasPhotoUrl_4 = this.plantsPhotoResult[14][2];
-        this.aglaonemasPhotoUrl_5 = this.plantsPhotoResult[15][2];
-        this.aglaonemasPhotoUrl_6 = this.plantsPhotoResult[16][2];
-        this.aglaonemasPhotoUrl_7 = this.plantsPhotoResult[17][2];
-        this.aglaonemasPhotoUrl_8 = this.plantsPhotoResult[18][2];
-        this.aglaonemasPhotoUrl_9 = this.plantsPhotoResult[19][2];
-
-        console.log(this.aglaonemasPhotoUrl_1);
-        console.log('aglaonemas photo api call success');
+        this.aglaonemasArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__aglaonemas', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

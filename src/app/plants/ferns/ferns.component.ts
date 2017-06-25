@@ -9,39 +9,37 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class FernsComponent implements OnInit {
 
-  fernsPhotoUrl_1: string;
-  fernsPhotoUrl_2: string;
-  fernsPhotoUrl_3: string;
-  fernsPhotoUrl_4: string;
-  fernsPhotoUrl_5: string;
-
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  fernsArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__ferns';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__ferns') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__ferns'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.fernsPhotoUrl_1 = this.plantsPhotoResult[124][2];
-        this.fernsPhotoUrl_2 = this.plantsPhotoResult[125][2];
-        this.fernsPhotoUrl_3 = this.plantsPhotoResult[126][2];
-        this.fernsPhotoUrl_4 = this.plantsPhotoResult[127][2];
-        this.fernsPhotoUrl_5 = this.plantsPhotoResult[128][2];
-
-        console.log(this.fernsPhotoUrl_1);
-        console.log('ferns photo api call success');
+        this.fernsArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__ferns', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }
+

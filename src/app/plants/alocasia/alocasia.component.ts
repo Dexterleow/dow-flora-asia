@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,38 +8,37 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class AlocasiaComponent implements OnInit {
 
-  alocasiaPhotoUrl_1: string;
-  alocasiaPhotoUrl_2: string;
-  alocasiaPhotoUrl_3: string;
-  alocasiaPhotoUrl_4: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  alocasiaArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__alocasia';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__alocasia') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__alocasia'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.alocasiaPhotoUrl_1 = this.plantsPhotoResult[20][2];
-        this.alocasiaPhotoUrl_2 = this.plantsPhotoResult[21][2];
-        this.alocasiaPhotoUrl_3 = this.plantsPhotoResult[22][2];
-        this.alocasiaPhotoUrl_4 = this.plantsPhotoResult[23][2];
-
-
-        console.log(this.alocasiaPhotoUrl_1);
-        console.log('alocasia photo api call success');
+        this.alocasiaArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__alocasia', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-
 }
+

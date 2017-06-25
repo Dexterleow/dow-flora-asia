@@ -9,36 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class OtherSpeciesComponent implements OnInit {
 
-  other_speciesPhotoUrl_1: string;
-  other_speciesPhotoUrl_2: string;
-  other_speciesPhotoUrl_3: string;
-  other_speciesPhotoUrl_4: string;
-
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  otherSpeciesArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__otherSpecies';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__otherSpecies') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__otherSpecies'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.other_speciesPhotoUrl_1 = this.plantsPhotoResult[222][2];
-        this.other_speciesPhotoUrl_2 = this.plantsPhotoResult[223][2];
-        this.other_speciesPhotoUrl_3 = this.plantsPhotoResult[224][2];
-        this.other_speciesPhotoUrl_4 = this.plantsPhotoResult[225][2];
-
-        console.log(this.other_speciesPhotoUrl_1);
-        console.log('other_species photo api call success');
+        this.otherSpeciesArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__otherSpecies', JSON.stringify(this.plantsPhotoResult));
       });
   }
 }

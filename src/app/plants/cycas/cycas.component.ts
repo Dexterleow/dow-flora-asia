@@ -9,37 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class CycasComponent implements OnInit {
 
-  cycasPhotoUrl_1: string;
-  cycasPhotoUrl_2: string;
-  cycasPhotoUrl_3: string;
-  cycasPhotoUrl_4: string;
-
-  plantsPhotoEndPoint: string;
+   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  cycasArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__cycas';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__cycas') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__cycas'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.cycasPhotoUrl_1 = this.plantsPhotoResult[103][2];
-        this.cycasPhotoUrl_2 = this.plantsPhotoResult[104][2];
-        this.cycasPhotoUrl_3 = this.plantsPhotoResult[105][2];
-        this.cycasPhotoUrl_4 = this.plantsPhotoResult[106][2];
-
-
-        console.log(this.cycasPhotoUrl_1);
-        console.log('cycas photo api call success');
+        this.cycasArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__cycas', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

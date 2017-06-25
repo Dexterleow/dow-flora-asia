@@ -9,32 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class SaggoPalmComponent implements OnInit {
 
-  saggo_palmPhotoUrl_1: string;
-  saggo_palmPhotoUrl_2: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  saggoPalmArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__saggoPalm';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__saggoPalm') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__saggoPalm'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.saggo_palmPhotoUrl_1 = this.plantsPhotoResult[164][2];
-        this.saggo_palmPhotoUrl_2 = this.plantsPhotoResult[165][2];
-
-        console.log(this.saggo_palmPhotoUrl_1);
-        console.log('saggo_palm photo api call success');
+        this.saggoPalmArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__saggoPalm', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
 }

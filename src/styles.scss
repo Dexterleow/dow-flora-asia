@@ -24,25 +24,10 @@ body {
 }
 
 .plant__species-resize{
-  width: 15%;
+  width: 100%;
 }
 
-.plants__title--display {
-    border-bottom: 1px solid black;
-    margin-bottom:3rem;
-}
-
-.plants__card-img-top {
-    width:75%;
-    margin: 0 auto;
-}
-
-.plants__card-title{
-    margin: 0 auto;
-}
-
-.plants__card{
-  background: 0;
-  border:0;
+.plant__card-adjustment{
+  margin-bottom: 3rem;
 }
 

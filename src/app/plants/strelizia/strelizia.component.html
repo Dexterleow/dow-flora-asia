@@ -7,8 +7,35 @@
   <div class="jumbotron">
     <h1 class="plants__title--display">Strelizia</h1>
 
+    <div class="row">
+      <ng-container *ngFor="let strelizia of plantsPhotoResult; let i = index">
+        <div *ngIf="strelizia[4] == 'portrait'" class="col-4 plant__card-adjustment plant__portrait">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{strelizia[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{strelizia[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
 
-    <img [src]="streliziaPhotoUrl_1" class="plant__species-resize" alt="picture">
+    <div class="row">
+      <ng-container *ngFor="let strelizia of plantsPhotoResult; let i = index">
+        <div *ngIf="strelizia[4] == 'landscape'" class="col-4 plant__card-adjustment plant__landscape">
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top img-responsive plant__species-resize" src="{{strelizia[2]}}">
+              <div class="card-block">
+                <h4 class="card-title">{{strelizia[3]}}</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
 
   </div>
 </div>

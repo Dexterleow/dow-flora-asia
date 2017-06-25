@@ -9,39 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class PandanusComponent implements OnInit {
 
-  pandanusPhotoUrl_1: string;
-  pandanusPhotoUrl_2: string;
-  pandanusPhotoUrl_3: string;
-  pandanusPhotoUrl_4: string;
-  pandanusPhotoUrl_5: string;
-  pandanusPhotoUrl_6: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  pandanusArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__pandanus';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__pandanus') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__pandanus'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.pandanusPhotoUrl_1 = this.plantsPhotoResult[166][2];
-        this.pandanusPhotoUrl_2 = this.plantsPhotoResult[167][2];
-        this.pandanusPhotoUrl_3 = this.plantsPhotoResult[168][2];
-        this.pandanusPhotoUrl_4 = this.plantsPhotoResult[169][2];
-        this.pandanusPhotoUrl_5 = this.plantsPhotoResult[170][2];
-        this.pandanusPhotoUrl_6 = this.plantsPhotoResult[171][2];
-
-        console.log(this.pandanusPhotoUrl_1);
-        console.log('pandanus photo api call success');
+        this.pandanusArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__pandanus', JSON.stringify(this.plantsPhotoResult));
       });
   }
 }

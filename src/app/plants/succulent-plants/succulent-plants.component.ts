@@ -9,41 +9,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class SucculentPlantsComponent implements OnInit {
 
-  succulent_plantsPhotoUrl_1: string;
-  succulent_plantsPhotoUrl_2: string;
-  succulent_plantsPhotoUrl_3: string;
-  succulent_plantsPhotoUrl_4: string;
-  succulent_plantsPhotoUrl_5: string;
-  succulent_plantsPhotoUrl_6: string;
-  succulent_plantsPhotoUrl_7: string;
-
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
+  succulentPlantsArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/plants';
+    this.plantsPhotoEndPoint = '/home/plants__succulentPlants';
+
     this.plantsPhotoResult = [];
 
-    this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    if (localStorage.getItem('plants__succulentPlants') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__succulentPlants'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
+      .subscribe(
+      dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.succulent_plantsPhotoUrl_1 = this.plantsPhotoResult[196][2];
-        this.succulent_plantsPhotoUrl_2 = this.plantsPhotoResult[197][2];
-        this.succulent_plantsPhotoUrl_3 = this.plantsPhotoResult[198][2];
-        this.succulent_plantsPhotoUrl_4 = this.plantsPhotoResult[199][2];
-        this.succulent_plantsPhotoUrl_5 = this.plantsPhotoResult[200][2];
-        this.succulent_plantsPhotoUrl_6 = this.plantsPhotoResult[201][2];
-        this.succulent_plantsPhotoUrl_7 = this.plantsPhotoResult[202][2];
-
-        console.log(this.succulent_plantsPhotoUrl_1);
-        console.log('succulent_plants photo api call success');
+        this.succulentPlantsArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
+        localStorage.setItem('plants__succulentPlants', JSON.stringify(this.plantsPhotoResult));
       });
   }
 }
