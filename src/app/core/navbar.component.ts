@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   public isInputShown: boolean;
   public toSubmit: boolean;
   public isAboutUsLinksShown: boolean;
+  public toggleMenuBarsContent: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
     this.isInputShown = false;
     this.toSubmit = false;
     this.isAboutUsLinksShown = false;
+    this.toggleMenuBarsContent = false;
   }
 
   private createSearchForm() {
@@ -41,6 +43,10 @@ export class NavbarComponent implements OnInit {
 
   public showAboutUsLinks() {
     this.isAboutUsLinksShown = !this.isAboutUsLinksShown;
+  }
+
+  public toggleBarsContent() {
+    this.toggleMenuBarsContent = !this.toggleMenuBarsContent;
   }
 
 }
