@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../../shared/services/google-sheets.service';
 
 @Component({
@@ -9,33 +8,36 @@ import { GoogleSheetsService } from '../../shared/services/google-sheets.service
 })
 export class CharcoalsComponent implements OnInit {
 
-  charcoalsPhotoUrl_1: string;
-  charcoalsPhotoUrl_2: string;
-
-  charcoalsPhotoEndPoint: string;
-  charcoalsPhotoResult: Array<string>;
+  plantsPhotoEndPoint: string;
+  plantsPhotoResult: Array<string>;
+  charcoalArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.charcoalsPhotoEndPoint = '/home/growingMediaAndCharcoals';
-    this.charcoalsPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/charcoals';
 
-    this.getImagesFromSheets(this.charcoalsPhotoEndPoint);
+    this.plantsPhotoResult = [];
+
+    if (localStorage.getItem('charcoal') === null) {
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.plantsPhotoResult = JSON.parse(localStorage.getItem('charcoal'));
+      console.log(this.plantsPhotoResult);
+    }
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-      .subscribe(dataFromAPI => {
-        this.charcoalsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.charcoalsPhotoUrl_1 = this.charcoalsPhotoResult[1][2];
-        this.charcoalsPhotoUrl_2 = this.charcoalsPhotoResult[2][2];
-
-        console.log(this.charcoalsPhotoUrl_1);
-        console.log('charcoalsPhotoUrl_1 photo api call success');
-        console.log(this.charcoalsPhotoResult);
+      .subscribe(
+      dataFromAPI => {
+        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.charcoalArrayLength = this.plantsPhotoResult.length;
+        console.log(this.plantsPhotoResult);
+        localStorage.setItem('charcoal', JSON.stringify(this.plantsPhotoResult));
       });
   }
-
-
 }
