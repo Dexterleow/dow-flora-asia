@@ -1,24 +1,32 @@
-.lingga-island__protrait--resize {
-  width:55%;
-}
-
-.lingga-island__landscape-resize {
-  width: 120%;
-}
-
 .lingga-island__title{
-  font-size: 1.3rem;
-  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.lingga-island__content{
-  // font-size: 1.5rem;
+.lingga-image-history,
+.lingga-image-mountain {
+  float: left;
 }
 
-.lingga-island__row{
-  padding: 2rem 0;
+.lingga-image-jetty,
+.lingga-image-beach {
+  float: right;
+  width: 50%;
+  margin: 0 0 1rem 3rem;
 }
 
-.sebm-google-map-container {
-  height: 300px;
+.lingga-image-history {
+  width: 40%;
+  margin-right: 3rem;
+  @media ( min-width: 992px ) { width: 36%;}
+}
+
+.lingga-island__content-pointer {
+  margin-top: 1.5rem;
+}
+
+.lingga-image-mountain {
+  width: 35%;
+  margin: 0 3rem 1.5rem 0;
+  @media ( min-width: 992px ) { width: 41%;}
 }

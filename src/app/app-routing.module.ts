@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { AboutUsDetailsComponent } from './about-us-details/about-us-details.component';
 import { PlantsComponent } from './plants/plants.component';
 import { LinggaIslandComponent } from './lingga-island/lingga-island.component';
 import { ProjectsComponent } from './projects/projects.component';
@@ -165,15 +166,25 @@ const appRoutes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent
-  },
-  {
-    path: 'operations',
-    component: OperationCapabilityComponent
-  },
-  {
-    path: 'lingga-island',
-    component: LinggaIslandComponent
+    component: AboutComponent,
+    children: [
+      {
+        path: '',
+        component: AboutUsDetailsComponent,
+      },
+      {
+        path: 'operations',
+        component: OperationCapabilityComponent
+      },
+      {
+        path: 'lingga-island',
+        component: LinggaIslandComponent
+      },
+      {
+        path: 'projects',
+        component: ProjectsComponent
+      }
+    ]
   },
   {
     path: 'plants',
@@ -229,10 +240,6 @@ const appRoutes: Routes = [
       { path: 'completed-projects', component: CompletedProjectsComponent },
       { path: 'future-projects', component: FutureProjectsComponent }
     ]
-  },
-  {
-    path: 'projects',
-    component: ProjectsComponent,
   },
   {
     path: 'contact-us',

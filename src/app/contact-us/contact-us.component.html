@@ -51,9 +51,12 @@
     <div class="col-lg-6 col-sm-12 contact__wrapper">
       <div class="col contact__info-container">
         <div class="col contact__row">
-          <sebm-google-map [latitude]="lat" [longitude]="lng" [scrollwheel]="scrollwheel" [zoom]="zoomFactor">
+          <!-- <sebm-google-map [latitude]="lat" [longitude]="lng" [scrollwheel]="scrollwheel" [zoom]="zoomFactor">
             <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
-          </sebm-google-map>
+          </sebm-google-map> -->
+          <agm-map [latitude]="lat" [longitude]="lng" [scrollwheel]="scrollwheel" [zoom]="zoomFactor">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
         </div>
         <div class="col contact__row contact__info-header">
           <h3>Contact Information</h3>

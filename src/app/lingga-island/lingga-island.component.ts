@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../shared/services/google-sheets.service';
 
 @Component({
@@ -7,6 +6,7 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
   templateUrl: './lingga-island.component.html',
   styleUrls: ['./lingga-island.component.scss']
 })
+
 export class LinggaIslandComponent implements OnInit {
 
   linggaIslandPhotoUrl_Mountain1: string;
@@ -22,8 +22,9 @@ export class LinggaIslandComponent implements OnInit {
   public zoomFactor: number;
   public scrollwheel: boolean;
 
-  constructor(private googleSheetsService: GoogleSheetsService) {
-  }
+  constructor(
+    private googleSheetsService: GoogleSheetsService,
+  ) {}
 
   ngOnInit() {
     this.apilinggaIslandPhotoEndPoint = '/home/lingga';
@@ -36,6 +37,7 @@ export class LinggaIslandComponent implements OnInit {
     this.zoomFactor = 7;
     this.scrollwheel = false;
   }
+
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
     .subscribe(dataFromAPI => {
@@ -44,15 +46,11 @@ export class LinggaIslandComponent implements OnInit {
       this.linggaIslandPhotoUrl_Beach3 = this.apilinggaIslandPhotoResult[4][2];
       this.linggaIslandPhotoUrl_Jetty3 = this.apilinggaIslandPhotoResult[6][2];
       this.linggaIslandPhotoUrl_History1 = this.apilinggaIslandPhotoResult[8][2];
-
-      // need to run loop here if decide to set an interval and change cover photo every few seconds
-
-      // localStorage.setItem('sixtySecondsCategoryPhotos', JSON.stringify(this.apiCoverPhotoResult));
-
-      console.log(this.linggaIslandPhotoUrl_Mountain1);
-      console.log('lingga photo api call success');
-      console.log(this.apilinggaIslandPhotoResult);
     });
   }
 
 }
+
+// https://github.com/SebastianM/angular-google-maps/issues/139
+// https://github.com/philipbrack/example-angular2-google-maps-getNativeMap
+// https://plnkr.co/edit/7Oblmh?p=preview
