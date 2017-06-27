@@ -18,7 +18,7 @@ export class PebbleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/stones';
+    this.plantsPhotoEndPoint = '/home/pebble';
     this.plantsPhotoResult = [];
 
     this.getImagesFromSheets(this.plantsPhotoEndPoint);
@@ -27,7 +27,7 @@ export class PebbleComponent implements OnInit {
     this.googleSheetsService.getImages(sheetName)
       .subscribe(dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.pebblePhotoUrl_1 = this.plantsPhotoResult[6][2];
+        this.pebblePhotoUrl_1 = this.plantsPhotoResult[0][2];
 
         console.log(this.pebblePhotoUrl_1);
         console.log('pebble photo api call success');

@@ -60,7 +60,10 @@ function retrieveSheets(fnOne, urlRoute) {
       sheetsArray = ['Charcoals!A2:E'];
       break;
     case 'stones':
-      sheetsArray = ['StonesEtc!A2:C'];
+      sheetsArray = ['StonesEtc!A2:E'];
+      break;
+    case 'pebble':
+      sheetsArray = ['PebblesEtc!A2:E'];
       break;
     case 'completedAndFutureProjects':
       sheetsArray = ['CompletedAndFutureProjects!A2:C'];
