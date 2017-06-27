@@ -14,6 +14,12 @@
   text-decoration: none;
 }
 
+.list-group-item__font-adjustment:focus {
+  border-left: 0.5rem solid #2BDE73;
+  color: #2BDE73;
+  text-decoration: none;
+}
+
 .side-menu__list-item {
   border: 0;
   color: black;
