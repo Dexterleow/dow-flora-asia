@@ -4,6 +4,8 @@
   @media (min-width: 768px) { margin-bottom: 1.25rem; }
   padding: 1rem;
   background-color: white;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar__logo,
@@ -33,7 +35,7 @@
 
 .navbar__links {
   display: none;
-  @media (min-width: 768px) { display: inline-block; }
+  @media (min-width: 576px) { display: inline-block; }
   & div {
     padding: 5px;
     margin: 0 .5rem;
@@ -93,21 +95,21 @@
   top: 15px;
   margin: 0 10px;
   display: inline-block;
-  @media (min-width: 768px) { display: none; }
+  @media (min-width: 576px) { display: none; }
   cursor: pointer;
 }
 
 .navbar__bars-content {
-  @media (min-width: 768px) { display: none; }
-  margin-top: -50px;
+  @media (min-width: 576px) { display: none; }
+  margin-top: -130px;
   margin-bottom: 1.5rem;
-  position: relative;
+  // position: relative;
   z-index: -1;
   transition: 1s all;
   &-show {
-    margin-top: 0;
+    margin-top: 20px;
     transition: 1s all;
-    position: inherit;
+    // position: inherit;
   }
 }
 
