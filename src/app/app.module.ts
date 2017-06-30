@@ -17,7 +17,7 @@ import { EmailService } from './shared/services/email.service';
 import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
+
 import { NavbarComponent } from './core/navbar.component';
 import { AboutComponent } from './about/about.component';
 import { PlantsComponent } from './plants/plants.component';
@@ -93,7 +93,6 @@ import { AboutUsDetailsComponent } from './about-us-details/about-us-details.com
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    CoverPhotoComponent,
     NavbarComponent,
     AboutComponent,
     PlantsComponent,
