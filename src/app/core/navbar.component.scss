@@ -101,13 +101,13 @@
 
 .navbar__bars-content {
   @media (min-width: 576px) { display: none; }
-  margin-top: -50px;
+  margin-top: -130px;
   margin-bottom: 1.5rem;
   // position: relative;
   z-index: -1;
   transition: 1s all;
   &-show {
-    margin-top: 0;
+    margin-top: 20px;
     transition: 1s all;
     // position: inherit;
   }
