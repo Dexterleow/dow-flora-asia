@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 /*body { padding-top: 100px; }
@@ -10,6 +11,7 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
@@ -24,11 +26,11 @@ body {
   background-color: #f5f5f5;
 }
 
-.plant__species-resize{
+.plant__species-resize {
   width: 100%;
 }
 
-.plant__card-adjustment{
+.plant__card-adjustment {
   margin-bottom: 3rem;
 }
 
@@ -53,7 +55,6 @@ body {
 
 .fixed-main-menu {
   overflow-y: auto; // question - not sure if this is the best way of doing it
-  // need to create break points and their respective height
   // Small devices (landscape phones, 576px and up)
   @media (min-width: 576px) {
     // ...
