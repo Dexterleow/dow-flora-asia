@@ -6,12 +6,7 @@
   color: black;
   font-size: 1.25rem;
   padding-left: 0.35rem;
-  &:hover {
-    border-left: 0.5rem solid #2BDE73;
-    color: #2BDE73;
-    text-decoration: none;
-  }
-  &:focus {
+  &:hover, :focus {
     border-left: 0.5rem solid #2BDE73;
     color: #2BDE73;
     text-decoration: none;
@@ -23,10 +18,7 @@
   color: black;
   font-size: 1.2rem;
   padding-left: 0.75rem;
-  &:hover {
-    color: #0f9946;
-  }
-  &:focus {
+  &:hover, :focus {
     color: #0f9946;
   }
 }
