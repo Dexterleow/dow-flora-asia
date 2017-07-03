@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
   let mailOptions = {
     from: '"No Reply Dow Flora" <noreplydowflora@gmail.com>', // sender address
     // change to email eventually
-    to: 'eugeneoei89@gmail.com', // list of receivers
+    to: 'darren.dowflora@gmail.com', // list of receivers
     subject: 'Enquiry from ' + req.body.email, // Subject line
     html: `Hi Dow Flora,<br><br>You have an enquiry from ${req.body.name}.<br><br>
     His/Her enquiry is as follows:<br><br>
