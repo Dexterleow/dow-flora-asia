@@ -26,23 +26,43 @@ body {
   background-color: #f5f5f5;
 }
 
-.fixed-side-menu,
+.fixed-side-menu {
+  overflow-y: auto; // question - not sure if this is the best way of doing it
+  // need to create break points and their respective height
+  // Small devices (landscape phones, 576px and up)
+  @media (min-width: 576px) {
+    height: 18rem; // ...
+  } // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px) {
+    // height: 728px;
+    height: 23rem;
+  } // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    height: 38rem;
+  } // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {}
+  @media (min-width: 1500px) {
+    height: 44rem;
+  }
+}
+
 .fixed-main-menu {
   overflow-y: auto; // question - not sure if this is the best way of doing it
   // need to create break points and their respective height
   // Small devices (landscape phones, 576px and up)
   @media (min-width: 576px) {
-    // ...
+    height: 18rem; // ...
   } // Medium devices (tablets, 768px and up)
   @media (min-width: 768px) {
     // height: 728px;
-    height: 38rem;
+    height: 23rem;
   } // Large devices (desktops, 992px and up)
   @media (min-width: 992px) {
-    // ...
+    height: 38rem;
   } // Extra large devices (large desktops, 1200px and up)
-  @media (min-width: 1200px) {
-    // ...
+  @media (min-width: 1200px) {}
+  @media (min-width: 1500px) {
+    height: 44rem;
   }
 }
 
