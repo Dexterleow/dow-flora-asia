@@ -87,6 +87,7 @@ import { CompletedProjectsComponent } from './completed-future-projects/complete
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
 import { AboutUsDetailsComponent } from './about-us-details/about-us-details.component';
+import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
 
 @NgModule({
   declarations: [
@@ -155,7 +156,8 @@ import { AboutUsDetailsComponent } from './about-us-details/about-us-details.com
     CompletedProjectsComponent,
     FutureProjectsComponent,
     OperationCapabilityComponent,
-    AboutUsDetailsComponent
+    AboutUsDetailsComponent,
+    CoverPhotoComponent
   ],
   imports: [
     BrowserModule,

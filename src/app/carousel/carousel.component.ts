@@ -12,7 +12,7 @@ export class CarouselComponent implements OnInit {
 
   plantsPhotoEndPoint: string;
   plantsPhotoResult: Array<string>;
-  agaveArrayLength: number;
+  carouselArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
@@ -37,7 +37,7 @@ export class CarouselComponent implements OnInit {
       .subscribe(
       dataFromAPI => {
         this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
-        this.agaveArrayLength = this.plantsPhotoResult.length;
+        this.carouselArrayLength = this.plantsPhotoResult.length;
         console.log(this.plantsPhotoResult);
         localStorage.setItem('carousel-photo', JSON.stringify(this.plantsPhotoResult));
       });
