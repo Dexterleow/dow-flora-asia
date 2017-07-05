@@ -71,11 +71,43 @@ import { CompletedProjectsComponent } from './completed-future-projects/complete
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 
 const appRoutes: Routes = [
+  //   {
+  //   path: '',
+  //   redirectTo: '/home/carousel',
+  //   pathMatch: 'full'
+  // },
+  {
+    path: '**',
+    redirectTo: '/home/carousel',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      { path: 'carousel', component: CarouselComponent },
+    ]
+  },
+  // {
+    // path: '',
+    // redirectTo: '/home/carousel',
+    // pathMatch: 'full'
+  // },
+  // {
+  //   path: '**',
+  //   // redirectTo: '/home/carousel',
+  //   // pathMatch: 'full'
+  //   component: HomeComponent,
+  //   children: [
+  //     { path: 'carousel', component: CarouselComponent },
+  //   ]
+  // },
   {
     path: 'home',
     component: HomeComponent,
     children: [
-      { path: '', redirectTo: 'carousel', pathMatch: 'full' },
+      { path: '', component: CarouselComponent },
+      // { path: '', redirectTo: 'carousel', pathMatch: 'full' },
       { path: 'carousel', component: CarouselComponent },
       { path: 'adenium', component: AdeniumComponent },
       { path: 'agave', component: AgaveComponent },
@@ -244,16 +276,6 @@ const appRoutes: Routes = [
   {
     path: 'contact-us',
     component: ContactUsComponent,
-  },
-  {
-    path: '',
-    redirectTo: '/home/carousel',
-    pathMatch: 'full'
-  },
-  {
-    path: '**',
-    redirectTo: '/home/carousel',
-    pathMatch: 'full'
   }
 ];
 

@@ -164,7 +164,6 @@ import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
-    // question - JsonpModule
     CarouselModule.forRoot(),
     JsonpModule,
     AppRoutingModule,

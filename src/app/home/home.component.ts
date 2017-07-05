@@ -10,28 +10,38 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-//  coverPhotoUrl: string;
-//   apiCoverPhotoEndPoint: string;
-//   apiCoverPhotoResult: Array<string>;
+  plantsPhotoEndPoint: string;
+  plantsPhotoResult: Array<string>;
+  carouselArrayLength: number;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
+    this.getImagesFromSheets(this.plantsPhotoEndPoint);
   }
 
   ngOnInit() {
-    // this.apiCoverPhotoEndPoint = '';
-    // this.apiCoverPhotoResult = [];
+    this.plantsPhotoEndPoint = '/home/carousel-photo';
 
-    // this.getImagesFromSheets(this.apiCoverPhotoEndPoint);
+    this.plantsPhotoResult = [];
+
+    // if (localStorage.getItem('carousel-photo') === null) {
+    //   this.getImagesFromSheets(this.plantsPhotoEndPoint);
+    // } else {
+    //   // stored value in local storage is a string
+    //   // covert back to array to read data
+    //   this.plantsPhotoResult = JSON.parse(localStorage.getItem('carousel-photo'));
+    //   console.log(this.plantsPhotoResult);
+    // }
+
   }
-  // getImagesFromSheets(sheetName) {
-  //   this.googleSheetsService.getImages(sheetName)
-  //   .subscribe(dataFromAPI => {
-  //     this.apiCoverPhotoResult = dataFromAPI.apiLandingResult[0];
-  //     this.coverPhotoUrl = this.apiCoverPhotoResult[0][3];
 
-  //     console.log(this.coverPhotoUrl);
-  //     console.log('cover photo api call success');
-  //     console.log(this.apiCoverPhotoResult);
-  //   });
-  // }
+  getImagesFromSheets(sheetName) {
+    this.googleSheetsService.getImages(sheetName)
+      .subscribe(
+      dataFromAPI => {
+        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.carouselArrayLength = this.plantsPhotoResult.length;
+        console.log(this.plantsPhotoResult);
+        localStorage.setItem('carousel-photo-home', JSON.stringify(this.plantsPhotoResult));
+      });
+  }
 }
