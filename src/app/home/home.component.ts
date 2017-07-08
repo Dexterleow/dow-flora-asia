@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { GoogleSheetsService } from '../shared/services/google-sheets.service';
 
 
@@ -10,28 +9,36 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-//  coverPhotoUrl: string;
-//   apiCoverPhotoEndPoint: string;
-//   apiCoverPhotoResult: Array<string>;
+
+  coverPhotoUrl: string;
+  plantsPhotoResult: Array<string>;
+  apiCoverPhotoEndPoint: string;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    // this.apiCoverPhotoEndPoint = '';
-    // this.apiCoverPhotoResult = [];
+    this.apiCoverPhotoEndPoint = '/home/carousel-photo';
 
-    // this.getImagesFromSheets(this.apiCoverPhotoEndPoint);
+    this.plantsPhotoResult = [];
+
+    if (localStorage.getItem('home-carousel-photo') == null) {
+      this.getImagesFromSheets(this.apiCoverPhotoEndPoint);
+    } else {
+      // stored value in local storage is a string
+      // covert back to array to read data
+      this.apiCoverPhotoEndPoint = JSON.parse(localStorage.getItem('home-carousel-photo'));
+      console.log(this.apiCoverPhotoEndPoint);
+    }
   }
-  // getImagesFromSheets(sheetName) {
-  //   this.googleSheetsService.getImages(sheetName)
-  //   .subscribe(dataFromAPI => {
-  //     this.apiCoverPhotoResult = dataFromAPI.apiLandingResult[0];
-  //     this.coverPhotoUrl = this.apiCoverPhotoResult[0][3];
 
-  //     console.log(this.coverPhotoUrl);
-  //     console.log('cover photo api call success');
-  //     console.log(this.apiCoverPhotoResult);
-  //   });
-  // }
+  getImagesFromSheets(sheetName) {
+    this.googleSheetsService.getImages(sheetName)
+      .subscribe(
+        dataFromAPI => {
+        this.plantsPhotoResult = dataFromAPI.apiLandingResult[0];
+        localStorage.setItem('home-carousel-photo', JSON.stringify(this.plantsPhotoResult));
+      });
+  }
 }
+

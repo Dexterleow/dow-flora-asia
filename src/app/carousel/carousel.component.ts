@@ -22,7 +22,7 @@ export class CarouselComponent implements OnInit {
 
     this.plantsPhotoResult = [];
 
-    if (localStorage.getItem('carousel-photo') === null) {
+    if (localStorage.getItem('carousel-photo') == null) {
       this.getImagesFromSheets(this.plantsPhotoEndPoint);
     } else {
       // stored value in local storage is a string
