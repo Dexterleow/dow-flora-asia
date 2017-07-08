@@ -19,7 +19,7 @@ export class CarouselComponent implements OnInit {
 
   ngOnInit() {
     this.plantsPhotoEndPoint = '/home/carousel-photo';
-
+                                        
     this.plantsPhotoResult = [];
 
     if (localStorage.getItem('carousel-photo') == null) {
@@ -30,6 +30,7 @@ export class CarouselComponent implements OnInit {
       this.plantsPhotoResult = JSON.parse(localStorage.getItem('carousel-photo'));
       console.log(this.plantsPhotoResult);
     }
+
   }
 
   getImagesFromSheets(sheetName) {

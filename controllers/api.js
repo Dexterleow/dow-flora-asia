@@ -41,11 +41,11 @@ var sheetsArray;
 function retrieveSheets(fnOne, urlRoute) {
 
   switch (urlRoute) {
-    case 'carousel-photo':
-      sheetsArray = ['CarouselPhoto!A2:E'];
-      break;
     case 'lingga':
       sheetsArray = ['Lingga!A2:C'];
+      break;
+    case 'carousel-photo':
+      sheetsArray = ['CarouselPhoto!A2:D'];
       break;
     case 'plants':
       sheetsArray = ['Plants!A2:C'];
