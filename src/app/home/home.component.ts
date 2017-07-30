@@ -9,20 +9,21 @@ import { GoogleSheetsService } from '../shared/services/google-sheets.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  plantsPhotoEndPoint: string;
+
+  coverPhotoUrl: string;
   plantsPhotoResult: Array<string>;
-  carouselArrayLength: number;
+  apiCoverPhotoEndPoint: string;
 
   constructor(private googleSheetsService: GoogleSheetsService) {
   }
 
   ngOnInit() {
-    this.plantsPhotoEndPoint = '/home/carousel-photo';
+    this.apiCoverPhotoEndPoint = '/home/carousel-photo';
 
     this.plantsPhotoResult = [];
 
     if (localStorage.getItem('home-carousel-photo') == null) {
-      this.getImagesFromSheets(this.plantsPhotoEndPoint);
+      this.getImagesFromSheets(this.apiCoverPhotoEndPoint);
     } else {
       // stored value in local storage is a string
       // covert back to array to read data
