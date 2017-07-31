@@ -71,16 +71,16 @@ import { CompletedProjectsComponent } from './completed-future-projects/complete
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 
 const appRoutes: Routes = [
-  //   {
-  //   path: '',
-  //   redirectTo: '/home/carousel',
-  //   pathMatch: 'full'
-  // },
-  {
-    path: '**',
+    {
+    path: '',
     redirectTo: '/home/carousel',
     pathMatch: 'full'
   },
+  // {
+  //   path: '**',
+  //   redirectTo: '/home/carousel',
+  //   pathMatch: 'full'
+  // },
   {
     path: '',
     component: HomeComponent,
