@@ -13,6 +13,7 @@ export class LinggaIslandComponent implements OnInit {
   linggaIslandPhotoUrl_Beach3: string;
   linggaIslandPhotoUrl_History1: string;
   linggaIslandPhotoUrl_Jetty3: string;
+  linggaIslandPhotoUrl_EcoFarm: string;
 
   apilinggaIslandPhotoEndPoint: string;
   apilinggaIslandPhotoResult: Array<string>;
@@ -24,7 +25,7 @@ export class LinggaIslandComponent implements OnInit {
 
   constructor(
     private googleSheetsService: GoogleSheetsService,
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.apilinggaIslandPhotoEndPoint = '/home/lingga';
@@ -40,13 +41,14 @@ export class LinggaIslandComponent implements OnInit {
 
   getImagesFromSheets(sheetName) {
     this.googleSheetsService.getImages(sheetName)
-    .subscribe(dataFromAPI => {
-      this.apilinggaIslandPhotoResult = dataFromAPI.apiLandingResult[0];
-      this.linggaIslandPhotoUrl_Mountain1 = this.apilinggaIslandPhotoResult[0][2];
-      this.linggaIslandPhotoUrl_Beach3 = this.apilinggaIslandPhotoResult[4][2];
-      this.linggaIslandPhotoUrl_Jetty3 = this.apilinggaIslandPhotoResult[6][2];
-      this.linggaIslandPhotoUrl_History1 = this.apilinggaIslandPhotoResult[8][2];
-    });
+      .subscribe(dataFromAPI => {
+        this.apilinggaIslandPhotoResult = dataFromAPI.apiLandingResult[0];
+        this.linggaIslandPhotoUrl_Mountain1 = this.apilinggaIslandPhotoResult[0][2];
+        this.linggaIslandPhotoUrl_Beach3 = this.apilinggaIslandPhotoResult[4][2];
+        this.linggaIslandPhotoUrl_Jetty3 = this.apilinggaIslandPhotoResult[6][2];
+        this.linggaIslandPhotoUrl_History1 = this.apilinggaIslandPhotoResult[8][2];
+        this.linggaIslandPhotoUrl_EcoFarm = this.apilinggaIslandPhotoResult[9][2];
+      });
   }
 
 }
