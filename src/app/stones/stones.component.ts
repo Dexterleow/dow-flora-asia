@@ -13,3 +13,4 @@ export class StonesComponent implements OnInit {
   }
 
 }
+

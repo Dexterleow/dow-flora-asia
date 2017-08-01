@@ -71,7 +71,7 @@ import { CompletedProjectsComponent } from './completed-future-projects/complete
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 
 const appRoutes: Routes = [
-    {
+  {
     path: '',
     redirectTo: '/home/carousel',
     pathMatch: 'full'
@@ -89,9 +89,9 @@ const appRoutes: Routes = [
     ]
   },
   // {
-    // path: '',
-    // redirectTo: '/home/carousel',
-    // pathMatch: 'full'
+  // path: '',
+  // redirectTo: '/home/carousel',
+  // pathMatch: 'full'
   // },
   // {
   //   path: '**',
@@ -154,6 +154,7 @@ const appRoutes: Routes = [
       { path: 'seedlings', component: SeedlingsComponent },
       { path: 'treated-media', component: TreatedMediaComponent },
       { path: 'charcoals', component: CharcoalsComponent },
+      { path: 'stones', component: StonesComponent },
       { path: 'stone-table', component: StoneTableComponent },
       { path: 'pebble', component: PebbleComponent },
       { path: 'completed-projects', component: CompletedProjectsComponent },
@@ -180,11 +181,12 @@ const appRoutes: Routes = [
   },
   {
     path: 'stones',
-    component: StoneTableComponent,
+    component: StonesComponent,
     children: [
-      { path: '', redirectTo: 'stone-table', pathMatch: 'full' },
-      { path: 'stone-table', component: StoneTableComponent },
-      { path: 'pebble', component: PebbleComponent }
+      // { path: '', redirectTo: 'stones', pathMatch: 'full' },
+      { path: 'stones', component: StonesComponent },
+      { path: 'stone-table', component: StoneTableComponent }
+      // { path: 'pebble', component: PebbleComponent }
     ]
   },
   {
@@ -267,6 +269,7 @@ const appRoutes: Routes = [
       { path: 'seedlings', component: SeedlingsComponent },
       { path: 'treated-media', component: TreatedMediaComponent },
       { path: 'charcoals', component: CharcoalsComponent },
+      { path: 'stones', component: StonesComponent },
       { path: 'stone-table', component: StoneTableComponent },
       { path: 'pebble', component: PebbleComponent },
       { path: 'completed-projects', component: CompletedProjectsComponent },
