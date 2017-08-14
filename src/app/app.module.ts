@@ -88,6 +88,8 @@ import { FutureProjectsComponent } from './completed-future-projects/future-proj
 import { OperationCapabilityComponent } from './operation-capability/operation-capability.component';
 import { AboutUsDetailsComponent } from './about-us-details/about-us-details.component';
 import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
+import { GrowingMediaComponent } from './plants/growing-media/growing-media.component';
+import { FlowersPotsVasesEtcComponent } from './plants/flowers-pots-vases-etc/flowers-pots-vases-etc.component';
 
 @NgModule({
   declarations: [
@@ -157,7 +159,9 @@ import { CoverPhotoComponent } from './cover-photo/cover-photo.component';
     FutureProjectsComponent,
     OperationCapabilityComponent,
     AboutUsDetailsComponent,
-    CoverPhotoComponent
+    CoverPhotoComponent,
+    GrowingMediaComponent,
+    FlowersPotsVasesEtcComponent
   ],
   imports: [
     BrowserModule,

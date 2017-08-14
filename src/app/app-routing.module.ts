@@ -70,17 +70,15 @@ import { CompletedFutureProjectsComponent } from './completed-future-projects/co
 import { CompletedProjectsComponent } from './completed-future-projects/completed-projects/completed-projects.component';
 import { FutureProjectsComponent } from './completed-future-projects/future-projects/future-projects.component';
 
+import { GrowingMediaComponent } from './plants/growing-media/growing-media.component';
+import { FlowersPotsVasesEtcComponent } from './plants/flowers-pots-vases-etc/flowers-pots-vases-etc.component';
+
 const appRoutes: Routes = [
   {
     path: '',
     redirectTo: '/home/carousel',
     pathMatch: 'full'
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '/home/carousel',
-  //   pathMatch: 'full'
-  // },
   {
     path: '',
     component: HomeComponent,
@@ -88,20 +86,6 @@ const appRoutes: Routes = [
       { path: 'carousel', component: CarouselComponent },
     ]
   },
-  // {
-  // path: '',
-  // redirectTo: '/home/carousel',
-  // pathMatch: 'full'
-  // },
-  // {
-  //   path: '**',
-  //   // redirectTo: '/home/carousel',
-  //   // pathMatch: 'full'
-  //   component: HomeComponent,
-  //   children: [
-  //     { path: 'carousel', component: CarouselComponent },
-  //   ]
-  // },
   {
     path: 'home',
     component: HomeComponent,
@@ -158,7 +142,9 @@ const appRoutes: Routes = [
       { path: 'stone-table', component: StoneTableComponent },
       { path: 'pebble', component: PebbleComponent },
       { path: 'completed-projects', component: CompletedProjectsComponent },
-      { path: 'future-projects', component: FutureProjectsComponent }
+      { path: 'future-projects', component: FutureProjectsComponent },
+      { path: 'growing-media', component: GrowingMediaComponent },
+      { path: 'flowers-pots', component: FlowersPotsVasesEtcComponent }
     ]
   },
   {
@@ -183,10 +169,8 @@ const appRoutes: Routes = [
     path: 'stones',
     component: StonesComponent,
     children: [
-      // { path: '', redirectTo: 'stones', pathMatch: 'full' },
       { path: 'stones', component: StonesComponent },
       { path: 'stone-table', component: StoneTableComponent }
-      // { path: 'pebble', component: PebbleComponent }
     ]
   },
   {
@@ -273,13 +257,20 @@ const appRoutes: Routes = [
       { path: 'stone-table', component: StoneTableComponent },
       { path: 'pebble', component: PebbleComponent },
       { path: 'completed-projects', component: CompletedProjectsComponent },
-      { path: 'future-projects', component: FutureProjectsComponent }
+      { path: 'future-projects', component: FutureProjectsComponent },
+      { path: 'growing-media', component: GrowingMediaComponent },
+      { path: 'flowers-pots', component: FlowersPotsVasesEtcComponent }
     ]
   },
   {
     path: 'contact-us',
     component: ContactUsComponent,
-  }
+  },
+  {
+    path: '**',
+    redirectTo: '/home/carousel',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
