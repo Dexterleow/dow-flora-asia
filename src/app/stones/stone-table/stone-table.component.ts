@@ -42,7 +42,7 @@ export class StoneTableComponent implements OnInit {
         console.log(this.plantsPhotoResult);
 
         // pebble url from GoogleSheet
-        this.pebblePhotoUrl_1 = this.plantsPhotoResult[6][2];
+        // this.pebblePhotoUrl_1 = this.plantsPhotoResult[6][2];
         localStorage.setItem('stones', JSON.stringify(this.plantsPhotoResult));
       });
   }
