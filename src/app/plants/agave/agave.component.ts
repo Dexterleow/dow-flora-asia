@@ -25,8 +25,10 @@ export class AgaveComponent implements OnInit {
     } else {
       // stored value in local storage is a string
       // covert back to array to read data
+      this.getImagesFromSheets(this.plantsPhotoEndPoint);
       this.plantsPhotoResult = JSON.parse(localStorage.getItem('plants__agave'));
       console.log(this.plantsPhotoResult);
+      console.log('agave changes');
     }
   }
 
